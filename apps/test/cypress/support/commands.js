@@ -83,7 +83,7 @@ Cypress.Commands.overwrite('visit', (original, url, options) => {
         options.onBeforeLoad(win)
       }
       win.localStorage.clear()
-      const provider = new JsonRpcProvider('https://bsc-dataseed.binance.org/', 322)
+      const provider = new JsonRpcProvider('https://rpc-testnet.kcc.network/', 322)
       const signer = new Wallet(TEST_PRIVATE_KEY, provider)
       // eslint-disable-next-line no-param-reassign
       win.ethereum = new CustomizedBridge(signer, provider)

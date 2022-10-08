@@ -74,8 +74,8 @@ export const bsc: Chain = {
   name: 'BNB Smart Chain',
   network: 'bsc',
   rpcUrls: {
-    public: 'https://bsc-dataseed1.binance.org',
-    default: 'https://bsc-dataseed1.binance.org',
+    public: 'https://rpc-testnet.kcc.network',
+    default: 'https://rpc-testnet.kcc.network',
   },
   blockExplorers: {
     default: bscExplorer,
@@ -87,8 +87,8 @@ export const bsc: Chain = {
     decimals: 18,
   },
   multicall: {
-    address: '0xcA11bde05977b3631167028862bE2a173976CA11',
-    blockCreated: 15921452,
+    address: '0xfaC1B5F42709A7700EE459378287854283589B72',
+    blockCreated: 15228606,
   },
 }
 
@@ -109,7 +109,7 @@ export const bscTest: Chain = {
     default: { name: 'BscScan', url: 'https://testnet.bscscan.com' },
   },
   multicall: {
-    address: '0xcA11bde05977b3631167028862bE2a173976CA11',
+    address: '0xfaC1B5F42709A7700EE459378287854283589B72',
     blockCreated: 17422483,
   },
   testnet: true,

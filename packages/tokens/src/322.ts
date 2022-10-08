@@ -6,10 +6,18 @@ export const bscTokens = {
   // bnb here points to the wbnb contract. Wherever the currency BNB is required, conditional checks for the symbol 'BNB' can be used
   bnb: new Token(
     ChainId.BSC,
-    '0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c',
+    '0xB296bAb2ED122a85977423b602DdF3527582A3DA',
     18,
-    'BNB',
-    'BNB',
+    'KCS',
+    'KCS',
+    'https://www.binance.com/',
+  ),
+  kpy: new Token(
+    ChainId.BSC,
+    '0x0A4D179258641107CD645E2be062Bc15d0fB8F32',
+    18,
+    'KPY',
+    'KPY',
     'https://www.binance.com/',
   ),
   cake: CAKE_MAINNET,

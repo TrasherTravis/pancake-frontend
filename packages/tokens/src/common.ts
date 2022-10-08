@@ -4,8 +4,8 @@ export const CAKE_MAINNET = new Token(
   ChainId.BSC,
   '0x21Be617AFCC165DcA78adE63B30EB8768fd32A26',
   18,
-  'CAKE',
-  'PancakeSwap Token',
+  'ORK',
+  'ORK Token',
   'https://pancakeswap.finance/',
 )
 
@@ -56,7 +56,7 @@ export const USDC_GOERLI = new Token(
 
 export const USDT_BSC = new Token(
   ChainId.BSC,
-  '0x55d398326f99059fF775485246999027B3197955',
+  '0x67f6a7BbE0da067A747C6b2bEdF8aBBF7D6f60dc',
   18,
   'USDT',
   'Tether USD',
@@ -74,7 +74,7 @@ export const USDT_ETH = new Token(
 
 export const BUSD_BSC = new Token(
   ChainId.BSC,
-  '0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56',
+  '0x67f6a7BbE0da067A747C6b2bEdF8aBBF7D6f60dc',
   18,
   'BUSD',
   'Binance USD',

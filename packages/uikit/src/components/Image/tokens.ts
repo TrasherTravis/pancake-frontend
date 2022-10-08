@@ -11,6 +11,15 @@ const tokens = {
     decimals: 18,
     projectLink: "https://pancakeswap.finance/",
   },
+  kpy: {
+    symbol: "KPY",
+    address: {
+      322: "0x0A4D179258641107CD645E2be062Bc15d0fB8F32",
+      97: "0xae13d989daC2f0dEbFf460aC112a837C89BAa7cd",
+    },
+    decimals: 18,
+    projectLink: "https://pancakeswap.finance/",
+  },
   txl: {
     symbol: "TXL",
     address: {
@@ -437,7 +446,7 @@ const tokens = {
   wbnb: {
     symbol: "wBNB",
     address: {
-      56: "0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c",
+      322: "0xB296bAb2ED122a85977423b602DdF3527582A3DA",
       97: "0xae13d989daC2f0dEbFf460aC112a837C89BAa7cd",
     },
     decimals: 18,
@@ -608,7 +617,7 @@ const tokens = {
   busd: {
     symbol: "BUSD",
     address: {
-      56: "0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56",
+      322: "0x67f6a7BbE0da067A747C6b2bEdF8aBBF7D6f60dc",
       97: "",
     },
     decimals: 18,
@@ -743,7 +752,7 @@ const tokens = {
   usdt: {
     symbol: "USDT",
     address: {
-      56: "0x55d398326f99059fF775485246999027B3197955",
+      322: "0x67f6a7BbE0da067A747C6b2bEdF8aBBF7D6f60dc",
       97: "0xE02dF9e3e622DeBdD69fb838bB799E3F168902c5",
     },
     decimals: 18,
