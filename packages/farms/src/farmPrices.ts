@@ -4,6 +4,7 @@ import _toNumber from 'lodash/toNumber'
 import { SerializedFarmPublicData, FarmData } from './types'
 import { equalsIgnoreCase } from './equalsIgnoreCase'
 import { FIXED_ONE, FIXED_TEN_IN_POWER_18, FIXED_TWO, FIXED_ZERO } from './const'
+import { KCS_USDT_LP_MAINNET } from '../constants/common'
 
 // Find BUSD price for token
 // either via direct calculation if farm is X-BNB or X-BUSD
@@ -216,8 +217,8 @@ const nativeStableLpMap = {
     stable: 'tUSDC',
   },
   [ChainId.BSC]: {
-    address: '0x58F876857a02D6762E0101bb5C46A8c1ED44Dc16',
-    wNative: 'WBNB',
+    address: KCS_USDT_LP_MAINNET,
+    wNative: 'WKCS',
     stable: 'BUSD',
   },
   [ChainId.BSC_TESTNET]: {
