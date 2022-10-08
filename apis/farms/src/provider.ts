@@ -5,7 +5,7 @@ export const bscProvider = new StaticJsonRpcProvider(
     url: 'https://nodes.pancakeswap.com',
     skipFetchSetup: true,
   },
-  56,
+  322,
 )
 
 export const bscTestnetProvider = new StaticJsonRpcProvider(

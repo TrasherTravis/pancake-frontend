@@ -99,7 +99,7 @@ const masterChefV2Abi = [
     inputs: [{ internalType: 'uint256', name: '', type: 'uint256' }],
     name: 'poolInfo',
     outputs: [
-      { internalType: 'uint256', name: 'accCakePerShare', type: 'uint256' },
+      { internalType: 'uint256', name: 'accOrkPerShare', type: 'uint256' },
       { internalType: 'uint256', name: 'lastRewardBlock', type: 'uint256' },
       { internalType: 'uint256', name: 'allocPoint', type: 'uint256' },
       { internalType: 'uint256', name: 'totalBoostedShare', type: 'uint256' },
@@ -131,7 +131,7 @@ const masterChefV2Abi = [
   },
   {
     inputs: [{ internalType: 'bool', name: '_isRegular', type: 'bool' }],
-    name: 'cakePerBlock',
+    name: 'orkPerBlock',
     outputs: [{ internalType: 'uint256', name: 'amount', type: 'uint256' }],
     stateMutability: 'view',
     type: 'function',
@@ -191,7 +191,7 @@ export const fetchMasterChefV2Data = async ({
   masterChefAddress: string
 }) => {
   try {
-    const [[poolLength], [totalRegularAllocPoint], [totalSpecialAllocPoint], [cakePerBlock]] = await multicallv2<
+    const [[poolLength], [totalRegularAllocPoint], [totalSpecialAllocPoint], [orkPerBlock]] = await multicallv2<
       [[BigNumber], [BigNumber], [BigNumber], [BigNumber]]
     >({
       abi: masterChefV2Abi,
@@ -210,7 +210,7 @@ export const fetchMasterChefV2Data = async ({
         },
         {
           address: masterChefAddress,
-          name: 'cakePerBlock',
+          name: 'orkPerBlock',
           params: [true],
         },
       ],
@@ -221,7 +221,7 @@ export const fetchMasterChefV2Data = async ({
       poolLength,
       totalRegularAllocPoint,
       totalSpecialAllocPoint,
-      cakePerBlock,
+      orkPerBlock,
     }
   } catch (error) {
     console.error('Get MasterChef data error', error)

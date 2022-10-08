@@ -1,470 +1,446 @@
 [
   {
-    "inputs": [
-      { "internalType": "contract IMasterChef", "name": "_MASTER_CHEF", "type": "address" },
-      { "internalType": "contract IBEP20", "name": "_CAKE", "type": "address" },
-      { "internalType": "uint256", "name": "_MASTER_PID", "type": "uint256" },
-      { "internalType": "address", "name": "_burnAdmin", "type": "address" }
-    ],
+    "type": "constructor",
     "stateMutability": "nonpayable",
-    "type": "constructor"
+    "inputs": [
+      { "type": "address", "name": "_ORK", "internalType": "contract IORK" },
+      { "type": "address", "name": "_burnAdmin", "internalType": "address" }
+    ]
   },
   {
-    "anonymous": false,
-    "inputs": [
-      { "indexed": true, "internalType": "uint256", "name": "pid", "type": "uint256" },
-      { "indexed": false, "internalType": "uint256", "name": "allocPoint", "type": "uint256" },
-      { "indexed": true, "internalType": "contract IBEP20", "name": "lpToken", "type": "address" },
-      { "indexed": false, "internalType": "bool", "name": "isRegular", "type": "bool" }
-    ],
+    "type": "event",
     "name": "AddPool",
-    "type": "event"
+    "inputs": [
+      { "type": "uint256", "name": "pid", "internalType": "uint256", "indexed": true },
+      { "type": "uint256", "name": "allocPoint", "internalType": "uint256", "indexed": false },
+      { "type": "address", "name": "lpToken", "internalType": "contract IERC20", "indexed": true },
+      { "type": "bool", "name": "isRegular", "internalType": "bool", "indexed": false }
+    ],
+    "anonymous": false
   },
   {
-    "anonymous": false,
-    "inputs": [
-      { "indexed": true, "internalType": "address", "name": "user", "type": "address" },
-      { "indexed": true, "internalType": "uint256", "name": "pid", "type": "uint256" },
-      { "indexed": false, "internalType": "uint256", "name": "amount", "type": "uint256" }
-    ],
+    "type": "event",
     "name": "Deposit",
-    "type": "event"
+    "inputs": [
+      { "type": "address", "name": "user", "internalType": "address", "indexed": true },
+      { "type": "uint256", "name": "pid", "internalType": "uint256", "indexed": true },
+      { "type": "uint256", "name": "amount", "internalType": "uint256", "indexed": false }
+    ],
+    "anonymous": false
   },
   {
-    "anonymous": false,
-    "inputs": [
-      { "indexed": true, "internalType": "address", "name": "user", "type": "address" },
-      { "indexed": true, "internalType": "uint256", "name": "pid", "type": "uint256" },
-      { "indexed": false, "internalType": "uint256", "name": "amount", "type": "uint256" }
-    ],
+    "type": "event",
     "name": "EmergencyWithdraw",
-    "type": "event"
-  },
-  { "anonymous": false, "inputs": [], "name": "Init", "type": "event" },
-  {
-    "anonymous": false,
     "inputs": [
-      { "indexed": true, "internalType": "address", "name": "previousOwner", "type": "address" },
-      { "indexed": true, "internalType": "address", "name": "newOwner", "type": "address" }
+      { "type": "address", "name": "user", "internalType": "address", "indexed": true },
+      { "type": "uint256", "name": "pid", "internalType": "uint256", "indexed": true },
+      { "type": "uint256", "name": "amount", "internalType": "uint256", "indexed": false }
     ],
+    "anonymous": false
+  },
+  { "type": "event", "name": "Init", "inputs": [], "anonymous": false },
+  {
+    "type": "event",
     "name": "OwnershipTransferred",
-    "type": "event"
+    "inputs": [
+      { "type": "address", "name": "previousOwner", "internalType": "address", "indexed": true },
+      { "type": "address", "name": "newOwner", "internalType": "address", "indexed": true }
+    ],
+    "anonymous": false
   },
   {
-    "anonymous": false,
-    "inputs": [
-      { "indexed": true, "internalType": "uint256", "name": "pid", "type": "uint256" },
-      { "indexed": false, "internalType": "uint256", "name": "allocPoint", "type": "uint256" }
-    ],
+    "type": "event",
     "name": "SetPool",
-    "type": "event"
+    "inputs": [
+      { "type": "uint256", "name": "pid", "internalType": "uint256", "indexed": true },
+      { "type": "uint256", "name": "allocPoint", "internalType": "uint256", "indexed": false }
+    ],
+    "anonymous": false
   },
   {
-    "anonymous": false,
-    "inputs": [{ "indexed": true, "internalType": "address", "name": "boostContract", "type": "address" }],
+    "type": "event",
     "name": "UpdateBoostContract",
-    "type": "event"
+    "inputs": [{ "type": "address", "name": "boostContract", "internalType": "address", "indexed": true }],
+    "anonymous": false
   },
   {
-    "anonymous": false,
-    "inputs": [
-      { "indexed": true, "internalType": "address", "name": "user", "type": "address" },
-      { "indexed": false, "internalType": "uint256", "name": "pid", "type": "uint256" },
-      { "indexed": false, "internalType": "uint256", "name": "oldMultiplier", "type": "uint256" },
-      { "indexed": false, "internalType": "uint256", "name": "newMultiplier", "type": "uint256" }
-    ],
+    "type": "event",
     "name": "UpdateBoostMultiplier",
-    "type": "event"
+    "inputs": [
+      { "type": "address", "name": "user", "internalType": "address", "indexed": true },
+      { "type": "uint256", "name": "pid", "internalType": "uint256", "indexed": false },
+      { "type": "uint256", "name": "oldMultiplier", "internalType": "uint256", "indexed": false },
+      { "type": "uint256", "name": "newMultiplier", "internalType": "uint256", "indexed": false }
+    ],
+    "anonymous": false
   },
   {
-    "anonymous": false,
-    "inputs": [
-      { "indexed": true, "internalType": "address", "name": "oldAdmin", "type": "address" },
-      { "indexed": true, "internalType": "address", "name": "newAdmin", "type": "address" }
-    ],
+    "type": "event",
     "name": "UpdateBurnAdmin",
-    "type": "event"
+    "inputs": [
+      { "type": "address", "name": "oldAdmin", "internalType": "address", "indexed": true },
+      { "type": "address", "name": "newAdmin", "internalType": "address", "indexed": true }
+    ],
+    "anonymous": false
   },
   {
-    "anonymous": false,
+    "type": "event",
+    "name": "UpdateOrkRate",
     "inputs": [
-      { "indexed": false, "internalType": "uint256", "name": "burnRate", "type": "uint256" },
-      { "indexed": false, "internalType": "uint256", "name": "regularFarmRate", "type": "uint256" },
-      { "indexed": false, "internalType": "uint256", "name": "specialFarmRate", "type": "uint256" }
+      { "type": "uint256", "name": "burnRate", "internalType": "uint256", "indexed": false },
+      { "type": "uint256", "name": "regularFarmRate", "internalType": "uint256", "indexed": false },
+      { "type": "uint256", "name": "specialFarmRate", "internalType": "uint256", "indexed": false }
     ],
-    "name": "UpdateCakeRate",
-    "type": "event"
+    "anonymous": false
   },
   {
-    "anonymous": false,
-    "inputs": [
-      { "indexed": true, "internalType": "uint256", "name": "pid", "type": "uint256" },
-      { "indexed": false, "internalType": "uint256", "name": "lastRewardBlock", "type": "uint256" },
-      { "indexed": false, "internalType": "uint256", "name": "lpSupply", "type": "uint256" },
-      { "indexed": false, "internalType": "uint256", "name": "accCakePerShare", "type": "uint256" }
-    ],
+    "type": "event",
     "name": "UpdatePool",
-    "type": "event"
+    "inputs": [
+      { "type": "uint256", "name": "pid", "internalType": "uint256", "indexed": true },
+      { "type": "uint256", "name": "lastRewardBlock", "internalType": "uint256", "indexed": false },
+      { "type": "uint256", "name": "lpSupply", "internalType": "uint256", "indexed": false },
+      { "type": "uint256", "name": "accOrkPerShare", "internalType": "uint256", "indexed": false }
+    ],
+    "anonymous": false
   },
   {
-    "anonymous": false,
-    "inputs": [
-      { "indexed": true, "internalType": "address", "name": "user", "type": "address" },
-      { "indexed": false, "internalType": "bool", "name": "isValid", "type": "bool" }
-    ],
+    "type": "event",
     "name": "UpdateWhiteList",
-    "type": "event"
+    "inputs": [
+      { "type": "address", "name": "user", "internalType": "address", "indexed": true },
+      { "type": "bool", "name": "isValid", "internalType": "bool", "indexed": false }
+    ],
+    "anonymous": false
   },
   {
-    "anonymous": false,
-    "inputs": [
-      { "indexed": true, "internalType": "address", "name": "user", "type": "address" },
-      { "indexed": true, "internalType": "uint256", "name": "pid", "type": "uint256" },
-      { "indexed": false, "internalType": "uint256", "name": "amount", "type": "uint256" }
-    ],
+    "type": "event",
     "name": "Withdraw",
-    "type": "event"
+    "inputs": [
+      { "type": "address", "name": "user", "internalType": "address", "indexed": true },
+      { "type": "uint256", "name": "pid", "internalType": "uint256", "indexed": true },
+      { "type": "uint256", "name": "amount", "internalType": "uint256", "indexed": false }
+    ],
+    "anonymous": false
   },
   {
-    "inputs": [],
-    "name": "ACC_CAKE_PRECISION",
-    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "type": "function",
     "stateMutability": "view",
-    "type": "function"
+    "outputs": [{ "type": "uint256", "name": "", "internalType": "uint256" }],
+    "name": "ACC_ORK_PRECISION",
+    "inputs": []
   },
   {
-    "inputs": [],
+    "type": "function",
+    "stateMutability": "view",
+    "outputs": [{ "type": "uint256", "name": "", "internalType": "uint256" }],
     "name": "BOOST_PRECISION",
-    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
-    "stateMutability": "view",
-    "type": "function"
+    "inputs": []
   },
   {
-    "inputs": [],
-    "name": "CAKE",
-    "outputs": [{ "internalType": "contract IBEP20", "name": "", "type": "address" }],
+    "type": "function",
     "stateMutability": "view",
-    "type": "function"
+    "outputs": [{ "type": "uint256", "name": "", "internalType": "uint256" }],
+    "name": "MASTERCHEF_ORK_PER_BLOCK",
+    "inputs": []
   },
   {
-    "inputs": [],
-    "name": "CAKE_RATE_TOTAL_PRECISION",
-    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "type": "function",
     "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "MASTERCHEF_CAKE_PER_BLOCK",
-    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "MASTER_CHEF",
-    "outputs": [{ "internalType": "contract IMasterChef", "name": "", "type": "address" }],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "MASTER_PID",
-    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
+    "outputs": [{ "type": "uint256", "name": "", "internalType": "uint256" }],
     "name": "MAX_BOOST_PRECISION",
-    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
-    "stateMutability": "view",
-    "type": "function"
+    "inputs": []
   },
   {
-    "inputs": [
-      { "internalType": "uint256", "name": "_allocPoint", "type": "uint256" },
-      { "internalType": "contract IBEP20", "name": "_lpToken", "type": "address" },
-      { "internalType": "bool", "name": "_isRegular", "type": "bool" },
-      { "internalType": "bool", "name": "_withUpdate", "type": "bool" }
-    ],
+    "type": "function",
+    "stateMutability": "view",
+    "outputs": [{ "type": "address", "name": "", "internalType": "contract IORK" }],
+    "name": "ORK",
+    "inputs": []
+  },
+  {
+    "type": "function",
+    "stateMutability": "view",
+    "outputs": [{ "type": "uint256", "name": "", "internalType": "uint256" }],
+    "name": "ORK_RATE_TOTAL_PRECISION",
+    "inputs": []
+  },
+  {
+    "type": "function",
+    "stateMutability": "nonpayable",
+    "outputs": [],
     "name": "add",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
+    "inputs": [
+      { "type": "uint256", "name": "_allocPoint", "internalType": "uint256" },
+      { "type": "address", "name": "_lpToken", "internalType": "contract IERC20" },
+      { "type": "bool", "name": "_isRegular", "internalType": "bool" },
+      { "type": "bool", "name": "_withUpdate", "internalType": "bool" }
+    ]
   },
   {
-    "inputs": [],
+    "type": "function",
+    "stateMutability": "view",
+    "outputs": [{ "type": "address", "name": "", "internalType": "address" }],
     "name": "boostContract",
-    "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
-    "stateMutability": "view",
-    "type": "function"
+    "inputs": []
   },
   {
-    "inputs": [],
+    "type": "function",
+    "stateMutability": "view",
+    "outputs": [{ "type": "address", "name": "", "internalType": "address" }],
     "name": "burnAdmin",
-    "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
-    "stateMutability": "view",
-    "type": "function"
+    "inputs": []
   },
   {
-    "inputs": [{ "internalType": "bool", "name": "_withUpdate", "type": "bool" }],
-    "name": "burnCake",
-    "outputs": [],
+    "type": "function",
     "stateMutability": "nonpayable",
-    "type": "function"
+    "outputs": [],
+    "name": "burnOrk",
+    "inputs": [{ "type": "bool", "name": "_withUpdate", "internalType": "bool" }]
   },
   {
-    "inputs": [{ "internalType": "bool", "name": "_isRegular", "type": "bool" }],
-    "name": "cakePerBlock",
-    "outputs": [{ "internalType": "uint256", "name": "amount", "type": "uint256" }],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "cakePerBlockToBurn",
-    "outputs": [{ "internalType": "uint256", "name": "amount", "type": "uint256" }],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "cakeRateToBurn",
-    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "cakeRateToRegularFarm",
-    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "cakeRateToSpecialFarm",
-    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      { "internalType": "uint256", "name": "_pid", "type": "uint256" },
-      { "internalType": "uint256", "name": "_amount", "type": "uint256" }
-    ],
+    "type": "function",
+    "stateMutability": "nonpayable",
+    "outputs": [],
     "name": "deposit",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
+    "inputs": [
+      { "type": "uint256", "name": "_pid", "internalType": "uint256" },
+      { "type": "uint256", "name": "_amount", "internalType": "uint256" }
+    ]
   },
   {
-    "inputs": [{ "internalType": "uint256", "name": "_pid", "type": "uint256" }],
+    "type": "function",
+    "stateMutability": "nonpayable",
+    "outputs": [],
     "name": "emergencyWithdraw",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
+    "inputs": [{ "type": "uint256", "name": "_pid", "internalType": "uint256" }]
   },
   {
-    "inputs": [
-      { "internalType": "address", "name": "_user", "type": "address" },
-      { "internalType": "uint256", "name": "_pid", "type": "uint256" }
-    ],
+    "type": "function",
+    "stateMutability": "view",
+    "outputs": [{ "type": "uint256", "name": "", "internalType": "uint256" }],
     "name": "getBoostMultiplier",
-    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "inputs": [
+      { "type": "address", "name": "_user", "internalType": "address" },
+      { "type": "uint256", "name": "_pid", "internalType": "uint256" }
+    ]
+  },
+  {
+    "type": "function",
     "stateMutability": "view",
-    "type": "function"
-  },
-  { "inputs": [], "name": "harvestFromMasterChef", "outputs": [], "stateMutability": "nonpayable", "type": "function" },
-  {
-    "inputs": [{ "internalType": "contract IBEP20", "name": "dummyToken", "type": "address" }],
-    "name": "init",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [],
+    "outputs": [{ "type": "uint256", "name": "", "internalType": "uint256" }],
     "name": "lastBurnedBlock",
-    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
-    "stateMutability": "view",
-    "type": "function"
+    "inputs": []
   },
   {
-    "inputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "type": "function",
+    "stateMutability": "view",
+    "outputs": [{ "type": "address", "name": "", "internalType": "contract IERC20" }],
     "name": "lpToken",
-    "outputs": [{ "internalType": "contract IBEP20", "name": "", "type": "address" }],
-    "stateMutability": "view",
-    "type": "function"
+    "inputs": [{ "type": "uint256", "name": "", "internalType": "uint256" }]
   },
-  { "inputs": [], "name": "massUpdatePools", "outputs": [], "stateMutability": "nonpayable", "type": "function" },
+  { "type": "function", "stateMutability": "nonpayable", "outputs": [], "name": "massUpdatePools", "inputs": [] },
   {
-    "inputs": [],
+    "type": "function",
+    "stateMutability": "view",
+    "outputs": [{ "type": "uint256", "name": "amount", "internalType": "uint256" }],
+    "name": "orkPerBlock",
+    "inputs": [{ "type": "bool", "name": "_isRegular", "internalType": "bool" }]
+  },
+  {
+    "type": "function",
+    "stateMutability": "view",
+    "outputs": [{ "type": "uint256", "name": "amount", "internalType": "uint256" }],
+    "name": "orkPerBlockToBurn",
+    "inputs": []
+  },
+  {
+    "type": "function",
+    "stateMutability": "view",
+    "outputs": [{ "type": "uint256", "name": "", "internalType": "uint256" }],
+    "name": "orkRateToBurn",
+    "inputs": []
+  },
+  {
+    "type": "function",
+    "stateMutability": "view",
+    "outputs": [{ "type": "uint256", "name": "", "internalType": "uint256" }],
+    "name": "orkRateToRegularFarm",
+    "inputs": []
+  },
+  {
+    "type": "function",
+    "stateMutability": "view",
+    "outputs": [{ "type": "uint256", "name": "", "internalType": "uint256" }],
+    "name": "orkRateToSpecialFarm",
+    "inputs": []
+  },
+  {
+    "type": "function",
+    "stateMutability": "view",
+    "outputs": [{ "type": "address", "name": "", "internalType": "address" }],
     "name": "owner",
-    "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
-    "stateMutability": "view",
-    "type": "function"
+    "inputs": []
   },
   {
+    "type": "function",
+    "stateMutability": "view",
+    "outputs": [{ "type": "uint256", "name": "", "internalType": "uint256" }],
+    "name": "pendingOrk",
     "inputs": [
-      { "internalType": "uint256", "name": "_pid", "type": "uint256" },
-      { "internalType": "address", "name": "_user", "type": "address" }
-    ],
-    "name": "pendingCake",
-    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
-    "stateMutability": "view",
-    "type": "function"
+      { "type": "uint256", "name": "_pid", "internalType": "uint256" },
+      { "type": "address", "name": "_user", "internalType": "address" }
+    ]
   },
   {
-    "inputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
-    "name": "poolInfo",
+    "type": "function",
+    "stateMutability": "view",
     "outputs": [
-      { "internalType": "uint256", "name": "accCakePerShare", "type": "uint256" },
-      { "internalType": "uint256", "name": "lastRewardBlock", "type": "uint256" },
-      { "internalType": "uint256", "name": "allocPoint", "type": "uint256" },
-      { "internalType": "uint256", "name": "totalBoostedShare", "type": "uint256" },
-      { "internalType": "bool", "name": "isRegular", "type": "bool" }
+      { "type": "uint256", "name": "accOrkPerShare", "internalType": "uint256" },
+      { "type": "uint256", "name": "lastRewardBlock", "internalType": "uint256" },
+      { "type": "uint256", "name": "allocPoint", "internalType": "uint256" },
+      { "type": "uint256", "name": "totalBoostedShare", "internalType": "uint256" },
+      { "type": "bool", "name": "isRegular", "internalType": "bool" }
     ],
-    "stateMutability": "view",
-    "type": "function"
+    "name": "poolInfo",
+    "inputs": [{ "type": "uint256", "name": "", "internalType": "uint256" }]
   },
   {
-    "inputs": [],
+    "type": "function",
+    "stateMutability": "view",
+    "outputs": [{ "type": "uint256", "name": "pools", "internalType": "uint256" }],
     "name": "poolLength",
-    "outputs": [{ "internalType": "uint256", "name": "pools", "type": "uint256" }],
-    "stateMutability": "view",
-    "type": "function"
+    "inputs": []
   },
-  { "inputs": [], "name": "renounceOwnership", "outputs": [], "stateMutability": "nonpayable", "type": "function" },
+  { "type": "function", "stateMutability": "nonpayable", "outputs": [], "name": "renounceOwnership", "inputs": [] },
   {
-    "inputs": [
-      { "internalType": "uint256", "name": "_pid", "type": "uint256" },
-      { "internalType": "uint256", "name": "_allocPoint", "type": "uint256" },
-      { "internalType": "bool", "name": "_withUpdate", "type": "bool" }
-    ],
+    "type": "function",
+    "stateMutability": "nonpayable",
+    "outputs": [],
     "name": "set",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
+    "inputs": [
+      { "type": "uint256", "name": "_pid", "internalType": "uint256" },
+      { "type": "uint256", "name": "_allocPoint", "internalType": "uint256" },
+      { "type": "bool", "name": "_withUpdate", "internalType": "bool" }
+    ]
   },
   {
-    "inputs": [],
+    "type": "function",
+    "stateMutability": "view",
+    "outputs": [{ "type": "uint256", "name": "", "internalType": "uint256" }],
     "name": "totalRegularAllocPoint",
-    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
-    "stateMutability": "view",
-    "type": "function"
+    "inputs": []
   },
   {
-    "inputs": [],
+    "type": "function",
+    "stateMutability": "view",
+    "outputs": [{ "type": "uint256", "name": "", "internalType": "uint256" }],
     "name": "totalSpecialAllocPoint",
-    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
-    "stateMutability": "view",
-    "type": "function"
+    "inputs": []
   },
   {
-    "inputs": [{ "internalType": "address", "name": "newOwner", "type": "address" }],
+    "type": "function",
+    "stateMutability": "nonpayable",
+    "outputs": [],
     "name": "transferOwnership",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
+    "inputs": [{ "type": "address", "name": "newOwner", "internalType": "address" }]
   },
   {
-    "inputs": [{ "internalType": "address", "name": "_newBoostContract", "type": "address" }],
+    "type": "function",
+    "stateMutability": "nonpayable",
+    "outputs": [],
     "name": "updateBoostContract",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
+    "inputs": [{ "type": "address", "name": "_newBoostContract", "internalType": "address" }]
   },
   {
-    "inputs": [
-      { "internalType": "address", "name": "_user", "type": "address" },
-      { "internalType": "uint256", "name": "_pid", "type": "uint256" },
-      { "internalType": "uint256", "name": "_newMultiplier", "type": "uint256" }
-    ],
+    "type": "function",
+    "stateMutability": "nonpayable",
+    "outputs": [],
     "name": "updateBoostMultiplier",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [{ "internalType": "address", "name": "_newAdmin", "type": "address" }],
-    "name": "updateBurnAdmin",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
     "inputs": [
-      { "internalType": "uint256", "name": "_burnRate", "type": "uint256" },
-      { "internalType": "uint256", "name": "_regularFarmRate", "type": "uint256" },
-      { "internalType": "uint256", "name": "_specialFarmRate", "type": "uint256" },
-      { "internalType": "bool", "name": "_withUpdate", "type": "bool" }
-    ],
-    "name": "updateCakeRate",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
+      { "type": "address", "name": "_user", "internalType": "address" },
+      { "type": "uint256", "name": "_pid", "internalType": "uint256" },
+      { "type": "uint256", "name": "_newMultiplier", "internalType": "uint256" }
+    ]
   },
   {
-    "inputs": [{ "internalType": "uint256", "name": "_pid", "type": "uint256" }],
-    "name": "updatePool",
+    "type": "function",
+    "stateMutability": "nonpayable",
+    "outputs": [],
+    "name": "updateBurnAdmin",
+    "inputs": [{ "type": "address", "name": "_newAdmin", "internalType": "address" }]
+  },
+  {
+    "type": "function",
+    "stateMutability": "nonpayable",
+    "outputs": [],
+    "name": "updateOrkRate",
+    "inputs": [
+      { "type": "uint256", "name": "_burnRate", "internalType": "uint256" },
+      { "type": "uint256", "name": "_regularFarmRate", "internalType": "uint256" },
+      { "type": "uint256", "name": "_specialFarmRate", "internalType": "uint256" },
+      { "type": "bool", "name": "_withUpdate", "internalType": "bool" }
+    ]
+  },
+  {
+    "type": "function",
+    "stateMutability": "nonpayable",
     "outputs": [
       {
-        "components": [
-          { "internalType": "uint256", "name": "accCakePerShare", "type": "uint256" },
-          { "internalType": "uint256", "name": "lastRewardBlock", "type": "uint256" },
-          { "internalType": "uint256", "name": "allocPoint", "type": "uint256" },
-          { "internalType": "uint256", "name": "totalBoostedShare", "type": "uint256" },
-          { "internalType": "bool", "name": "isRegular", "type": "bool" }
-        ],
-        "internalType": "struct MasterChefV2.PoolInfo",
+        "type": "tuple",
         "name": "pool",
-        "type": "tuple"
+        "internalType": "struct MasterChefV2.PoolInfo",
+        "components": [
+          { "type": "uint256", "name": "accOrkPerShare", "internalType": "uint256" },
+          { "type": "uint256", "name": "lastRewardBlock", "internalType": "uint256" },
+          { "type": "uint256", "name": "allocPoint", "internalType": "uint256" },
+          { "type": "uint256", "name": "totalBoostedShare", "internalType": "uint256" },
+          { "type": "bool", "name": "isRegular", "internalType": "bool" }
+        ]
       }
     ],
-    "stateMutability": "nonpayable",
-    "type": "function"
+    "name": "updatePool",
+    "inputs": [{ "type": "uint256", "name": "_pid", "internalType": "uint256" }]
   },
   {
-    "inputs": [
-      { "internalType": "address", "name": "_user", "type": "address" },
-      { "internalType": "bool", "name": "_isValid", "type": "bool" }
-    ],
-    "name": "updateWhiteList",
+    "type": "function",
+    "stateMutability": "nonpayable",
     "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
+    "name": "updateWhiteList",
+    "inputs": [
+      { "type": "address", "name": "_user", "internalType": "address" },
+      { "type": "bool", "name": "_isValid", "internalType": "bool" }
+    ]
   },
   {
-    "inputs": [
-      { "internalType": "uint256", "name": "", "type": "uint256" },
-      { "internalType": "address", "name": "", "type": "address" }
+    "type": "function",
+    "stateMutability": "view",
+    "outputs": [
+      { "type": "uint256", "name": "amount", "internalType": "uint256" },
+      { "type": "uint256", "name": "rewardDebt", "internalType": "uint256" },
+      { "type": "uint256", "name": "boostMultiplier", "internalType": "uint256" }
     ],
     "name": "userInfo",
-    "outputs": [
-      { "internalType": "uint256", "name": "amount", "type": "uint256" },
-      { "internalType": "uint256", "name": "rewardDebt", "type": "uint256" },
-      { "internalType": "uint256", "name": "boostMultiplier", "type": "uint256" }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [{ "internalType": "address", "name": "", "type": "address" }],
-    "name": "whiteList",
-    "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
     "inputs": [
-      { "internalType": "uint256", "name": "_pid", "type": "uint256" },
-      { "internalType": "uint256", "name": "_amount", "type": "uint256" }
-    ],
-    "name": "withdraw",
-    "outputs": [],
+      { "type": "uint256", "name": "", "internalType": "uint256" },
+      { "type": "address", "name": "", "internalType": "address" }
+    ]
+  },
+  {
+    "type": "function",
+    "stateMutability": "view",
+    "outputs": [{ "type": "bool", "name": "", "internalType": "bool" }],
+    "name": "whiteList",
+    "inputs": [{ "type": "address", "name": "", "internalType": "address" }]
+  },
+  {
+    "type": "function",
     "stateMutability": "nonpayable",
-    "type": "function"
+    "outputs": [],
+    "name": "withdraw",
+    "inputs": [
+      { "type": "uint256", "name": "_pid", "internalType": "uint256" },
+      { "type": "uint256", "name": "_amount", "internalType": "uint256" }
+    ]
   }
 ]

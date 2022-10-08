@@ -6,7 +6,7 @@ import { bscProvider, bscTestnetProvider, goerliProvider } from './provider'
 
 export const getProvider = ({ chainId }: { chainId?: number }) => {
   switch (chainId) {
-    case 56:
+    case 322:
       return bscProvider
     case 97:
       return bscTestnetProvider
