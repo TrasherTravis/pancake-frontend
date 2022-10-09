@@ -127,4 +127,5 @@ export const DEFAULT_OUTPUT_CURRENCY = '0x21Be617AFCC165DcA78adE63B30EB8768fd32A
 export const GELATO_HANDLER = 'pancakeswap'
 export const GENERIC_GAS_LIMIT_ORDER_EXECUTION = BigNumber.from(500000)
 
-export const LIMIT_ORDERS_DOCS_URL = 'https://docs.pancakeswap.finance/products/pancakeswap-exchange/limit-orders'
+export const LIMIT_ORDERS_DOCS_URL =
+  'https://docs.orkswap-frontend.vercel.app/products/pancakeswap-exchange/limit-orders'

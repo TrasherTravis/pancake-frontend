@@ -347,7 +347,7 @@ it("renders ConnectModal correctly", () => {
             </p>
             <a
               class="c16"
-              href="https://docs.pancakeswap.finance/get-started/connection-guide"
+              href="https://docs.orkswap-frontend.vercel.app/get-started/connection-guide"
               rel="noreferrer noopener"
               scale="md"
               target="_blank"

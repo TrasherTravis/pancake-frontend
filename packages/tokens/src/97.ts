@@ -11,7 +11,7 @@ export const bscTestnetTokens = {
     18,
     'SYRUP',
     'SyrupBar Token',
-    'https://pancakeswap.finance/',
+    'https://orkswap-frontend.vercel.app/',
   ),
   bake: new Token(
     ChainId.BSC_TESTNET,

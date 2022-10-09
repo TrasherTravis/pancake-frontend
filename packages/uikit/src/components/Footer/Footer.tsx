@@ -94,7 +94,7 @@ const MenuItem: React.FC<React.PropsWithChildren<FooterProps>> = ({
             <Button
               data-theme="light"
               as="a"
-              href="https://pancakeswap.finance/swap?outputCurrency=0x21Be617AFCC165DcA78adE63B30EB8768fd32A26&chainId=322"
+              href="https://orkswap-frontend.vercel.app/swap?outputCurrency=0x21Be617AFCC165DcA78adE63B30EB8768fd32A26&chainId=322"
               target="_blank"
               scale="sm"
               endIcon={<ArrowForwardIcon color="backgroundAlt" />}

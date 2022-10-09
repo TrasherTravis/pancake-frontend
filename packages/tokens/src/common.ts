@@ -6,7 +6,7 @@ export const CAKE_MAINNET = new Token(
   18,
   'ORK',
   'ORK Token',
-  'https://pancakeswap.finance/',
+  'https://orkswap-frontend.vercel.app/',
 )
 
 export const CAKE_TESTNET = new Token(
@@ -15,7 +15,7 @@ export const CAKE_TESTNET = new Token(
   18,
   'CAKE',
   'PancakeSwap Token',
-  'https://pancakeswap.finance/',
+  'https://orkswap-frontend.vercel.app/',
 )
 
 export const USDC_BSC = new Token(

@@ -66,14 +66,14 @@ const config: (
         },
         // {
         //   label: t('Perpetual'),
-        //   href: `https://perp.pancakeswap.finance/${perpLangMap(languageCode)}/futures/BTCUSDT?theme=${perpTheme(
+        //   href: `https://perp.orkswap-frontend.vercel.app/${perpLangMap(languageCode)}/futures/BTCUSDT?theme=${perpTheme(
         //     isDark,
         //   )}`,
         //   type: DropdownMenuItemType.EXTERNAL_LINK,
         // },
         // {
         //   label: t('Bridge'),
-        //   href: 'https://bridge.pancakeswap.finance/',
+        //   href: 'https://bridge.orkswap-frontend.vercel.app/',
         //   type: DropdownMenuItemType.EXTERNAL_LINK,
         // },
       ].map((item) => addMenuItemSupported(item, chainId)),
@@ -191,7 +191,7 @@ const config: (
         },
         {
           label: t('Docs'),
-          href: 'https://docs.pancakeswap.finance',
+          href: 'https://docs.orkswap-frontend.vercel.app',
           type: DropdownMenuItemType.EXTERNAL_LINK,
         },
       ].map((item) => addMenuItemSupported(item, chainId)),

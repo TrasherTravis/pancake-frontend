@@ -125,7 +125,11 @@ const PoolStatsInfo: React.FC<React.PropsWithChildren<ExpandedFooterProps>> = ({
       )}
       {vaultKey && (
         <Flex mb="2px" justifyContent={alignLinksToRight ? 'flex-end' : 'flex-start'}>
-          <LinkExternal href="https://docs.pancakeswap.finance/products/syrup-pool/new-cake-pool" bold={false} small>
+          <LinkExternal
+            href="https://docs.orkswap-frontend.vercel.app/products/syrup-pool/new-cake-pool"
+            bold={false}
+            small
+          >
             {t('View Tutorial')}
           </LinkExternal>
         </Flex>
@@ -155,7 +159,7 @@ const PoolStatsInfo: React.FC<React.PropsWithChildren<ExpandedFooterProps>> = ({
             tokenAddress={tokenAddress}
             tokenSymbol={earningToken.symbol}
             tokenDecimals={earningToken.decimals}
-            tokenLogo={`https://tokens.pancakeswap.finance/images/${tokenAddress}.png`}
+            tokenLogo={`https://tokens.orkswap-frontend.vercel.app/images/${tokenAddress}.png`}
           />
         </Flex>
       )}

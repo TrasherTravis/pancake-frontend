@@ -56,7 +56,7 @@ const stepsConfigBuilder = ({ t, userInfos, eventInfos, userStatus, account, the
         <>
           <Button
             as="a"
-            href="https://pancakeswap.finance/swap?outputCurrency=0x21Be617AFCC165DcA78adE63B30EB8768fd32A26&chainId=322"
+            href="https://orkswap-frontend.vercel.app/swap?outputCurrency=0x21Be617AFCC165DcA78adE63B30EB8768fd32A26&chainId=322"
             target="_blank"
             width="100%"
           >

@@ -82,8 +82,8 @@ export const bsc: Chain = {
     etherscan: bscExplorer,
   },
   nativeCurrency: {
-    name: 'Binance Chain Native Token',
-    symbol: 'BNB',
+    name: 'KuChain Native Token',
+    symbol: 'KCS',
     decimals: 18,
   },
   multicall: {
