@@ -23,7 +23,7 @@ const StyledThemeProvider: React.FC<React.PropsWithChildren> = (props) => {
 
 const GlobalStyle = createGlobalStyle`
   * {
-    font-family: 'Kanit', sans-serif;
+    font-family: 'Space Grotesk', sans-serif;
   }
   html, body, #__next {
     height: 100%;

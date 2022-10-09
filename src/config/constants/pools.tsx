@@ -22,12 +22,12 @@ export const vaultPoolConfig = {
     },
   },
   [VaultKey.CakeVault]: {
-    name: <Trans>Stake CAKE</Trans>,
+    name: <Trans>Stake ORK</Trans>,
     description: <Trans>Stake, Earn – And more!</Trans>,
     autoCompoundFrequency: 5000,
     gasLimit: 500000,
     tokenImage: {
-      primarySrc: `/images/tokens/${bscTokens.cake.address}.svg`,
+      primarySrc: `/images/tokens/${bscTokens.cake.address}.png`,
       secondarySrc: '/images/tokens/autorenew.svg',
     },
   },

@@ -19,6 +19,14 @@
       "logoURI": "https://pancakeswap.finance/images/tokens/0xB296bAb2ED122a85977423b602DdF3527582A3DA.png"
     },
     {
+      "name": "KPY",
+      "symbol": "KPY",
+      "address": "0x0A4D179258641107CD645E2be062Bc15d0fB8F32",
+      "chainId": 322,
+      "decimals": 18,
+      "logoURI": "https://pancakeswap.finance/images/tokens/0x0A4D179258641107CD645E2be062Bc15d0fB8F32.png"
+    },
+    {
       "name": "BUSD Token",
       "symbol": "BUSD",
       "address": "0x67f6a7BbE0da067A747C6b2bEdF8aBBF7D6f60dc",
