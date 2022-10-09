@@ -64,18 +64,18 @@ const config: (
           label: t('Liquidity'),
           href: '/liquidity',
         },
-        {
-          label: t('Perpetual'),
-          href: `https://perp.pancakeswap.finance/${perpLangMap(languageCode)}/futures/BTCUSDT?theme=${perpTheme(
-            isDark,
-          )}`,
-          type: DropdownMenuItemType.EXTERNAL_LINK,
-        },
-        {
-          label: t('Bridge'),
-          href: 'https://bridge.pancakeswap.finance/',
-          type: DropdownMenuItemType.EXTERNAL_LINK,
-        },
+        // {
+        //   label: t('Perpetual'),
+        //   href: `https://perp.pancakeswap.finance/${perpLangMap(languageCode)}/futures/BTCUSDT?theme=${perpTheme(
+        //     isDark,
+        //   )}`,
+        //   type: DropdownMenuItemType.EXTERNAL_LINK,
+        // },
+        // {
+        //   label: t('Bridge'),
+        //   href: 'https://bridge.pancakeswap.finance/',
+        //   type: DropdownMenuItemType.EXTERNAL_LINK,
+        // },
       ].map((item) => addMenuItemSupported(item, chainId)),
     },
     {
