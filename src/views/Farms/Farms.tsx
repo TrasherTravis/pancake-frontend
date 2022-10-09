@@ -358,7 +358,7 @@ const Farms: React.FC<React.PropsWithChildren> = ({ children }) => {
               />
               <Text> {t('Staked only')}</Text>
             </ToggleWrapper>
-            <ToggleWrapper>
+            {/* <ToggleWrapper>
               <Toggle
                 id="staked-only-farms"
                 checked={boostedOnly}
@@ -366,7 +366,7 @@ const Farms: React.FC<React.PropsWithChildren> = ({ children }) => {
                 scale="sm"
               />
               <Text> {t('Booster Available')}</Text>
-            </ToggleWrapper>
+            </ToggleWrapper> */}
             <FarmTabButtons hasStakeInFinishedFarms={stakedInactiveFarms.length > 0} />
           </ViewControls>
           <FilterContainer>
