@@ -54,7 +54,7 @@ const NETWORK = '56'
 export const generateMetaData = () => {
   return {
     plugins: {},
-    network: 322,
+    network: 321,
     strategies: STRATEGIES,
   }
 }
@@ -113,7 +113,7 @@ interface GetVotingPowerType {
   lockedEndTime?: number
 }
 
-const nodeRealProvider = new JsonRpcProvider('https://bsc-mainnet.nodereal.io/v1/5a516406afa140ffa546ee10af7c9b24', 322)
+const nodeRealProvider = new JsonRpcProvider('https://bsc-mainnet.nodereal.io/v1/5a516406afa140ffa546ee10af7c9b24', 321)
 
 export const getVotingPower = async (
   account: string,

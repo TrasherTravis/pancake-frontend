@@ -4,7 +4,7 @@ import { request, gql } from 'graphql-request'
 import BigNumber from 'bignumber.js'
 import chunk from 'lodash/chunk'
 import { sub, getUnixTime } from 'date-fns'
-import farmsConfig from '@pancakeswap/farms/constants/322'
+import farmsConfig from '@pancakeswap/farms/constants/321'
 import { StaticJsonRpcProvider } from '@ethersproject/providers'
 import type { BlockResponse } from '../src/components/SubgraphHealthIndicator'
 import { BLOCKS_CLIENT } from '../src/config/constants/endpoints'
@@ -102,7 +102,7 @@ export const bscProvider = new StaticJsonRpcProvider(
     url: 'https://bsc-mainnet.nodereal.io/v1/5a516406afa140ffa546ee10af7c9b24',
     skipFetchSetup: true,
   },
-  322,
+  321,
 )
 
 interface SplitFarmResult {
@@ -206,7 +206,7 @@ const fetchAndUpdateLPsAPR = async () => {
     console.error(error, '[LP APR Update] getAprsForStableFarm error')
   }
 
-  fs.writeFile(`src/config/constants/lpAprs/322.json`, JSON.stringify(allAprs, null, 2) + os.EOL, (err) => {
+  fs.writeFile(`src/config/constants/lpAprs/321.json`, JSON.stringify(allAprs, null, 2) + os.EOL, (err) => {
     if (err) throw err
     console.info(` ✅ - lpAprs.json has been updated!`)
   })

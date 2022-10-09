@@ -60,7 +60,7 @@ export const livePools: SerializedPoolConfig[] = [
     earningToken: bscTokens.cake,
     contractAddress: {
       97: '0xB4A466911556e39210a6bB2FaECBB59E4eB7E43d',
-      322: '0x8F586F1daC9f803144cCa75788b992e3363e13f7',
+      321: '0x284dbDb57d51403D0d2Bb66EAd6DbD4f88FFfc14',
     },
     poolCategory: PoolCategory.CORE,
     tokenPerBlock: '10',

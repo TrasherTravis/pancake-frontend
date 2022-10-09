@@ -15,11 +15,11 @@ export const getActivePools = async (block?: number) => {
     .filter((pool) => pool.isFinished === false || pool.isFinished === undefined)
   const blockNumber = block || (await bscRpcProvider.getBlockNumber())
   const startBlockCalls = eligiblePools.map(({ contractAddress }) => ({
-    address: getAddress(contractAddress, 322),
+    address: getAddress(contractAddress, 321),
     name: 'startBlock',
   }))
   const endBlockCalls = eligiblePools.map(({ contractAddress }) => ({
-    address: getAddress(contractAddress, 322),
+    address: getAddress(contractAddress, 321),
     name: 'bonusEndBlock',
   }))
   const [startBlocks, endBlocks] = await Promise.all([

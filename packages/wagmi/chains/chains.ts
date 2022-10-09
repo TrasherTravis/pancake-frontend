@@ -70,7 +70,7 @@ export const fantomTestnet: Chain = {
 const bscExplorer = { name: 'BscScan', url: 'https://bscscan.com' }
 
 export const bsc: Chain = {
-  id: 322,
+  id: 321,
   name: 'BNB Smart Chain',
   network: 'bsc',
   rpcUrls: {

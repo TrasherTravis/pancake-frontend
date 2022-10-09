@@ -14,7 +14,7 @@ import { hexValue } from '@ethersproject/bytes'
 
 const mappingNetwork: Record<number, string> = {
   1: 'eth-mainnet',
-  322: 'bsc-mainnet',
+  321: 'bsc-mainnet',
   97: 'bsc-testnet',
 }
 

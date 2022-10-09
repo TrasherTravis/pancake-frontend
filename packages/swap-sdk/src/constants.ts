@@ -8,7 +8,7 @@ export enum ChainId {
   ETHEREUM = 1,
   RINKEBY = 4,
   GOERLI = 5,
-  BSC = 322,
+  BSC = 321,
   BSC_TESTNET = 97,
 }
 
@@ -23,7 +23,7 @@ export enum Rounding {
   ROUND_UP,
 }
 
-export const FACTORY_ADDRESS = '0x0dD11da770f6C31d49bA3e440eFA2e68ab85f53e'
+export const FACTORY_ADDRESS = '0xd78858aB0221340c7174FDBdfFBbbC2EB76E1Cb9'
 
 // // TODO: ETH This is test version, do not depends on it
 const FACTORY_ADDRESS_ETH = '0xD93801d7D3a368D94A3A32E97A20f7aC1948a5dB'
@@ -109,7 +109,7 @@ export const WBNB = {
   ),
   [ChainId.BSC]: new Token(
     ChainId.BSC,
-    '0xB296bAb2ED122a85977423b602DdF3527582A3DA',
+    '0x4446Fc4eb47f2f6586f9fAAb68B3498F86C07521',
     18,
     'WBNB',
     'Wrapped BNB',

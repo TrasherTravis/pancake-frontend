@@ -5,7 +5,7 @@ export const bscProvider = new StaticJsonRpcProvider(
     url: 'https://rpc-testnet.kcc.network',
     skipFetchSetup: true,
   },
-  322,
+  321,
 )
 
 export const bscTestnetProvider = new StaticJsonRpcProvider(

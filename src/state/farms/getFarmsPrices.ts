@@ -136,7 +136,7 @@ const nativeStableLpMap = {
     wNative: 'WETH',
     stable: 'USDC',
   },
-  322: {
+  321: {
     address: KCS_USDT_LP_MAINNET,
     wNative: 'WKCS',
     stable: 'BUSD',

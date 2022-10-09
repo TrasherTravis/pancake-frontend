@@ -13,26 +13,26 @@
     {
       "name": "Wrapped KCS",
       "symbol": "WKCS",
-      "address": "0xB296bAb2ED122a85977423b602DdF3527582A3DA",
-      "chainId": 322,
+      "address": "0x4446Fc4eb47f2f6586f9fAAb68B3498F86C07521",
+      "chainId": 321,
       "decimals": 18,
-      "logoURI": "https://orkswap-frontend.vercel.app/images/tokens/0xB296bAb2ED122a85977423b602DdF3527582A3DA.png"
+      "logoURI": "https://orkswap-frontend.vercel.app/images/tokens/0x4446Fc4eb47f2f6586f9fAAb68B3498F86C07521.png"
     },
     {
       "name": "KPY",
       "symbol": "KPY",
       "address": "0x0A4D179258641107CD645E2be062Bc15d0fB8F32",
-      "chainId": 322,
+      "chainId": 321,
       "decimals": 18,
       "logoURI": "https://orkswap-frontend.vercel.app/images/tokens/0x0A4D179258641107CD645E2be062Bc15d0fB8F32.png"
     },
     {
       "name": "BUSD Token",
       "symbol": "BUSD",
-      "address": "0x67f6a7BbE0da067A747C6b2bEdF8aBBF7D6f60dc",
-      "chainId": 322,
+      "address": "0x0039f574eE5cC39bdD162E9A88e3EB1f111bAF48",
+      "chainId": 321,
       "decimals": 18,
-      "logoURI": "https://orkswap-frontend.vercel.app/images/tokens/0x67f6a7BbE0da067A747C6b2bEdF8aBBF7D6f60dc.png"
+      "logoURI": "https://orkswap-frontend.vercel.app/images/tokens/0x0039f574eE5cC39bdD162E9A88e3EB1f111bAF48.png"
     },
     {
       "name": "Ethereum Token",
@@ -53,18 +53,18 @@
     {
       "name": "Tether USD",
       "symbol": "USDT",
-      "address": "0x67f6a7BbE0da067A747C6b2bEdF8aBBF7D6f60dc",
-      "chainId": 322,
+      "address": "0x0039f574eE5cC39bdD162E9A88e3EB1f111bAF48",
+      "chainId": 321,
       "decimals": 18,
-      "logoURI": "https://orkswap-frontend.vercel.app/images/tokens/0x67f6a7BbE0da067A747C6b2bEdF8aBBF7D6f60dc.png"
+      "logoURI": "https://orkswap-frontend.vercel.app/images/tokens/0x0039f574eE5cC39bdD162E9A88e3EB1f111bAF48.png"
     },
     {
       "name": "Ork Token",
       "symbol": "ORK",
-      "address": "0x21Be617AFCC165DcA78adE63B30EB8768fd32A26",
-      "chainId": 322,
+      "address": "0xD9088D9fa02b4F880eF6b71925c23F6983CCC789",
+      "chainId": 321,
       "decimals": 18,
-      "logoURI": "https://orkswap-frontend.vercel.app/images/tokens/0x21Be617AFCC165DcA78adE63B30EB8768fd32A26.png"
+      "logoURI": "https://orkswap-frontend.vercel.app/images/tokens/0xD9088D9fa02b4F880eF6b71925c23F6983CCC789.png"
     },
     {
       "name": "Venus",

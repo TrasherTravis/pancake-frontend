@@ -6,7 +6,7 @@ export const bscTokens = {
   // bnb here points to the wbnb contract. Wherever the currency BNB is required, conditional checks for the symbol 'BNB' can be used
   bnb: new Token(
     ChainId.BSC,
-    '0xB296bAb2ED122a85977423b602DdF3527582A3DA',
+    '0x4446Fc4eb47f2f6586f9fAAb68B3498F86C07521',
     18,
     'KCS',
     'KCS',

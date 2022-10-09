@@ -2,7 +2,7 @@ import { ChainId, Token } from '@pancakeswap/sdk'
 
 export const CAKE_MAINNET = new Token(
   ChainId.BSC,
-  '0x21Be617AFCC165DcA78adE63B30EB8768fd32A26',
+  '0xD9088D9fa02b4F880eF6b71925c23F6983CCC789',
   18,
   'ORK',
   'ORK Token',
