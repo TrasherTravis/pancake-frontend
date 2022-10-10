@@ -155,11 +155,11 @@ const config: (
       icon: MoreIcon,
       hideSubNav: true,
       items: [
-        {
-          label: t('Info'),
-          href: '/info',
-          supportChainIds: SUPPORT_ONLY_BSC,
-        },
+        // {
+        //   label: t('Info'),
+        //   href: '/info',
+        //   supportChainIds: SUPPORT_ONLY_BSC,
+        // },
         // {
         //   label: t('IFO'),
         //   href: '/ifo',

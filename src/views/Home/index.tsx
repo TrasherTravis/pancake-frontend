@@ -94,7 +94,7 @@ const Home: React.FC<React.PropsWithChildren> = () => {
             <UserBanner />
           </UserBannerWrapper>
         )}
-        {/* <MultipleBanner /> */}
+        <MultipleBanner />
         <Hero />
       </StyledHeroSection>
       <PageSection
@@ -158,7 +158,7 @@ const Home: React.FC<React.PropsWithChildren> = () => {
       </PageSection>
       <PageSection
         innerProps={{ style: HomeSectionContainerStyles }}
-        background="linear-gradient(180deg, #7645D9 0%, #5121B1 100%)"
+        background="linear-gradient(180deg, #30ceba 0%, #5121B1 100%)"
         index={2}
         hasCurvedDivider={false}
       >

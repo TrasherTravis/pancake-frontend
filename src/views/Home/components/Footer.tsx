@@ -104,7 +104,7 @@ const Footer = () => {
       )}
       <Wrapper>
         <Heading mb="24px" scale="xl" color="white">
-          {t('Start in seconds.')}
+          {t('Start trading and earning today.')}
         </Heading>
         <Text textAlign="center" color="white">
           {t('Connect your crypto wallet to start using the app in seconds.')}

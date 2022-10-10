@@ -42,8 +42,8 @@ const PerpetualBanner = () => {
   const { isDesktop, isMobile } = useMatchBreakpoints()
   const { isDark } = useTheme()
 
-  const perpetualUrl = useMemo(
-    () => `https://perp.orkswap-frontend.vercel.app/${perpLangMap(code)}/futures/BTCUSDT?theme=${perpTheme(isDark)}`,
+  const farmsUrl = useMemo(
+    () => `https://perp.orkswap-frontend.vercel.app/farms`,
     [code, isDark],
   )
   const headerRef = useRef<HTMLDivElement>(null)
@@ -63,12 +63,12 @@ const PerpetualBanner = () => {
     <S.Wrapper>
       <S.Inner>
         <S.LeftWrapper>
-          <S.StyledSubheading ref={headerRef}>{t('Perpetual Futures')}</S.StyledSubheading>
-          <Header width={['160px', '160px', 'auto']}>{t('Up to 100× Leverage')}</Header>
-          <Link href={perpetualUrl} external>
+          <Header width={['160px', '160px', 'auto']}>{t('New farm:$KPY/$ORK')}</Header>
+          <S.StyledSubheading ref={headerRef}>{t('Up to 1,200% APY')}</S.StyledSubheading>  
+          <Link href={farmsUrl} external>
             <Button>
-              <Text color="invertedContrast" bold fontSize="16px" mr="4px">
-                {t('Trade Now')}
+              <Text color="invertedContrast"  fontSize="16px" mr="4px">
+                {t('Go to Farms')}
               </Text>
               <ArrowForwardIcon color="invertedContrast" />
             </Button>
