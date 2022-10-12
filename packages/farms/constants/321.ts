@@ -66,7 +66,7 @@ const farms: SerializedFarmConfig[] = [
   {
     pid: 6,
     // v1pid: 257,
-    lpSymbol: 'KPY-WKCS LP',
+    lpSymbol: 'KPY-KCS LP',
     lpAddress: KPY_WKCS_LP_MAINNET,
     token: bscTokens.kpy,
     quoteToken: bscTokens.wbnb,
