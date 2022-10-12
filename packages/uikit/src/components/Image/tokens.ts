@@ -14,7 +14,7 @@ const tokens = {
   kpy: {
     symbol: "KPY",
     address: {
-      321: "0x0A4D179258641107CD645E2be062Bc15d0fB8F32",
+      321: "0xF12f31f01380050c3c3ECbDE3670C3542E25Cd5b",
       97: "0xae13d989daC2f0dEbFf460aC112a837C89BAa7cd",
     },
     decimals: 18,
@@ -444,7 +444,7 @@ const tokens = {
     projectLink: "https://venus.io/",
   },
   wbnb: {
-    symbol: "wBNB",
+    symbol: "wKCS",
     address: {
       321: "0x4446Fc4eb47f2f6586f9fAAb68B3498F86C07521",
       97: "0xae13d989daC2f0dEbFf460aC112a837C89BAa7cd",
@@ -617,7 +617,7 @@ const tokens = {
   busd: {
     symbol: "BUSD",
     address: {
-      321: "0x67f6a7BbE0da067A747C6b2bEdF8aBBF7D6f60dc",
+      321: "0x0039f574eE5cC39bdD162E9A88e3EB1f111bAF48",
       97: "",
     },
     decimals: 18,
@@ -752,7 +752,7 @@ const tokens = {
   usdt: {
     symbol: "USDT",
     address: {
-      321: "0x67f6a7BbE0da067A747C6b2bEdF8aBBF7D6f60dc",
+      321: "0x0039f574eE5cC39bdD162E9A88e3EB1f111bAF48",
       97: "0xE02dF9e3e622DeBdD69fb838bB799E3F168902c5",
     },
     decimals: 18,

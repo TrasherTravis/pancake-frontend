@@ -56,7 +56,7 @@ export const USDC_GOERLI = new Token(
 
 export const USDT_BSC = new Token(
   ChainId.BSC,
-  '0x67f6a7BbE0da067A747C6b2bEdF8aBBF7D6f60dc',
+  '0x0039f574eE5cC39bdD162E9A88e3EB1f111bAF48',
   18,
   'USDT',
   'Tether USD',
@@ -74,7 +74,7 @@ export const USDT_ETH = new Token(
 
 export const BUSD_BSC = new Token(
   ChainId.BSC,
-  '0x67f6a7BbE0da067A747C6b2bEdF8aBBF7D6f60dc',
+  '0x0039f574eE5cC39bdD162E9A88e3EB1f111bAF48',
   18,
   'BUSD',
   'Binance USD',

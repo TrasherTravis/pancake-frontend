@@ -21,10 +21,10 @@
     {
       "name": "KPY",
       "symbol": "KPY",
-      "address": "0x0A4D179258641107CD645E2be062Bc15d0fB8F32",
+      "address": "0xF12f31f01380050c3c3ECbDE3670C3542E25Cd5b",
       "chainId": 321,
       "decimals": 18,
-      "logoURI": "https://orkswap-frontend.vercel.app/images/tokens/0x0A4D179258641107CD645E2be062Bc15d0fB8F32.png"
+      "logoURI": "https://orkswap-frontend.vercel.app/images/tokens/0xF12f31f01380050c3c3ECbDE3670C3542E25Cd5b.png"
     },
     {
       "name": "BUSD Token",
@@ -128,7 +128,7 @@
       "address": "0xFa60D973F7642B748046464e165A65B7323b0DEE",
       "chainId": 97,
       "decimals": 18,
-      "logoURI": "https://orkswap-frontend.vercel.app/images/tokens/0x21Be617AFCC165DcA78adE63B30EB8768fd32A26.png"
+      "logoURI": "https://orkswap-frontend.vercel.app/images/tokens/0xFa60D973F7642B748046464e165A65B7323b0DEE.png"
     },
     {
       "name": "BUSD Token",

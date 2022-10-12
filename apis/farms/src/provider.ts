@@ -2,7 +2,7 @@ import { StaticJsonRpcProvider } from '@ethersproject/providers'
 
 export const bscProvider = new StaticJsonRpcProvider(
   {
-    url: 'https://rpc-testnet.kcc.network',
+    url: 'https://kcc.getblock.io/mainnet/?api_key=7577d4e7-8a0c-455f-9fcf-e2ea365590b1',
     skipFetchSetup: true,
   },
   321,

@@ -111,8 +111,8 @@ export const WBNB = {
     ChainId.BSC,
     '0x4446Fc4eb47f2f6586f9fAAb68B3498F86C07521',
     18,
-    'WBNB',
-    'Wrapped BNB',
+    'WKCS',
+    'Wrapped KCS',
     'https://www.binance.org'
   ),
   [ChainId.BSC_TESTNET]: new Token(

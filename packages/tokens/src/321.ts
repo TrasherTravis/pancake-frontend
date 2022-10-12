@@ -14,7 +14,7 @@ export const bscTokens = {
   ),
   kpy: new Token(
     ChainId.BSC,
-    '0x0A4D179258641107CD645E2be062Bc15d0fB8F32',
+    '0xF12f31f01380050c3c3ECbDE3670C3542E25Cd5b',
     18,
     'KPY',
     'KPY',
