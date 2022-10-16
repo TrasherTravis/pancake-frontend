@@ -6,7 +6,7 @@ import {
   ORK_KCS_LP_MAINNET,
   KCS_USDT_LP_MAINNET,
   KPY_ORK_LP_MAINNET,
-  KPY_USDT_LP_MAINNET,
+  // KPY_USDT_LP_MAINNET,
   KPY_WKCS_LP_MAINNET,
 } from './common'
 
@@ -44,8 +44,8 @@ const farms: SerializedFarmConfig[] = [
     // v1pid: 252,
     lpSymbol: 'USDT-KCS LP',
     lpAddress: KCS_USDT_LP_MAINNET,
-    token: bscTokens.usdt,
-    quoteToken: bscTokens.wbnb,
+    token: bscTokens.wbnb,
+    quoteToken: bscTokens.usdt,
   },
   {
     pid: 4,
@@ -64,7 +64,7 @@ const farms: SerializedFarmConfig[] = [
   //   quoteToken: bscTokens.usdt,
   // },
   {
-    pid: 6,
+    pid: 5,
     // v1pid: 257,
     lpSymbol: 'KCS-KPY LP',
     lpAddress: KPY_WKCS_LP_MAINNET,
