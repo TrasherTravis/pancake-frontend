@@ -26,6 +26,7 @@ const RightWrapper = styled.div`
 const Header = styled(S.StyledHeading)`
   font-size: 20px;
   min-height: 44px;
+  background: none;
   ${({ theme }) => theme.mediaQueries.sm} {
     font-size: 40px;
     min-height: auto;
@@ -63,7 +64,7 @@ const PerpetualBanner = () => {
           <Header width={['160px', '160px', 'auto']}>{t('New farm:$KPY/$ORK')}</Header>
           <S.StyledSubheading ref={headerRef}>{t('Up to 1,200% APY')}</S.StyledSubheading>
           <Link href={farmsUrl} external>
-            <Button>
+            <Button style={{ backgroundColor: '#FFD74E' }}>
               <Text color="invertedContrast" fontSize="16px" mr="4px">
                 {t('Go to Farms')}
               </Text>

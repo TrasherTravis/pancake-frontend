@@ -26,7 +26,7 @@ const BannerPlaceHolder = styled.div<{ walletConnected: boolean }>`
     left: 0px;
     right: 0px;
     bottom: 0px;
-    background: -webkit-linear-gradient(#7645d9 0%, #452a7a 100%);
+    background: #62d6c4;
     ${({ theme }) => theme.mediaQueries.sm} {
       top: 20px;
       left: 20px;

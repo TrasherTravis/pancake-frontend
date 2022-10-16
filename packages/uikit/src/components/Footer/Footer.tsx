@@ -16,6 +16,7 @@ import { Button } from "../Button";
 import CakePrice from "../CakePrice/CakePrice";
 import LangSelector from "../LangSelector/LangSelector";
 import { ArrowForwardIcon, LogoWithTextIcon } from "../Svg";
+import { Image } from "../Image";
 import { ThemeSwitcher } from "../ThemeSwitcher";
 import { FooterProps } from "./types";
 
@@ -34,7 +35,14 @@ const MenuItem: React.FC<React.PropsWithChildren<FooterProps>> = ({
     <StyledFooter data-theme="dark" p={["40px 16px", null, "56px 40px 32px 40px"]} {...props} justifyContent="center">
       <Flex flexDirection="column" width={["100%", null, "1200px;"]}>
         <StyledIconMobileContainer display={["block", null, "none"]}>
-          <LogoWithTextIcon isDark width="130px" />
+          {/* <LogoWithTextIcon isDark width="130px" /> */}
+          <Image
+            src="/images/nav-title-light_1.png"
+            alt="Logo_desktop-icon"
+            width={130}
+            height={20}
+            className="desktop-icon"
+          />
         </StyledIconMobileContainer>
         <Flex
           order={[2, null, 1]}
@@ -67,7 +75,14 @@ const MenuItem: React.FC<React.PropsWithChildren<FooterProps>> = ({
             </StyledList>
           ))}
           <Box display={["none", null, "block"]}>
-            <LogoWithTextIcon isDark width="160px" />
+            {/* <LogoWithTextIcon width="160px" /> */}
+            <Image
+              src="/images/nav-title-light_1.png"
+              alt="Logo_desktop-icon"
+              width={160}
+              height={25}
+              className="desktop-icon"
+            />
           </Box>
         </Flex>
         <StyledSocialLinks order={[2]} pb={["42px", null, "32px"]} mb={["0", null, "32px"]} />
@@ -78,21 +93,21 @@ const MenuItem: React.FC<React.PropsWithChildren<FooterProps>> = ({
           justifyContent="space-between"
         >
           <Flex order={[2, null, 1]} alignItems="center">
-            <ThemeSwitcher isDark={isDark} toggleTheme={toggleTheme} />
-            <LangSelector
+            {/* <ThemeSwitcher isDark={isDark} toggleTheme={toggleTheme} /> */}
+            {/* <LangSelector
               currentLang={currentLang}
               langs={langs}
               setLang={setLang}
               color="textSubtle"
               dropdownPosition="top-right"
-            />
+            /> */}
           </Flex>
           <Flex order={[1, null, 2]} mb={["24px", null, "0"]} justifyContent="space-between" alignItems="center">
             <Box mr="20px">
               <CakePrice cakePriceUsd={cakePriceUsd} color="textSubtle" />
             </Box>
             <Button
-              data-theme="light"
+              style={{ backgroundColor: "#FFD74E" }}
               as="a"
               href="https://orkswap-frontend.vercel.app/swap?outputCurrency=0xD9088D9fa02b4F880eF6b71925c23F6983CCC789&chainId=321"
               target="_blank"

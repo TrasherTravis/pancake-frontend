@@ -23,10 +23,11 @@ export const swapSectionData = (t: TranslateFunction): SalesSectionProps => ({
       { src: 'CAKE', alt: t('CAKE token') },
     ],
   },
+  buttonColor: '#62D6C4',
 })
 
 export const earnSectionData = (t: TranslateFunction): SalesSectionProps => ({
-  headingText: t('Earn passive income with crypto.'),
+  headingText: t(' Earn passive income with crypto.'),
   bodyText: t('Let your orks work for you! OrkSwap makes it easy to earn a passive income with crypto.'),
   reverse: true,
   primaryButton: {
@@ -47,6 +48,8 @@ export const earnSectionData = (t: TranslateFunction): SalesSectionProps => ({
       { src: 'folder', alt: t('Folder with cake token') },
     ],
   },
+  buttonColor: '#FFD74E',
+  textColor: '#FAF9FA',
 })
 
 export const cakeSectionData = (t: TranslateFunction): SalesSectionProps => ({
@@ -75,4 +78,5 @@ export const cakeSectionData = (t: TranslateFunction): SalesSectionProps => ({
       // { src: 'top-left', alt: t('Small 3d pancake') },
     ],
   },
+  buttonColor: '#62D6C4',
 })

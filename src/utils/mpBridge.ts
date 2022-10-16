@@ -89,12 +89,12 @@ export const bridgeUtils = {
 // Need to call getSystemInfo only once
 let globalInfo
 export const useSystemInfo = () => {
-  const [info, setInfo] = useState(globalInfo)
+  const [info, setInfo] = useState({ ...globalInfo, theme: 'light' })
   useEffect(() => {
     if (!globalInfo && typeof __NEZHA_BRIDGE__ !== 'undefined') {
       _bridgeUtils.getSystemInfo().then((value) => {
         globalInfo = value
-        setInfo(value)
+        setInfo({ ...globalInfo, theme: 'light' })
       })
     }
   }, [])

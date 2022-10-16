@@ -16,10 +16,12 @@ export interface SalesSectionProps {
   primaryButton: SalesSectionButton
   secondaryButton: SalesSectionButton
   images: CompositeImageProps
+  buttonColor?: string
+  textColor?: string
 }
 
 const SalesSection: React.FC<React.PropsWithChildren<SalesSectionProps>> = (props) => {
-  const { headingText, bodyText, reverse, primaryButton, secondaryButton, images } = props
+  const { headingText, bodyText, reverse, primaryButton, secondaryButton, images, buttonColor, textColor } = props
 
   return (
     <Flex flexDirection="column">
@@ -35,12 +37,12 @@ const SalesSection: React.FC<React.PropsWithChildren<SalesSectionProps>> = (prop
           mr={[null, null, null, !reverse && '64px']}
           alignSelf={['flex-start', null, null, 'center']}
         >
-          <ColoredWordHeading text={headingText} />
-          <Text color="textSubtle" mb="24px">
+          <ColoredWordHeading text={headingText} {...(textColor && { style: { color: `${textColor}` } })} />
+          <Text color={`${textColor || 'textSubtle'}`} mb="24px">
             {bodyText}
           </Text>
           <Flex>
-            <Button mr="16px">
+            <Button mr="16px" {...(buttonColor && { style: { backgroundColor: `${buttonColor}` } })}>
               {primaryButton.external ? (
                 <Link external href={primaryButton.to}>
                   <Text color="card" bold fontSize="16px">
@@ -56,7 +58,7 @@ const SalesSection: React.FC<React.PropsWithChildren<SalesSectionProps>> = (prop
               )}
             </Button>
             {secondaryButton.external ? (
-              <Link external href={secondaryButton.to}>
+              <Link external href={secondaryButton.to} color={`${buttonColor || 'gold'}`}>
                 {secondaryButton.text}
               </Link>
             ) : (
