@@ -71,8 +71,8 @@ const bscExplorer = { name: 'BscScan', url: 'https://scan.kcc.io' }
 
 export const bsc: Chain = {
   id: 321,
-  name: 'BNB Smart Chain',
-  network: 'bsc',
+  name: 'KuCoin Chain',
+  network: 'kcs',
   rpcUrls: {
     public: 'https://rpc-mainnet.kcc.network',
     default: 'https://rpc-mainnet.kcc.network',
