@@ -97,7 +97,7 @@ const SetPriceStage: React.FC<React.PropsWithChildren<SetPriceStageProps>> = ({
         <Flex>
           <Flex flex="1" alignItems="center">
             <BinanceIcon width={24} height={24} mr="4px" />
-            <Text bold>WBNB</Text>
+            <Text bold>WKCS</Text>
           </Flex>
           <Flex flex="2">
             <RightAlignedInput

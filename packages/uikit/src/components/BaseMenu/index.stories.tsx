@@ -72,7 +72,7 @@ export const SubMenu: React.FC<React.PropsWithChildren> = () => {
           component={<EllipsisIcon height="16px" width="16px" />}
           options={{ placement: "right", offset: [0, 15], padding: { top: 20 } }}
         >
-          <SubMenuItem as={LinkExternal} href="https://explorer.kcc.io" bold={false} color="text">
+          <SubMenuItem as={LinkExternal} href="https://scan.kcc.io" bold={false} color="text">
             View on BSCScan
           </SubMenuItem>
           <SubMenuItem as={LinkExternal} href="https://pancakeswap.info" bold={false} color="text" target="blank">
@@ -93,7 +93,7 @@ export const SubMenu: React.FC<React.PropsWithChildren> = () => {
             </Text>
           }
         >
-          <SubMenuItem as={LinkExternal} href="https://explorer.kcc.io" bold={false} color="text">
+          <SubMenuItem as={LinkExternal} href="https://scan.kcc.io" bold={false} color="text">
             View on BSCScan
           </SubMenuItem>
           <SubMenuItem as={LinkExternal} href="https://pancakeswap.info" bold={false} color="text" target="blank">

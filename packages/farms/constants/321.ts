@@ -16,7 +16,6 @@ const farms: SerializedFarmConfig[] = [
    */
   {
     pid: 0,
-    // v1pid: 0,
     lpSymbol: 'ORK LP',
     lpAddress: ORK_LP_MAINNET,
     token: bscTokens.cake,
@@ -24,7 +23,6 @@ const farms: SerializedFarmConfig[] = [
   },
   {
     pid: 1,
-    // v1pid: 1,
     lpSymbol: 'ORK-USDT LP',
     lpAddress: ORK_USDT_LP_MAINNET,
     token: bscTokens.cake,
@@ -32,16 +30,13 @@ const farms: SerializedFarmConfig[] = [
   },
   {
     pid: 2,
-    // v1pid: 251,
     lpSymbol: 'KCS-ORK LP',
     lpAddress: ORK_KCS_LP_MAINNET,
     token: bscTokens.wbnb,
     quoteToken: bscTokens.cake,
-    // boosted: true,
   },
   {
     pid: 3,
-    // v1pid: 252,
     lpSymbol: 'USDT-KCS LP',
     lpAddress: KCS_USDT_LP_MAINNET,
     token: bscTokens.wbnb,
@@ -49,23 +44,14 @@ const farms: SerializedFarmConfig[] = [
   },
   {
     pid: 4,
-    // v1pid: 253,
     lpSymbol: 'ORK-KPY LP',
     lpAddress: KPY_ORK_LP_MAINNET,
     token: bscTokens.cake,
     quoteToken: bscTokens.kpy,
   },
-  // {
-  //   pid: 5,
-  //   // v1pid: 255,
-  //   lpSymbol: 'KPY-USDT LP',
-  //   lpAddress: KPY_USDT_LP_MAINNET,
-  //   token: bscTokens.kpy,
-  //   quoteToken: bscTokens.usdt,
-  // },
+ 
   {
     pid: 5,
-    // v1pid: 257,
     lpSymbol: 'KCS-KPY LP',
     lpAddress: KPY_WKCS_LP_MAINNET,
     token: bscTokens.wbnb,
