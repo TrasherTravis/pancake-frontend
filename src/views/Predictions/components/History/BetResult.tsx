@@ -137,7 +137,7 @@ const BetResult: React.FC<React.PropsWithChildren<BetResultProps>> = ({ bet, res
         {bet.claimed && bet.claimedHash && (
           <Flex justifyContent="center">
             <LinkExternal href={getBlockExploreLink(bet.claimedHash, 'transaction')} mb="16px">
-              {t('View on BscScan')}
+              {t('View on KccScan')}
             </LinkExternal>
           </Flex>
         )}

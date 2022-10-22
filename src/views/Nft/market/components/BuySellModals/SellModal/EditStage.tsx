@@ -81,7 +81,7 @@ const EditStage: React.FC<React.PropsWithChildren<EditStageProps>> = ({
             height="16px"
             href={getBscScanLinkForNft(nftToSell.collectionAddress, nftToSell.tokenId)}
           >
-            BscScan
+            KccScan
           </LinkExternal>
         </Flex>
       </Flex>
