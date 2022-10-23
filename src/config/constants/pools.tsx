@@ -66,27 +66,7 @@ export const livePools: SerializedPoolConfig[] = [
     tokenPerBlock: '10',
     isFinished: false,
   },
-  {
-    sousId: 5,
-    stakingToken: bscTokens.ork,
-    earningToken: bscTokens.ork,
-    contractAddress: {
-      97: '0xB4A466911556e39210a6bB2FaECBB59E4eB7E43d',
-      321: '0xeB62cD87F456048183C4Ed6302df1d7Cc88acc04',
-    },
-    tokenPerBlock: '10',
-    isFinished: false,
-  },
-{
-  sousId: 2,
-    stakingToken: bscTokens.ork,
-    earningToken: bscTokens.ork,
-    contractAddress: {
-      321: '0xeB62cD87F456048183C4Ed6302df1d7Cc88acc04',
-      97: '',
-    },
-    version: 3,
-  },
+
   // {
   //   sousId: 298,
   //   stakingToken: bscTokens.cake,
