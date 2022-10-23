@@ -2,7 +2,7 @@ import BigNumber from 'bignumber.js'
 import { BIG_ONE, BIG_ZERO } from 'utils/bigNumber'
 import { filterFarmsByQuoteToken } from '@pancakeswap/farms'
 import { SerializedFarm } from 'state/types'
-import { KCS_USDT_LP_MAINNET } from '../../../packages/farms/constants/common'
+import { KCS_BUSD_LP_MAINNET } from '../../../packages/farms/constants/common'
 
 const getFarmFromTokenSymbol = (
   farms: SerializedFarm[],
@@ -137,7 +137,7 @@ const nativeStableLpMap = {
     stable: 'USDC',
   },
   321: {
-    address: KCS_USDT_LP_MAINNET,
+    address: KCS_BUSD_LP_MAINNET,
     wNative: 'WKCS',
     stable: 'BUSD',
   },

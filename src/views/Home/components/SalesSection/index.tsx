@@ -15,7 +15,7 @@ export interface SalesSectionProps {
   reverse: boolean
   primaryButton: SalesSectionButton
   secondaryButton: SalesSectionButton
-  images: CompositeImageProps
+  images: CompositeImage
   buttonColor?: string
   textColor?: string
 }

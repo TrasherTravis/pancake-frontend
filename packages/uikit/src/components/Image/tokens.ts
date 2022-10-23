@@ -40,7 +40,15 @@ const tokens = {
     decimals: 18,
     projectLink: "https://www.centre.io/usdc",
   },
-
+  busd: {
+    symbol: "BUSD",
+    address: {
+      321: "0xE3F5a90F9cb311505cd691a46596599aA1A0AD7D",
+      97: "",
+    },
+    decimals: 18,
+    projectLink: "https://www.paxos.com/busd/",
+  },
   txl: {
     symbol: "TXL",
     address: {
@@ -635,15 +643,7 @@ const tokens = {
     decimals: 18,
     projectLink: "https://dusk.network/",
   },
-  busd: {
-    symbol: "BUSD",
-    address: {
-      321: "0x0039f574eE5cC39bdD162E9A88e3EB1f111bAF48",
-      97: "",
-    },
-    decimals: 18,
-    projectLink: "https://www.paxos.com/busd/",
-  },
+ 
   eth: {
     symbol: "ETH",
     address: {

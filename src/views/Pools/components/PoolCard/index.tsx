@@ -21,7 +21,7 @@ const PoolCard: React.FC<React.PropsWithChildren<{ pool: DeserializedPool; accou
   const stakedBalance = userData?.stakedBalance ? new BigNumber(userData.stakedBalance) : BIG_ZERO
   const accountHasStakedBalance = stakedBalance.gt(0)
 
-  const isCakePool = earningToken.symbol === 'CAKE' && stakingToken.symbol === 'CAKE'
+  const isCakePool = earningToken.symbol === 'ORK' && stakingToken.symbol === 'ORK'
 
   return (
     <StyledCard

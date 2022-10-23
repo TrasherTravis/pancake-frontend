@@ -2,12 +2,6 @@ import { SerializedFarmConfig } from '@pancakeswap/farms'
 import { bscTokens } from '@pancakeswap/tokens'
 import {
   ORK_LP_MAINNET,
-  ORK_USDT_LP_MAINNET,
-  ORK_KCS_LP_MAINNET,
-  KCS_USDT_LP_MAINNET,
-  KPY_ORK_LP_MAINNET,
-  // KPY_USDT_LP_MAINNET,
-  KPY_WKCS_LP_MAINNET,
 } from './common'
 
 const farms: SerializedFarmConfig[] = [
@@ -19,44 +13,53 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'ORK LP',
     lpAddress: ORK_LP_MAINNET,
     token: bscTokens.cake,
-    quoteToken: bscTokens.wbnb,
+    quoteToken: bscTokens.cake,
   },
   {
     pid: 1,
     lpSymbol: 'ORK-USDT LP',
-    lpAddress: ORK_USDT_LP_MAINNET,
+    lpAddress: '0x77202560a40c1b04febc202630b06bae4a633c43',
     token: bscTokens.cake,
     quoteToken: bscTokens.usdt,
   },
   {
     pid: 2,
-    lpSymbol: 'KCS-ORK LP',
-    lpAddress: ORK_KCS_LP_MAINNET,
-    token: bscTokens.wbnb,
-    quoteToken: bscTokens.cake,
+    lpSymbol: 'ORK-WKCS LP',
+    lpAddress: '0xb7b7f0c821c01fa660107d743ac1e606ef1dfcba',
+    token: bscTokens.cake,
+    quoteToken: bscTokens.wbnb,
   },
   {
     pid: 3,
-    lpSymbol: 'USDT-KCS LP',
-    lpAddress: KCS_USDT_LP_MAINNET,
-    token: bscTokens.wbnb,
-    quoteToken: bscTokens.usdt,
+    lpSymbol: 'USDT-WKCS LP',
+    lpAddress: '0x91a9d118f66735e77973911886cb9ecc653b9ccd',
+    token: bscTokens.usdt,
+    quoteToken: bscTokens.wbnb,
   },
   {
     pid: 4,
-    lpSymbol: 'ORK-KPY LP',
-    lpAddress: KPY_ORK_LP_MAINNET,
-    token: bscTokens.cake,
-    quoteToken: bscTokens.kpy,
+    lpSymbol: 'KPY-ORK LP',
+    lpAddress: '0x7f21dcc79fec7835907f783baee03029b2ab5c22',
+    token: bscTokens.kpy,
+    quoteToken: bscTokens.cake,
   },
  
   {
     pid: 5,
-    lpSymbol: 'KCS-KPY LP',
-    lpAddress: KPY_WKCS_LP_MAINNET,
-    token: bscTokens.wbnb,
-    quoteToken: bscTokens.kpy,
+    lpSymbol: 'KPY-WKCS LP',
+    lpAddress: '0x48f7a5111685f88e3b1741cd7a06bf64aba70ae5',
+    token: bscTokens.kpy,
+    quoteToken: bscTokens.wbnb,
   },
+
+  {
+    pid: 6,
+    lpSymbol: 'KCS-BUSD LP',
+    lpAddress: '0x8dcc6de39026dea37f0a91148b42a0ab78862ab8',
+    token: bscTokens.wbnb,
+    quoteToken: bscTokens.busd,
+  },
+
   // {
   //   pid: 39,
   //   v1pid: 389,

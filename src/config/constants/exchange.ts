@@ -29,6 +29,7 @@ export const BASES_TO_CHECK_TRADES_AGAINST: ChainTokenList = {
     bscTokens.usdt,
     bscTokens.kpy,
     bscTokens.usdc,
+    bscTokens.busd,
   ],
   [ChainId.BSC_TESTNET]: [bscTestnetTokens.wbnb, bscTestnetTokens.cake, bscTestnetTokens.busd],
 }
@@ -88,7 +89,7 @@ export const PINNED_PAIRS: { readonly [chainId in ChainId]?: [Token, Token][] } 
   [ChainId.BSC]: [
     [bscTokens.cake, bscTokens.wbnb],
     [bscTokens.kpy, bscTokens.cake],
-    [bscTokens.cake, bscTokens.usdt],
+    [bscTokens.cake, bscTokens.busd],
   ],
 }
 

@@ -20,7 +20,7 @@ export const CAKE_TESTNET = new Token(
 
 export const USDC_BSC = new Token(
   ChainId.BSC,
-  '0x8AC76a51cc950d9822D68b83fE1Ad97B32Cd580d',
+  '0x980a5AfEf3D17aD98635F6C5aebCBAedEd3c3430',
   18,
   'USDC',
   'Binance-Peg USD Coin',
@@ -74,7 +74,7 @@ export const USDT_ETH = new Token(
 
 export const BUSD_BSC = new Token(
   ChainId.BSC,
-  '0x0039f574eE5cC39bdD162E9A88e3EB1f111bAF48',
+  '0x0039f574eE5cC39bdD162E9A88e3EB1f111bAF48', 
   18,
   'BUSD',
   'Binance USD',
