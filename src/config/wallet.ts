@@ -32,18 +32,19 @@ export const wallets: WalletConfig<ConnectorNames>[] = [
     priority: 1,
     href: 'https://metamask.app.link/dapp/orkswap-frontend.vercel.app/',
   },
+  // {
+  //   title: 'Binance Wallet',
+  //   icon: BinanceChainIcon,
+  //   installed: typeof window !== 'undefined' && Boolean(window.BinanceChain),
+  //   connectorId: ConnectorNames.BSC,
+  //   priority: 2,
+  // },
+
   {
-    title: 'Binance Wallet',
-    icon: BinanceChainIcon,
-    installed: typeof window !== 'undefined' && Boolean(window.BinanceChain),
-    connectorId: ConnectorNames.BSC,
+    title: 'WalletConnect',
+    icon: WalletConnectIcon,
+    connectorId: ConnectorNames.WalletConnect,
     priority: 2,
-  },
-  {
-    title: 'Coinbase Wallet',
-    icon: CoinbaseWalletIcon,
-    connectorId: ConnectorNames.WalletLink,
-    priority: 3,
   },
   {
     title: 'Trust Wallet',
@@ -54,18 +55,28 @@ export const wallets: WalletConfig<ConnectorNames>[] = [
       (Boolean(window.ethereum?.isTrust) ||
         // @ts-ignore
         Boolean(window.ethereum?.isTrustWallet)),
-    priority: 4,
+    priority: 3,
     href: 'https://link.trustwallet.com/open_url?coin_id=20000714&url=https://orkswap-frontend.vercel.app/',
     downloadLink: {
       desktop: 'https://chrome.google.com/webstore/detail/trust-wallet/egjidjbpglichdcondbcbdnbeeppgdph/related',
     },
   },
   {
-    title: 'WalletConnect',
-    icon: WalletConnectIcon,
-    connectorId: ConnectorNames.WalletConnect,
+    title: 'SafePal',
+    icon: SafePalIcon,
+    connectorId: ConnectorNames.Injected,
+    // @ts-ignore
+    installed: typeof window !== 'undefined' && Boolean(window.ethereum?.isSafePal),
+    priority: 4,
+  },
+  {
+    title: 'Coinbase Wallet',
+    icon: CoinbaseWalletIcon,
+    connectorId: ConnectorNames.WalletLink,
     priority: 5,
   },
+
+
   {
     title: 'Opera Wallet',
     icon: OperaIcon,
@@ -105,17 +116,7 @@ export const wallets: WalletConfig<ConnectorNames>[] = [
     },
     installed: typeof window !== 'undefined' && Boolean(window.ethereum?.isTokenPocket),
   },
-  {
-    title: 'SafePal',
-    icon: SafePalIcon,
-    connectorId: ConnectorNames.Injected,
-    // @ts-ignore
-    installed: typeof window !== 'undefined' && Boolean(window.ethereum?.isSafePal),
-    priority: () => {
-      // @ts-ignore
-      return typeof window !== 'undefined' && Boolean(window.ethereum?.isSafePal) ? 0 : 999
-    },
-  },
+
   {
     title: 'Coin98',
     icon: Coin98Icon,
