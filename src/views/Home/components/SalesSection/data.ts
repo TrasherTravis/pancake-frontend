@@ -16,11 +16,9 @@ export const swapSectionData = (t: TranslateFunction): SalesSectionProps => ({
     external: true,
   },
   images: {
-    path: '/images/home/trade/',
+    path: '/images/home/',
     attributes: [
-      { src: 'BNB', alt: t('BNB token') },
-      { src: 'BTC', alt: t('BTC token') },
-      { src: 'CAKE', alt: t('CAKE token') },
+      {src:'orkswap-money-bag', alt:'money-bag'}
     ],
   },
   buttonColor: '#62D6C4',
@@ -41,11 +39,9 @@ export const earnSectionData = (t: TranslateFunction): SalesSectionProps => ({
     external: true,
   },
   images: {
-    path: '/images/home/earn/',
+    path: '/images/home/',
     attributes: [
-      { src: 'pie', alt: t('Pie chart') },
-      { src: 'stonks', alt: t('Stocks chart') },
-      { src: 'folder', alt: t('Folder with cake token') },
+      { src: 'orkswap-farmer', alt: t('farmer') },
     ],
   },
   buttonColor: '#FFD74E',
@@ -79,4 +75,5 @@ export const cakeSectionData = (t: TranslateFunction): SalesSectionProps => ({
     ],
   },
   buttonColor: '#62D6C4',
+  absolute: true,
 })

@@ -18,15 +18,25 @@ import CakeDataRow from './components/CakeDataRow'
 import { WedgeTopLeft, InnerWedgeWrapper, OuterWedgeWrapper, WedgeTopRight } from './components/WedgeSvgs'
 import UserBanner from './components/UserBanner'
 import MultipleBanner from './components/Banners/MultipleBanner'
+import {ClipContainer} from "../../components/PageSection/CurvedDivider";
 
 const StyledHeroSection = styled(PageSection)`
   padding-top: 16px;
-
+  position: relative;
   ${({ theme }) => theme.mediaQueries.md} {
     padding-top: 48px;
   }
 `
-
+export const Clip = styled.div`
+  margin-top: -1px;
+  clip-path: polygon(0 7%, 100% 33%, 100% 0, 0 0);
+    height: 200px;
+  background: linear-gradient(180deg, #62d6c4 22%, #62d6c4 100%);
+  @media (max-width: 812px){
+    height: 150px;
+    clip-path: polygon(0 100%, 100% 80%, 100% 100%);
+  }
+`
 const UserBannerWrapper = styled(Container)`
   z-index: 1;
   position: absolute;
@@ -96,22 +106,29 @@ const Home: React.FC<React.PropsWithChildren> = () => {
         )}
         <MultipleBanner />
         <Hero />
+
       </StyledHeroSection>
-      <PageSection
+        <PageSection
         innerProps={{ style: { margin: '0', width: '100%' } }}
         containerProps={{
           id: 'home-2',
+            marginTop:'-1px',
         }}
         index={2}
         hasCurvedDivider={false}
+        clipPath
+        dividerPosition="top"
       >
-        <MetricsSection />
+            <MetricsSection />
       </PageSection>
-      <PageSection
+
+        <PageSection
         innerProps={{ style: HomeSectionContainerStyles }}
         background={theme.colors.background}
         containerProps={{
           id: 'home-4',
+            marginBottom:'-1px',
+
         }}
         index={2}
         hasCurvedDivider={false}

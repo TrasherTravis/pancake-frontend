@@ -64,11 +64,11 @@ export default {
     97: '0x24ec6962dbe874F6B67B5C50857565667fA0854F',
   },
   cakeVault: {
-    321: '0x45c54210128a065de780C4B0Df3d16664f7f859e',
+    321: '0xeB62cD87F456048183C4Ed6302df1d7Cc88acc04',
     97: '0x683433ba14e8F26774D43D3E90DA6Dd7a22044Fe',
   },
   cakeFlexibleSideVault: {
-    321: '0x615e896A8C2CA8470A2e9dc2E9552998f8658Ea0',
+    321: '0xeB62cD87F456048183C4Ed6302df1d7Cc88acc04',
     97: '',
   },
   predictionsBNB: {

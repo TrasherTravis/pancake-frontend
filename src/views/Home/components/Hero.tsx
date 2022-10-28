@@ -8,6 +8,7 @@ import styled, { keyframes } from 'styled-components'
 import bunnyImage from '../../../../public/images/home/lunar-bunny/bunny@2x.png'
 import CompositeImage, { CompositeImageProps } from './CompositeImage'
 import { SlideSvgDark, SlideSvgLight } from './SlideSvg'
+import {ClipContainer} from "../../../components/PageSection/CurvedDivider";
 
 const flyingAnim = () => keyframes`
   from {
@@ -115,16 +116,18 @@ const Hero = () => {
           <SlideSvgDark className="slide-svg-dark" width="100%" />
           <SlideSvgLight className="slide-svg-light" width="100%" />
         </InnerWrapper>
+        <ClipContainer/>
       </BgWrapper>
       <Flex
         position="relative"
         flexDirection={['column-reverse', null, null, 'row']}
-        alignItems={['flex-end', null, null, 'center']}
+        alignItems={['flex-end', null, null, 'start']}
         justifyContent="center"
         mt={[account ? '280px' : '50px', null, 0]}
         id="homepage-hero"
+        style={{paddingTop:'25px'}}
       >
-        <Flex flex="1" flexDirection="column">
+        <Flex flex="1" flexDirection="column" >
           <Heading scale="xxl" color="secondary" mb="24px">
             {t('Ork hard, play hard.')}
           </Heading>
@@ -153,6 +156,7 @@ const Hero = () => {
           </StarsWrapper>
         </Flex>
       </Flex>
+
     </>
   )
 }

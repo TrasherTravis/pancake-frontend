@@ -4,6 +4,7 @@ import { BoxProps, Box, Flex, FlexProps } from '@pancakeswap/uikit'
 import Container from 'components/Layout/Container'
 import CurvedDivider from './CurvedDivider'
 import { ClipFill, DividerFill } from './types'
+import { Clip } from 'views/Home'
 
 interface PageSectionProps extends BackgroundColorProps {
   svgFill?: string
@@ -15,6 +16,7 @@ interface PageSectionProps extends BackgroundColorProps {
   innerProps?: BoxProps
   clipFill?: ClipFill
   dividerFill?: DividerFill
+  clipPath?:boolean,
 }
 
 interface BackgroundColorProps extends FlexProps {
@@ -58,6 +60,7 @@ const PageSection: React.FC<React.PropsWithChildren<PageSectionProps>> = ({
   dividerFill,
   containerProps,
   innerProps,
+  clipPath,
   ...props
 }) => {
   const padding = useMemo(() => {
@@ -94,6 +97,7 @@ const PageSection: React.FC<React.PropsWithChildren<PageSectionProps>> = ({
       <BackgroundColor index={index} padding={padding} {...props}>
         <ChildrenWrapper {...innerProps}>{children}</ChildrenWrapper>
       </BackgroundColor>
+      { clipPath && <Clip/>}
       {hasCurvedDivider && dividerPosition === 'bottom' && (
         <CurvedDivider
           svgFill={svgFill}
@@ -105,6 +109,7 @@ const PageSection: React.FC<React.PropsWithChildren<PageSectionProps>> = ({
           dividerFill={dividerFill}
         />
       )}
+
     </Box>
   )
 }
