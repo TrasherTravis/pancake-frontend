@@ -26,12 +26,14 @@ const sousStakeBnb = async (sousChefContract, amount, gasPrice: string) => {
 const useStakePool = (sousId: number, isUsingBnb = false) => {
   const sousChefContract = useSousChef(sousId)
   const gasPrice = useGasPrice()
-
+  console.log('sousId', sousId)
   const handleStake = useCallback(
     async (amount: string, decimals: number) => {
       if (isUsingBnb) {
+        console.log(1);
         return sousStakeBnb(sousChefContract, amount, gasPrice)
       }
+      console.log(2);
       return sousStake(sousChefContract, amount, decimals, gasPrice)
     },
     [isUsingBnb, sousChefContract, gasPrice],

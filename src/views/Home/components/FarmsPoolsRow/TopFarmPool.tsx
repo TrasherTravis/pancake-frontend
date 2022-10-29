@@ -63,7 +63,7 @@ const TopFarmPool: React.FC<React.PropsWithChildren<TopFarmPoolProps>> = ({
     <StyledWrapper index={index}>
       <AbsoluteWrapper index={index} visible={visible} topOffset={topOffset()}>
         {title ? (
-          <Text bold mb="8px" fontSize="12px" color="secondary">
+          <Text bold mb="8px" fontSize="12px" color="#280d5f">
             {title}
           </Text>
         ) : (

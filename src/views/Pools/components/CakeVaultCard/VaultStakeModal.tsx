@@ -174,7 +174,8 @@ const VaultStakeModal: React.FC<React.PropsWithChildren<VaultStakeModalProps>> =
       // .toString() being called to fix a BigNumber error in prod
       // as suggested here https://github.com/ChainSafe/web3.js/issues/2077
       const extraArgs = pool.vaultKey === VaultKey.CakeVault ? [lockDuration.toString()] : []
-      const methodArgs = [convertedStakeAmount.toString(), ...extraArgs]
+      const methodArgs = [...extraArgs, convertedStakeAmount.toString()]
+      console.log(vaultPoolContract, 'deposit', methodArgs, callOptions)
       return callWithGasPrice(vaultPoolContract, 'deposit', methodArgs, callOptions)
     })
 
@@ -193,9 +194,11 @@ const VaultStakeModal: React.FC<React.PropsWithChildren<VaultStakeModalProps>> =
   const handleConfirmClick = async () => {
     if (isRemovingStake) {
       // unstaking
+      console.log('1')
       handleWithdrawal()
     } else {
       // staking
+      console.log(2);
       handleDeposit()
     }
   }

@@ -74,7 +74,7 @@ export const USDT_ETH = new Token(
 
 export const BUSD_BSC = new Token(
   ChainId.BSC,
-  '0xE3F5a90F9cb311505cd691a46596599aA1A0AD7D', 
+  '0xE3F5a90F9cb311505cd691a46596599aA1A0AD7D',
   18,
   'BUSD',
   'Binance USD',
