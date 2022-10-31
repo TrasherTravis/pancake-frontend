@@ -165,7 +165,7 @@ const VaultStakeModal: React.FC<React.PropsWithChildren<VaultStakeModalProps>> =
         </ToastDescriptionWithTx>,
       )
       onDismiss?.()
-      dispatch(fetchCakeVaultUserData({ account }))
+      dispatch(fetchCakeVaultUserData({ sousId, account }))
     }
   }
 
@@ -187,7 +187,7 @@ const VaultStakeModal: React.FC<React.PropsWithChildren<VaultStakeModalProps>> =
         </ToastDescriptionWithTx>,
       )
       onDismiss?.()
-      dispatch(fetchCakeVaultUserData({ account }))
+      dispatch(fetchCakeVaultUserData({ sousId, account }))
     }
   }
 

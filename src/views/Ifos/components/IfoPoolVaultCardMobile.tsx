@@ -12,7 +12,7 @@ import {
 import Balance from 'components/Balance'
 import { useVaultPoolByKey, useIfoCredit } from 'state/pools/hooks'
 import { useTranslation } from '@pancakeswap/localization'
-import { vaultPoolConfig } from 'config/constants/pools'
+// import { vaultPoolConfig } from 'config/constants/pools'
 import { DeserializedPool, VaultKey } from 'state/types'
 import { getBalanceNumber } from 'utils/formatBalance'
 import { useConfig } from 'views/Ifos/contexts/IfoContext'
@@ -55,7 +55,7 @@ const IfoPoolVaultCardMobile: React.FC<React.PropsWithChildren<IfoPoolVaultCardM
     <StyledCardMobile isActive>
       <CardHeader p="16px">
         <Flex justifyContent="space-between" alignItems="center">
-          <StyledTokenContent alignItems="center" flex={1}>
+          {/* <StyledTokenContent alignItems="center" flex={1}>
             <UITokenPairImage width={24} height={24} {...vaultPoolConfig[VaultKey.CakeVault].tokenImage} />
             <Box ml="8px" width="180px">
               <Text small bold>
@@ -65,7 +65,7 @@ const IfoPoolVaultCardMobile: React.FC<React.PropsWithChildren<IfoPoolVaultCardM
                 {vaultPoolConfig[VaultKey.CakeVault].description}
               </Text>
             </Box>
-          </StyledTokenContent>
+          </StyledTokenContent> */}
           <StyledTokenContent flexDirection="column" flex={1}>
             <Text color="textSubtle" fontSize="12px">
               {t('iCAKE')}

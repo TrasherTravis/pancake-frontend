@@ -30,7 +30,7 @@ import {
   poolsWithVaultSelector,
   ifoCreditSelector,
   ifoCeilingSelector,
-  makeVaultPoolWithKeySelector,
+  // makeVaultPoolWithKeySelector,
 } from './selectors'
 
 const lPoolAddresses = livePools.filter(({ sousId }) => sousId !== 0).map(({ earningToken }) => earningToken.address)
@@ -80,11 +80,11 @@ export const usePoolsWithVault = () => {
   return useSelector(poolsWithVaultSelector)
 }
 
-export const useDeserializedPoolByVaultKey = (vaultKey) => {
-  const vaultPoolWithKeySelector = useMemo(() => makeVaultPoolWithKeySelector(vaultKey), [vaultKey])
+// export const useDeserializedPoolByVaultKey = (vaultKey) => {
+//   const vaultPoolWithKeySelector = useMemo(() => makeVaultPoolWithKeySelector(vaultKey), [vaultKey])
 
-  return useSelector(vaultPoolWithKeySelector)
-}
+//   return useSelector(vaultPoolWithKeySelector)
+// }
 
 export const usePoolsPageFetch = () => {
   const { account } = useWeb3React()

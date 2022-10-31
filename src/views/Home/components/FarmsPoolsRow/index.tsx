@@ -6,7 +6,7 @@ import { DeserializedPool } from 'state/types'
 import useIntersectionObserver from 'hooks/useIntersectionObserver'
 import useGetTopFarmsByApr from 'views/Home/hooks/useGetTopFarmsByApr'
 import useGetTopPoolsByApr from 'views/Home/hooks/useGetTopPoolsByApr'
-import { vaultPoolConfig } from 'config/constants/pools'
+// import { vaultPoolConfig } from 'config/constants/pools'
 import { useVaultApy } from 'hooks/useVaultApy'
 import TopFarmPool from './TopFarmPool'
 import RowHeading from './RowHeading'
@@ -53,9 +53,9 @@ const FarmsPoolsRow = () => {
   }, [timer, isLoaded, startTimer])
 
   const getPoolText = (pool: DeserializedPool) => {
-    if (pool.vaultKey) {
-      return vaultPoolConfig[pool.vaultKey].name
-    }
+    // if (pool.vaultKey) {
+    //   return vaultPoolConfig[pool.vaultKey].name
+    // }
 
     return t('Stake %stakingSymbol% - Earn %earningSymbol%', {
       earningSymbol: pool.earningToken.symbol,

@@ -89,23 +89,23 @@ export const fetchCakePoolPublicDataAsync = () => async (dispatch, getState) => 
   const farmsData = getState().farms.data
   const prices = getTokenPricesFromFarm(farmsData)
 
-  const cakePool = poolsConfig.filter((p) => p.sousId === 0)[0]
+  // const cakePool = poolsConfig.filter((p) => p.sousId === 0)[0]
 
-  const stakingTokenAddress = cakePool.stakingToken.address ? cakePool.stakingToken.address.toLowerCase() : null
-  const stakingTokenPrice = stakingTokenAddress ? prices[stakingTokenAddress] : 0
+  // const stakingTokenAddress = cakePool.stakingToken.address ? cakePool.stakingToken.address.toLowerCase() : null
+  // const stakingTokenPrice = stakingTokenAddress ? prices[stakingTokenAddress] : 0
 
-  const earningTokenAddress = cakePool.earningToken.address ? cakePool.earningToken.address.toLowerCase() : null
-  const earningTokenPrice = earningTokenAddress ? prices[earningTokenAddress] : 0
+  // const earningTokenAddress = cakePool.earningToken.address ? cakePool.earningToken.address.toLowerCase() : null
+  // const earningTokenPrice = earningTokenAddress ? prices[earningTokenAddress] : 0
 
-  dispatch(
-    setPoolPublicData({
-      sousId: 0,
-      data: {
-        stakingTokenPrice,
-        earningTokenPrice,
-      },
-    }),
-  )
+//   dispatch(
+//     setPoolPublicData({
+//       sousId: 0,
+//       data: {
+//         stakingTokenPrice,
+//         earningTokenPrice,
+//       },
+//     }),
+//   )
 }
 
 export const fetchCakePoolUserDataAsync = (account: string) => async (dispatch) => {
@@ -167,7 +167,7 @@ export const fetchPoolsPublicDataAsync =
       const farmsData = getState().farms.data
       const bnbBusdFarm =
         activePriceHelperLpsConfig.length > 0
-          ? farmsData.find((farm) => farm.token.symbol === 'BUSD' && farm.quoteToken.symbol === 'WBNB')
+          ? farmsData.find((farm) => farm.token.symbol === 'BUSD' && farm.quoteToken.symbol === 'WKCS')
           : null
       const farmsWithPricesOfDifferentTokenPools = bnbBusdFarm
         ? getFarmsPrices([bnbBusdFarm, ...poolsWithDifferentFarmToken], chainId)
@@ -298,7 +298,7 @@ export const updateUserPendingReward = createAsyncThunk<
   { sousId: number; account: string }
 >('pool/updateUserPendingReward', async ({ sousId, account }) => {
   const pendingRewards = await fetchUserPendingRewards(account)
-  return { sousId, field: 'pendingReward', value: pendingRewards[sousId] }
+  return { sousId, field: 'pendingOrk', value: pendingRewards[sousId] }
 })
 
 export const fetchCakeVaultPublicData = createAsyncThunk<SerializedLockedCakeVault>(
@@ -330,10 +330,10 @@ export const fetchCakeFlexibleSideVaultFees = createAsyncThunk<SerializedVaultFe
   },
 )
 
-export const fetchCakeVaultUserData = createAsyncThunk<SerializedLockedVaultUser, { account: string }>(
+export const fetchCakeVaultUserData = createAsyncThunk<SerializedLockedVaultUser, { sousId: number, account: string }>(
   'masterChef/fetchUser',
-  async ({ account }) => {
-    const userData = await fetchVaultUser(account)
+  async ({ sousId, account }) => {
+    const userData = await fetchVaultUser(sousId, account)
     return userData
   },
 )
@@ -401,8 +401,8 @@ export const PoolsSlice = createSlice({
         return { ...pool }
       })
       state.userDataLoaded = false
-      // state.cakeVault = { ...state.cakeVault, userData: initialPoolVaultState.userData }
-      // state.cakeFlexibleSideVault = { ...state.cakeFlexibleSideVault, userData: initialPoolVaultState.userData }
+      state.cakeVault = { ...state.cakeVault, userData: initialPoolVaultState.userData }
+      state.cakeFlexibleSideVault = { ...state.cakeFlexibleSideVault, userData: initialPoolVaultState.userData }
     })
     builder.addCase(
       fetchPoolsUserDataAsync.fulfilled,

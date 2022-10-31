@@ -38,6 +38,7 @@ export default function useLockedPool(hookArgs: HookArgs): HookReturn {
   const dispatch = useAppDispatch()
 
   const { account } = useWeb3React()
+
   const { fetchWithCatchTxError, loading: pendingTx } = useCatchTxError()
   const vaultPoolContract = useVaultPoolContract(VaultKey.CakeVault)
   const { callWithGasPrice } = useCallWithGasPrice()
@@ -68,7 +69,7 @@ export default function useLockedPool(hookArgs: HookArgs): HookReturn {
           </ToastDescriptionWithTx>,
         )
         onDismiss?.()
-        dispatch(fetchCakeVaultUserData({ account }))
+        dispatch(fetchCakeVaultUserData({ sousId, account }))
       }
     },
     [fetchWithCatchTxError, toastSuccess, dispatch, onDismiss, account, vaultPoolContract, t, callWithGasPrice],

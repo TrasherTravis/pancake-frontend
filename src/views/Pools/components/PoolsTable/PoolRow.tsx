@@ -1,6 +1,6 @@
 import { memo } from 'react'
 import { useMatchBreakpoints } from '@pancakeswap/uikit'
-import { usePool, useDeserializedPoolByVaultKey } from 'state/pools/hooks'
+import { usePool } from 'state/pools/hooks' //, useDeserializedPoolByVaultKey
 import { VaultKey } from 'state/types'
 
 import NameCell from './Cells/NameCell'
