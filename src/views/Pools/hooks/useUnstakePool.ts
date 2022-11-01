@@ -1,19 +1,18 @@
-import { useCallback } from 'react'
 import { parseUnits } from '@ethersproject/units'
-import { useSousChef } from 'hooks/useContract'
-import { useMasterchef } from 'hooks/useContract'
+import { useCallback } from 'react'
 import { useGasPrice } from 'state/user/hooks'
+import { useSousChef } from 'hooks/useContract'
 
-const sousUnstake = (sousChefContract: any, amount: string, decimals: number, gasPrice: string) => {
+const sousUnstake = (sousId, sousChefContract: any, amount: string, decimals: number, gasPrice: string) => {
   const units = parseUnits(amount, decimals)
 
-  return sousChefContract.withdraw(units.toString(), {
+  return sousChefContract.withdraw(sousId, units.toString(), {
     gasPrice,
   })
 }
 
-const sousEmergencyUnstake = (sousChefContract: any, gasPrice: string) => {
-  return sousChefContract.emergencyWithdraw({ gasPrice })
+const sousEmergencyUnstake = (sousId, sousChefContract: any, gasPrice: string) => {
+  return sousChefContract.emergencyWithdraw(sousId, { gasPrice })
 }
 
 const useUnstakePool = (sousId: number, enableEmergencyWithdraw = false) => {
@@ -23,10 +22,10 @@ const useUnstakePool = (sousId: number, enableEmergencyWithdraw = false) => {
   const handleUnstake = useCallback(
     async (amount: string, decimals: number) => {
       if (enableEmergencyWithdraw) {
-        return sousEmergencyUnstake(sousChefContract, gasPrice)
+        return sousEmergencyUnstake(sousId, sousChefContract, gasPrice)
       }
-
-      return sousUnstake(sousChefContract, amount, decimals, gasPrice)
+    
+      return sousUnstake(sousId, sousChefContract, amount, decimals, gasPrice)
     },
     [enableEmergencyWithdraw, sousChefContract, gasPrice],
   )

@@ -79,16 +79,14 @@ export function useStakedActions(pid, lpContract) {
 
 export const ProxyStakedContainer = ({ children, ...props }) => {
   const { account } = useActiveWeb3React()
-  const approved = get(`${props.token.name}-${props.pid}`)
   const { lpAddress } = props
   const lpContract = useERC20(lpAddress)
 
   const { onStake, onUnstake, onApprove, onDone } = useProxyStakedActions(props.pid, lpContract)
 
   const { allowance } = props.userData || {}
+  const isApproved = account && allowance && allowance.isGreaterThan(0)
 
-  const isApproved = account && approved || account && allowance && allowance.isGreaterThan(0)
-  
   return children({
     ...props,
     onStake,
@@ -101,14 +99,12 @@ export const ProxyStakedContainer = ({ children, ...props }) => {
 
 export const StakedContainer = ({ children, ...props }) => {
   const { account } = useActiveWeb3React()
-  const approved = get(`${props.token.name}-${props.pid}`)
   const { lpAddress } = props
   const lpContract = useERC20(lpAddress)
   const { onStake, onUnstake, onApprove, onDone } = useStakedActions(props.pid, lpContract)
 
   const { allowance } = props.userData || {}
-
-  const isApproved = account && approved === props.pid || account && allowance && allowance.isGreaterThan(0)
+  const isApproved = account && allowance && allowance.isGreaterThan(0)
 
   return children({
     ...props,

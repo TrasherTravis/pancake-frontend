@@ -1,24 +1,25 @@
+import { FLUSH, PAUSE, PERSIST, PURGE, REGISTER, REHYDRATE, persistReducer, persistStore } from 'redux-persist'
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
-import { useMemo } from 'react'
-import { useDispatch } from 'react-redux'
-import { FLUSH, PAUSE, PERSIST, persistReducer, persistStore, PURGE, REGISTER, REHYDRATE } from 'redux-persist'
-import storage from 'redux-persist/lib/storage'
+
 import burn from './burn/reducer'
 import farmsReducer from './farms'
 import farmsReducerV1 from './farmsV1'
-import { updateVersion } from './global/actions'
 import infoReducer from './info'
+import limitOrders from './limitOrders/reducer'
 import lotteryReducer from './lottery'
 import mint from './mint/reducer'
 import multicall from './multicall/reducer'
 import poolsReducer from './pools'
+import potteryReducer from './pottery'
+import storage from 'redux-persist/lib/storage'
 import swap from './swap/reducer'
 import transactions from './transactions/reducer'
+import { updateVersion } from './global/actions'
+import { useDispatch } from 'react-redux'
+import { useMemo } from 'react'
 import user from './user/reducer'
-import limitOrders from './limitOrders/reducer'
-import potteryReducer from './pottery'
 
-const PERSISTED_KEYS: string[] = ['user', 'transactions']
+const PERSISTED_KEYS: string[] = ['user', 'transactions', 'farms']
 
 const persistConfig = {
   key: 'primary',

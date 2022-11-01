@@ -1,18 +1,19 @@
 import { Flex, Heading, Skeleton, Text } from '@pancakeswap/uikit'
-import Balance from 'components/Balance'
-import cakeAbi from 'config/abi/cake.json'
-import { bscTokens } from '@pancakeswap/tokens'
-import { useTranslation } from '@pancakeswap/localization'
-import useIntersectionObserver from 'hooks/useIntersectionObserver'
-import { useEffect, useState } from 'react'
-import { usePriceCakeBusd } from 'state/farms/hooks'
-import styled from 'styled-components'
 import { formatBigNumber, formatLocalisedCompactNumber } from 'utils/formatBalance'
-import { multicallv2 } from 'utils/multicall'
-import useSWR from 'swr'
-import { SLOW_INTERVAL } from 'config/constants'
+import { getCakeVaultV2Contract, getSousChefContract } from 'utils/contractHelpers'
+import { useEffect, useState } from 'react'
+
+import Balance from 'components/Balance'
 import { BigNumber } from '@ethersproject/bignumber'
-import { getCakeVaultV2Contract } from 'utils/contractHelpers'
+import { SLOW_INTERVAL } from 'config/constants'
+import { bscTokens } from '@pancakeswap/tokens'
+import cakeAbi from 'config/abi/cake.json'
+import { multicallv2 } from 'utils/multicall'
+import styled from 'styled-components'
+import useIntersectionObserver from 'hooks/useIntersectionObserver'
+import { usePriceCakeBusd } from 'state/farms/hooks'
+import useSWR from 'swr'
+import { useTranslation } from '@pancakeswap/localization'
 
 const StyledColumn = styled(Flex)<{ noMobileBorder?: boolean; noDesktopBorder?: boolean }>`
   flex-direction: column;
@@ -74,6 +75,7 @@ const emissionsPerBlock = 11.16
  */
 const planetFinanceBurnedTokensWei = BigNumber.from('637407922445268000000000')
 const cakeVault = getCakeVaultV2Contract()
+const sousChef = getSousChefContract()
 
 const CakeDataRow = () => {
   const { t } = useTranslation()
@@ -88,7 +90,10 @@ const CakeDataRow = () => {
   } = useSWR(
     loadData ? ['cakeDataRow'] : null,
     async () => {
-      const totalSupplyCall = { address: bscTokens.cake.address, name: 'totalSupply' }
+      const totalSupplyCall = { 
+        address: bscTokens.cake.address,
+        name: 'totalSupply' }
+        
       const burnedTokenCall = {
         address: bscTokens.cake.address,
         name: 'balanceOf',
@@ -102,13 +107,14 @@ const CakeDataRow = () => {
             requireSuccess: false,
           },
         }),
-        cakeVault.totalLockedAmount(),
+        sousChef.orkRateToBurn(),
       ])
       const [totalSupply, burned] = tokenDataResultRaw.flat()
-
+      
       const totalBurned = planetFinanceBurnedTokensWei.add(burned)
+    
       const circulating = totalSupply.sub(totalBurned.add(totalLockedAmount))
-
+     
       return {
         cakeSupply: totalSupply && burned ? +formatBigNumber(totalSupply.sub(totalBurned)) : 0,
         burnedBalance: burned ? +formatBigNumber(totalBurned) : 0,

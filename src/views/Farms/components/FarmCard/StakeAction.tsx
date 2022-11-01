@@ -99,7 +99,6 @@ const StakeAction: React.FC<React.PropsWithChildren<FarmCardActionsProps>> = ({
     })
     if (receipt?.status) {
       toastSuccess(t('Contract Enabled'), <ToastDescriptionWithTx txHash={receipt.transactionHash} />)
-      set(`${token}-${pid}`, pid)
       onDone()
     }
   }, [onApprove, t, toastSuccess, fetchWithCatchTxError, onDone])

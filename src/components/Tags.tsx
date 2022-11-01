@@ -87,7 +87,7 @@ const ManualPoolTag: React.FC<React.PropsWithChildren<TagProps>> = (props) => {
   const { t } = useTranslation()
   return (
     <Tag variant="secondary" outline startIcon={<RefreshIcon width="18px" color="secondary" mr="4px" />} {...props}>
-      {t('Pool')}
+      {t('Manual')}
     </Tag>
   )
 }

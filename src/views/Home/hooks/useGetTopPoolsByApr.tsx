@@ -44,16 +44,15 @@ const useGetTopPoolsByApr = (isIntersecting: boolean) => {
 
   useEffect(() => {
     const [cakePools, otherPools] = partition(pools, (pool) => pool.sousId === 0)
-    const masterCakePool = cakePools.filter((cakePool) => cakePool.vaultKey === VaultKey.CakeVault)
+    // const masterCakePool = cakePools.filter((cakePool) => cakePool.vaultKey === VaultKey.CakeVault)
     const getTopPoolsByApr = (activePools: DeserializedPool[]) => {
       const sortedByApr = orderBy(activePools, (pool: DeserializedPool) => pool.apr || 0, 'desc')
-      setTopPools([...masterCakePool, ...sortedByApr.slice(0, 4)])
+      setTopPools([...cakePools, ...sortedByApr.slice(0, 4)])
     }
     if (fetchStatus === FetchStatus.Fetched && !topPools[0]) {
       getTopPoolsByApr(otherPools)
     }
   }, [setTopPools, pools, fetchStatus, topPools])
-
   return { topPools }
 }
 

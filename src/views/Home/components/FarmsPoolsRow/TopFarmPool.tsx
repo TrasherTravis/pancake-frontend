@@ -63,22 +63,22 @@ const TopFarmPool: React.FC<React.PropsWithChildren<TopFarmPoolProps>> = ({
     <StyledWrapper index={index}>
       <AbsoluteWrapper index={index} visible={visible} topOffset={topOffset()}>
         {title ? (
-          <Text bold mb="8px" fontSize="12px" color="#280d5f">
+          <Text bold mb="8px" fontSize="12px" color="white">
             {title}
           </Text>
         ) : (
           <Skeleton width={80} height={12} mb="8px" />
         )}
         {percentage ? (
-          <FlexGap gap="4px">
-            {isApy && t('Up to')}
-            <Balance lineHeight="1.1" fontSize="16px" bold unit="%" value={percentage} />
+          <FlexGap gap="5px" color={'#ffd74e'}>
+            {isApy && <span style={{width:'43px'}}>{t('Up to')}</span>}
+            <Balance lineHeight="1.1" color='#ffd74e' fontSize="16px" bold unit="%" value={percentage} />
           </FlexGap>
         ) : (
           <Skeleton width={60} height={16} />
         )}
         {percentage ? (
-          <Text fontSize="16px" color="textSubtle">
+          <Text fontSize="16px" color="white">
             {isApy ? t('APY') : t('APR')}
           </Text>
         ) : (

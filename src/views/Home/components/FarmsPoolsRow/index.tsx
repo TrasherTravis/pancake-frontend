@@ -32,16 +32,13 @@ const FarmsPoolsRow = () => {
   const { topFarms, fetched } = useGetTopFarmsByApr(isIntersecting)
   const { topPools } = useGetTopPoolsByApr(fetched && isIntersecting)
   const { lockedApy } = useVaultApy()
-
   const timer = useRef<ReturnType<typeof setTimeout>>(null)
   const isLoaded = topFarms[0] && topPools[0]
-
   const startTimer = useCallback(() => {
     timer.current = setInterval(() => {
       setShowFarms((prev) => !prev)
     }, 6000)
   }, [timer])
-
   useEffect(() => {
     if (isLoaded) {
       startTimer()
@@ -62,7 +59,6 @@ const FarmsPoolsRow = () => {
       stakingSymbol: pool.stakingToken.symbol,
     })
   }
-
   return (
     <div ref={observerRef}>
       <Flex flexDirection="column" mt="24px">
@@ -100,7 +96,8 @@ const FarmsPoolsRow = () => {
                 // eslint-disable-next-line react/no-array-index-key
                 key={index}
                 title={topPool && getPoolText(topPool)}
-                percentage={topPool?.sousId === 0 ? +lockedApy : topPool?.apr}
+                // percentage={topPool?.sousId === 0 ? +lockedApy : topPool?.apr}
+                percentage={topPool?.sousId === 0 && topPool?.apr}
                 index={index}
                 isApy={topPool?.sousId === 0}
                 visible={!showFarms}

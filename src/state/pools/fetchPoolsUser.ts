@@ -1,13 +1,13 @@
-import poolsConfig from 'config/constants/pools'
+import BigNumber from 'bignumber.js'
+import { bscRpcProvider } from 'utils/providers'
+import erc20ABI from 'config/abi/erc20.json'
+import fromPairs from 'lodash/fromPairs'
+import { getAddress } from 'utils/addressHelpers'
 // import sousChefABI from 'config/abi/sousChef.json'
 import masterChefABI from 'config/abi/masterchef.json'
-import erc20ABI from 'config/abi/erc20.json'
 import multicall from 'utils/multicall'
-import { getAddress } from 'utils/addressHelpers'
-import { bscRpcProvider } from 'utils/providers'
-import BigNumber from 'bignumber.js'
+import poolsConfig from 'config/constants/pools'
 import uniq from 'lodash/uniq'
-import fromPairs from 'lodash/fromPairs'
 
 // Pool 0, Cake / Cake is a different kind of contract (master chef)
 // BNB pools use the native BNB token (wrapping ? unwrapping is done at the contract level)

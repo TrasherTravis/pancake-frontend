@@ -1,23 +1,23 @@
 import BigNumber from 'bignumber.js'
 import { SerializedLockedVaultUser, SerializedVaultUser } from 'state/types'
-import { getMasterChefAddress } from 'utils/addressHelpers'
-import masterChefAbi from 'config/abi/masterchef.json'
+import { getCakeVaultAddress } from 'utils/addressHelpers'
+import cakeVaultAbi from 'config/abi/cakeVaultV2.json'
 import { multicallv2 } from 'utils/multicall'
 import { getCakeFlexibleSideVaultV2Contract } from '../../utils/contractHelpers'
 
-const cakeVaultAddress = getMasterChefAddress()
+const cakeVaultAddress = getCakeVaultAddress()
 const flexibleSideVaultContract = getCakeFlexibleSideVaultV2Contract()
 
-export const fetchVaultUser = async (sousId: number, account: string): Promise<SerializedLockedVaultUser> => {
+export const fetchVaultUser = async (account: string): Promise<SerializedLockedVaultUser> => {
   try {
-    const calls = ['userInfo'].map((method) => ({
+    const calls = ['userInfo', 'calculatePerformanceFee', 'calculateOverdueFee'].map((method) => ({
       address: cakeVaultAddress,
       name: method,
-      params: [sousId, account],
+      params: [account],
     }))
 
     const [userContractResponse, [currentPerformanceFee], [currentOverdueFee]] = await multicallv2({
-      abi: masterChefAbi,
+      abi: cakeVaultAbi,
       calls,
     })
     return {

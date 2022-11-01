@@ -1,11 +1,12 @@
-import { Flex, Text, Button, IconButton, AddIcon, MinusIcon, useModal, Skeleton, useTooltip } from '@pancakeswap/uikit'
-import BigNumber from 'bignumber.js'
-import { useTranslation } from '@pancakeswap/localization'
-import { getBalanceNumber } from 'utils/formatBalance'
-import { DeserializedPool } from 'state/types'
+import { AddIcon, Button, Flex, IconButton, MinusIcon, Skeleton, Text, useModal, useTooltip } from '@pancakeswap/uikit'
+
 import Balance from 'components/Balance'
+import BigNumber from 'bignumber.js'
+import { DeserializedPool } from 'state/types'
 import NotEnoughTokensModal from '../Modals/NotEnoughTokensModal'
 import StakeModal from '../Modals/StakeModal'
+import { getBalanceNumber } from 'utils/formatBalance'
+import { useTranslation } from '@pancakeswap/localization'
 
 interface StakeActionsProps {
   pool: DeserializedPool
@@ -31,9 +32,9 @@ const StakeAction: React.FC<React.PropsWithChildren<StakeActionsProps>> = ({
     stakedBalance.multipliedBy(stakingTokenPrice),
     stakingToken.decimals,
   )
-
+  console.log({stakingTokenPrice})
   const [onPresentTokenRequired] = useModal(<NotEnoughTokensModal tokenSymbol={stakingToken.symbol} />)
-
+  
   const [onPresentStake] = useModal(
     <StakeModal
       isBnbPool={isBnbPool}

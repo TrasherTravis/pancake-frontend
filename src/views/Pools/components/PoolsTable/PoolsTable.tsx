@@ -1,7 +1,8 @@
-import { useRef } from 'react'
-import styled from 'styled-components'
-import { DeserializedPool } from 'state/types'
 import PoolRow, { VaultPoolRow } from './PoolRow'
+
+import { DeserializedPool } from 'state/types'
+import styled from 'styled-components'
+import { useRef } from 'react'
 
 interface PoolsTableProps {
   pools: DeserializedPool[]
@@ -28,7 +29,7 @@ const StyledTableBorder = styled.div`
 
 const PoolsTable: React.FC<React.PropsWithChildren<PoolsTableProps>> = ({ pools, account, urlSearch }) => {
   const tableWrapperEl = useRef<HTMLDivElement>(null)
-
+  
   return (
     <StyledTableBorder>
       <StyledTable id="pools-table" role="table" ref={tableWrapperEl}>
@@ -37,6 +38,7 @@ const PoolsTable: React.FC<React.PropsWithChildren<PoolsTableProps>> = ({ pools,
             <VaultPoolRow
               initialActivity={urlSearch.toLowerCase() === pool.earningToken.symbol?.toLowerCase()}
               key={pool.vaultKey}
+              sousId={pool.sousId}
               vaultKey={pool.vaultKey}
               account={account}
             />

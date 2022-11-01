@@ -1,19 +1,4 @@
-import BigNumber from 'bignumber.js'
-import useActiveWeb3React from 'hooks/useActiveWeb3React'
-import { SLOW_INTERVAL } from 'config/constants'
-import { useCakeBusdPrice } from 'hooks/useBUSDPrice'
-import { useEffect, useMemo } from 'react'
-import { useSelector } from 'react-redux'
-import { useAppDispatch } from 'state'
-import useSWRImmutable from 'swr/immutable'
-import { BIG_ZERO } from 'utils/bigNumber'
-import { useBCakeProxyContractAddress } from 'views/Farms/hooks/useBCakeProxyContractAddress'
-import { getMasterchefContract } from 'utils/contractHelpers'
-import { useFastRefreshEffect } from 'hooks/useRefreshEffect'
-import { featureFarmApiAtom, useFeatureFlag } from 'hooks/useFeatureFlag'
-import { getFarmConfig } from '@pancakeswap/farms/constants'
-import { fetchFarmsPublicDataAsync, fetchFarmUserDataAsync, fetchInitialFarmsData } from '.'
-import { DeserializedFarm, DeserializedFarmsState, DeserializedFarmUserData, State } from '../types'
+import { DeserializedFarm, DeserializedFarmUserData, DeserializedFarmsState, State } from '../types'
 import {
   farmFromLpSymbolSelector,
   farmSelector,
@@ -22,6 +7,22 @@ import {
   makeLpTokenPriceFromLpSymbolSelector,
   makeUserFarmFromPidSelector,
 } from './selectors'
+import { featureFarmApiAtom, useFeatureFlag } from 'hooks/useFeatureFlag'
+import { fetchFarmUserDataAsync, fetchFarmsPublicDataAsync, fetchInitialFarmsData } from '.'
+import { useEffect, useMemo } from 'react'
+
+import { BIG_ZERO } from 'utils/bigNumber'
+import BigNumber from 'bignumber.js'
+import { SLOW_INTERVAL } from 'config/constants'
+import { getFarmConfig } from '@pancakeswap/farms/constants'
+import { getMasterchefContract } from 'utils/contractHelpers'
+import useActiveWeb3React from 'hooks/useActiveWeb3React'
+import { useAppDispatch } from 'state'
+import { useBCakeProxyContractAddress } from 'views/Farms/hooks/useBCakeProxyContractAddress'
+import { useCakeBusdPrice } from 'hooks/useBUSDPrice'
+import { useFastRefreshEffect } from 'hooks/useRefreshEffect'
+import useSWRImmutable from 'swr/immutable'
+import { useSelector } from 'react-redux'
 
 export function useFarmsLength() {
   const { chainId } = useActiveWeb3React()
