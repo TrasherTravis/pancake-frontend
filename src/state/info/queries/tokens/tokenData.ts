@@ -1,12 +1,13 @@
+import { getAmountChange, getPercentChange } from 'views/Info/utils/infoDataHelpers'
+import { useEffect, useState } from 'react'
+
+import { TokenData } from 'state/info/types'
+import { getChangeForPeriod } from 'utils/getChangeForPeriod'
+import { getDeltaTimestamps } from 'utils/getDeltaTimestamps'
 /* eslint-disable no-param-reassign */
 import { gql } from 'graphql-request'
-import { useEffect, useState } from 'react'
-import { TokenData } from 'state/info/types'
 import { infoClient } from 'utils/graphql'
-import { getDeltaTimestamps } from 'utils/getDeltaTimestamps'
-import { getChangeForPeriod } from 'utils/getChangeForPeriod'
 import { useBlocksFromTimestamps } from 'views/Info/hooks/useBlocksFromTimestamps'
-import { getAmountChange, getPercentChange } from 'views/Info/utils/infoDataHelpers'
 
 interface TokenFields {
   id: string
@@ -156,14 +157,14 @@ const useFetchedTokenDatas = (tokenAddresses: string[]): TokenDatas => {
             week?.tradeVolumeUSD,
             twoWeeks?.tradeVolumeUSD,
           )
-          const liquidityUSD = current ? current.totalLiquidity * current.derivedUSD : 0
-          const liquidityUSDOneDayAgo = oneDay ? oneDay.totalLiquidity * oneDay.derivedUSD : 0
+          const liquidityUSD = current ? current.totalLiquidity * current?.derivedUSD : 0
+          const liquidityUSDOneDayAgo = oneDay ? oneDay.totalLiquidity * oneDay?.derivedUSD : 0
           const liquidityUSDChange = getPercentChange(liquidityUSD, liquidityUSDOneDayAgo)
           const liquidityToken = current ? current.totalLiquidity : 0
           // Prices of tokens for now, 24h ago and 7d ago
-          const priceUSD = current ? current.derivedUSD : 0
-          const priceUSDOneDay = oneDay ? oneDay.derivedUSD : 0
-          const priceUSDWeek = week ? week.derivedUSD : 0
+          const priceUSD = current ? current?.derivedUSD : 0
+          const priceUSDOneDay = oneDay ? oneDay?.derivedUSD : 0
+          const priceUSDWeek = week ? week?.derivedUSD : 0
           const priceUSDChange = getPercentChange(priceUSD, priceUSDOneDay)
           const priceUSDChangeWeek = getPercentChange(priceUSD, priceUSDWeek)
           const txCount = getAmountChange(current?.totalTransactions, oneDay?.totalTransactions)

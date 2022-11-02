@@ -12,8 +12,6 @@ import { VaultKey } from 'state/types'
 import { memo } from 'react'
 import { useMatchBreakpoints } from '@pancakeswap/uikit'
 import { usePool } from 'state/pools/hooks' //, useDeserializedPoolByVaultKey
-// import { useDeserializedPoolByVaultKey, usePool } from 'state/pools/hooks'
-
 
 export const VaultPoolRow: React.FC<
   React.PropsWithChildren<{sousId: number; vaultKey: VaultKey; account: string; initialActivity?: boolean }>
@@ -22,8 +20,6 @@ export const VaultPoolRow: React.FC<
   const isLargerScreen = isLg || isXl || isXxl
   const isXLargerScreen = isXl || isXxl
   // const pool = useDeserializedPoolByVaultKey(vaultKey)
-  // const pool = usePool(0)
-
 
   return (
     <h1>pool</h1>

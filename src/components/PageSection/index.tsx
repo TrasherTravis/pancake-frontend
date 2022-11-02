@@ -1,10 +1,11 @@
-import { useMemo } from 'react'
-import styled from 'styled-components'
-import { BoxProps, Box, Flex, FlexProps } from '@pancakeswap/uikit'
+import { Box, BoxProps, Flex, FlexProps } from '@pancakeswap/uikit'
+import { ClipFill, DividerFill } from './types'
+
+import { Clip } from 'views/Home'
 import Container from 'components/Layout/Container'
 import CurvedDivider from './CurvedDivider'
-import { ClipFill, DividerFill } from './types'
-import { Clip } from 'views/Home'
+import styled from 'styled-components'
+import { useMemo } from 'react'
 
 interface PageSectionProps extends BackgroundColorProps {
   svgFill?: string
@@ -16,12 +17,17 @@ interface PageSectionProps extends BackgroundColorProps {
   innerProps?: BoxProps
   clipFill?: ClipFill
   dividerFill?: DividerFill
-  clipPath?:boolean,
+  clipPath?:boolean
+  firstSection?:boolean
 }
 
 interface BackgroundColorProps extends FlexProps {
   index: number
   padding?: string
+}
+
+interface SectionProps extends BoxProps {
+  firstSection: boolean
 }
 
 const BackgroundColor = styled(Flex).attrs({ className: 'page-bg' as string })<BackgroundColorProps>`
@@ -48,6 +54,18 @@ const ChildrenWrapper = styled(Container)`
   }
 `
 
+const WrappedBox = styled(Box)<SectionProps>`
+  .page-bg {
+    ${({firstSection}) => firstSection ? `
+    padding-top: 16px;
+
+    @media screen and (min-width: 852px) {
+      padding-top: 48px;
+    };` 
+    : null};
+  }
+`
+
 const PageSection: React.FC<React.PropsWithChildren<PageSectionProps>> = ({
   children,
   svgFill,
@@ -61,6 +79,7 @@ const PageSection: React.FC<React.PropsWithChildren<PageSectionProps>> = ({
   containerProps,
   innerProps,
   clipPath,
+  firstSection,
   ...props
 }) => {
   const padding = useMemo(() => {
@@ -80,9 +99,9 @@ const PageSection: React.FC<React.PropsWithChildren<PageSectionProps>> = ({
     }
     return '48px 0'
   }, [dividerPosition, hasCurvedDivider])
-
+  
   return (
-    <Box {...containerProps}>
+    <WrappedBox {...containerProps} firstSection={containerProps?.id === 'home-1'}>
       {hasCurvedDivider && dividerPosition === 'top' && (
         <CurvedDivider
           svgFill={svgFill}
@@ -110,7 +129,7 @@ const PageSection: React.FC<React.PropsWithChildren<PageSectionProps>> = ({
         />
       )}
 
-    </Box>
+    </WrappedBox>
   )
 }
 

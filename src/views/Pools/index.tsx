@@ -261,7 +261,7 @@ const Pools: React.FC<React.PropsWithChildren> = () => {
       )}
     </CardLayout>
   )
-
+  console.log({status: pools})
   const tableLayout = <PoolsTable urlSearch={normalizedUrlSearch} pools={chosenPools} account={account} />
 
   return (

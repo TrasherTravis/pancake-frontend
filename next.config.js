@@ -34,8 +34,7 @@ const config = {
     styledComponents: true,
   },
   experimental: {
-    scrollRestoration: true,
-    // esmExternals: false
+    scrollRestoration: true
   },
   reactStrictMode: true,
   swcMinify: true,

@@ -21,19 +21,20 @@ import useTheme from 'hooks/useTheme'
 import { useTranslation } from '@pancakeswap/localization'
 import { useWeb3React } from '@pancakeswap/wagmi'
 
-const StyledHeroSection = styled(PageSection)`
-  padding-top: 16px;
-  position: relative;
-  ${({ theme }) => theme.mediaQueries.md} {
-    padding-top: 48px;
-  }
-`
 export const Clip = styled.div`
   margin-top: -1px;
   clip-path: polygon(0 7%, 100% 33%, 100% 0, 0 0);
     height: 200px;
   background: linear-gradient(180deg, #62d6c4 22%, #62d6c4 100%);
 `
+
+// const StyledHeroSection = styled(PageSection)`
+//   padding-top: 16px;
+//   position: relative;
+//   ${({ theme }) => theme.mediaQueries.md} {
+//     padding-top: 48px;
+//   };
+// `
 const UserBannerWrapper = styled(Container)`
   z-index: 1;
   position: absolute;
@@ -88,7 +89,7 @@ const Home: React.FC<React.PropsWithChildren> = () => {
           fill: #201335;
         }
       `}</style>
-      <StyledHeroSection
+      <PageSection
         innerProps={{ style: { margin: '0', width: '100%' } }}
         containerProps={{
           id: 'home-1',
@@ -104,7 +105,7 @@ const Home: React.FC<React.PropsWithChildren> = () => {
         <MultipleBanner />
         <Hero />
 
-      </StyledHeroSection>
+      </PageSection>
         <PageSection
         innerProps={{ style: { margin: '0', width: '100%' } }}
         containerProps={{
