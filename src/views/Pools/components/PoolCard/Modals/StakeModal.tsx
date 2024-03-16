@@ -1,4 +1,3 @@
-import { useTranslation } from '@pancakeswap/localization'
 import {
   AutoRenewIcon,
   BalanceInput,
@@ -14,22 +13,24 @@ import {
   Text,
   useToast,
 } from '@pancakeswap/uikit'
-import { useWeb3React } from '@pancakeswap/wagmi'
+import { formatNumber, getDecimalAmount, getFullDisplayBalance } from 'utils/formatBalance'
+import { updateUserBalance, updateUserPendingReward, updateUserStakedBalance } from 'state/pools'
+import { useCallback, useEffect, useState } from 'react'
+
 import BigNumber from 'bignumber.js'
+import { DeserializedPool } from 'state/types'
+import PercentageButton from './PercentageButton'
 import RoiCalculatorModal from 'components/RoiCalculatorModal'
 import { ToastDescriptionWithTx } from 'components/Toast'
-import useCatchTxError from 'hooks/useCatchTxError'
-import useTheme from 'hooks/useTheme'
-import { useCallback, useEffect, useState } from 'react'
-import { useAppDispatch } from 'state'
-import { updateUserBalance, updateUserPendingReward, updateUserStakedBalance } from 'state/pools'
-import { DeserializedPool } from 'state/types'
-import styled from 'styled-components'
 import { getInterestBreakdown } from 'utils/compoundApyHelpers'
-import { formatNumber, getDecimalAmount, getFullDisplayBalance } from 'utils/formatBalance'
+import styled from 'styled-components'
+import { useAppDispatch } from 'state'
+import useCatchTxError from 'hooks/useCatchTxError'
 import useStakePool from '../../../hooks/useStakePool'
+import useTheme from 'hooks/useTheme'
+import { useTranslation } from '@pancakeswap/localization'
 import useUnstakePool from '../../../hooks/useUnstakePool'
-import PercentageButton from './PercentageButton'
+import { useWeb3React } from '@pancakeswap/wagmi'
 
 interface StakeModalProps {
   isBnbPool: boolean
@@ -106,7 +107,7 @@ const StakeModal: React.FC<React.PropsWithChildren<StakeModalProps>> = ({
   const formattedAnnualRoi = formatNumber(annualRoi, annualRoi > 10000 ? 0 : 2, annualRoi > 10000 ? 0 : 2)
 
   const getTokenLink = stakingToken.address ? `/swap?outputCurrency=${stakingToken.address}` : '/swap'
-
+  
   useEffect(() => {
     if (stakingLimit.gt(0) && !isRemovingStake) {
       setHasReachedStakedLimit(fullDecimalStakeAmount.plus(userData.stakedBalance).gt(stakingLimit))
@@ -183,7 +184,7 @@ const StakeModal: React.FC<React.PropsWithChildren<StakeModalProps>> = ({
       onDismiss?.()
     }
   }
-
+  
   if (showRoiCalculator) {
     return (
       <RoiCalculatorModal

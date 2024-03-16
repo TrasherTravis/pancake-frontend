@@ -9,11 +9,6 @@ import {
   Weth,
   Zap,
 } from 'config/abi/types'
-import zapAbi from 'config/abi/zap.json'
-import useActiveWeb3React from 'hooks/useActiveWeb3React'
-import { useProviderOrSigner } from 'hooks/useProviderOrSigner'
-import { useMemo } from 'react'
-import { getMulticallAddress, getPredictionsV1Address, getZapAddress } from 'utils/addressHelpers'
 import {
   getAnniversaryAchievementContract,
   getBCakeFarmBoosterContract,
@@ -55,24 +50,28 @@ import {
   getSouschefContract,
   getTradingCompetitionContractEaster,
   getTradingCompetitionContractFanToken,
-  getTradingCompetitionContractMobox,
   getTradingCompetitionContractMoD,
+  getTradingCompetitionContractMobox,
 } from 'utils/contractHelpers'
-import { useSigner } from 'wagmi'
+import { getMulticallAddress, getPredictionsV1Address, getZapAddress } from 'utils/addressHelpers'
 
 // Imports below migrated from Exchange useContract.ts
 import { Contract } from '@ethersproject/contracts'
-import { WNATIVE } from '@pancakeswap/sdk'
-import { ERC20_BYTES32_ABI } from '../config/abi/erc20'
 import ERC20_ABI from '../config/abi/erc20.json'
-import IPancakePairABI from '../config/abi/IPancakePair.json'
-import multiCallAbi from '../config/abi/Multicall.json'
-import WETH_ABI from '../config/abi/weth.json'
-import { getContract } from '../utils'
-
+import { ERC20_BYTES32_ABI } from '../config/abi/erc20'
 import { IPancakePair } from '../config/abi/types/IPancakePair'
+import IPancakePairABI from '../config/abi/IPancakePair.json'
 import { VaultKey } from '../state/types'
+import WETH_ABI from '../config/abi/weth.json'
+import { WNATIVE } from '@pancakeswap/sdk'
+import { getContract } from '../utils'
+import multiCallAbi from '../config/abi/Multicall.json'
 import { useActiveChainId } from './useActiveChainId'
+import useActiveWeb3React from 'hooks/useActiveWeb3React'
+import { useMemo } from 'react'
+import { useProviderOrSigner } from 'hooks/useProviderOrSigner'
+import { useSigner } from 'wagmi'
+import zapAbi from 'config/abi/zap.json'
 
 /**
  * Helper hooks to get specific contracts (by ABI)

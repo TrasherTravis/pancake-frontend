@@ -1,31 +1,31 @@
-import { useCallback } from 'react'
 import { BIG_ZERO } from 'utils/bigNumber'
-import { useSousChef } from 'hooks/useContract'
 import { BOOSTED_FARM_GAS_LIMIT } from 'config'
+import { useCallback } from 'react'
 import { useGasPrice } from 'state/user/hooks'
+import { useSousChef } from 'hooks/useContract'
 
 const options = {
   gasLimit: BOOSTED_FARM_GAS_LIMIT,
 }
 
-const harvestPool = async (sousChefContract, gasPrice) => {
-  return sousChefContract.deposit('0', { ...options, gasPrice })
+const harvestPool = async (sousId, sousChefContract, gasPrice) => {
+  return sousChefContract.deposit(sousId, '0', { ...options, gasPrice })
 }
 
-const harvestPoolBnb = async (sousChefContract, gasPrice) => {
-  return sousChefContract.deposit({ ...options, value: BIG_ZERO, gasPrice })
+const harvestPoolBnb = async (sousId, sousChefContract, gasPrice) => {
+  return sousChefContract.deposit(sousId, '0', { ...options, value: BIG_ZERO, gasPrice })
 }
 
 const useHarvestPool = (sousId, isUsingBnb = false) => {
   const sousChefContract = useSousChef(sousId)
   const gasPrice = useGasPrice()
-
+ 
   const handleHarvest = useCallback(async () => {
     if (isUsingBnb) {
-      return harvestPoolBnb(sousChefContract, gasPrice)
+      return harvestPoolBnb(sousId, sousChefContract, gasPrice)
     }
 
-    return harvestPool(sousChefContract, gasPrice)
+    return harvestPool(sousId,sousChefContract, gasPrice)
   }, [isUsingBnb, sousChefContract, gasPrice])
 
   return { onReward: handleHarvest }

@@ -1,14 +1,15 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Token } from '@pancakeswap/sdk'
 import { AutoRenewIcon, Button, Flex, Heading, Modal, Text, useToast } from '@pancakeswap/uikit'
-import { useWeb3React } from '@pancakeswap/wagmi'
-import { ToastDescriptionWithTx } from 'components/Toast'
-import useCatchTxError from 'hooks/useCatchTxError'
-import useTheme from 'hooks/useTheme'
-import { useAppDispatch } from 'state'
 import { updateUserBalance, updateUserPendingReward, updateUserStakedBalance } from 'state/pools'
+
+import { ToastDescriptionWithTx } from 'components/Toast'
+import { Token } from '@pancakeswap/sdk'
 import { formatNumber } from 'utils/formatBalance'
+import { useAppDispatch } from 'state'
+import useCatchTxError from 'hooks/useCatchTxError'
 import useHarvestPool from '../../../hooks/useHarvestPool'
+import useTheme from 'hooks/useTheme'
+import { useTranslation } from '@pancakeswap/localization'
+import { useWeb3React } from '@pancakeswap/wagmi'
 
 interface CollectModalProps {
   formattedBalance: string
@@ -35,11 +36,12 @@ const CollectModal: React.FC<React.PropsWithChildren<CollectModalProps>> = ({
   const dispatch = useAppDispatch()
   const { fetchWithCatchTxError, loading: pendingTx } = useCatchTxError()
   const { onReward } = useHarvestPool(sousId, isBnbPool)
-
+  
   const handleHarvestConfirm = async () => {
     const receipt = await fetchWithCatchTxError(() => {
       return onReward()
     })
+
     if (receipt?.status) {
       toastSuccess(
         `${t('Harvested')}!`,
@@ -53,7 +55,7 @@ const CollectModal: React.FC<React.PropsWithChildren<CollectModalProps>> = ({
       onDismiss?.()
     }
   }
-
+  
   return (
     <Modal
       title={`${earningToken.symbol} ${t('Harvest')}`}

@@ -126,8 +126,8 @@ const ReviewStage: React.FC<React.PropsWithChildren<ReviewStageProps>> = ({
         >
           {t('Checkout')}
         </Button>
-        <Button as={Link} external style={{ width: '100%' }} href="/swap?outputCurrency=BNB" variant="secondary">
-          {t('Get %symbol1% or %symbol2%', { symbol1: 'BNB', symbol2: 'WBNB' })}
+        <Button as={Link} external style={{ width: '100%' }} href="/swap?outputCurrency=KCS" variant="secondary">
+          {t('Get %symbol1% or %symbol2%', { symbol1: 'KCS', symbol2: 'WKCS' })}
         </Button>
       </Flex>
     </>

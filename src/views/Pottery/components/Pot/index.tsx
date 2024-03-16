@@ -103,7 +103,7 @@ const Pot: React.FC<React.PropsWithChildren> = () => {
               <Box>
                 <CardHeader
                   title={t('Pottery')}
-                  subTitle={t('Stake CAKE, Earn CAKE, Win CAKE')}
+                  subTitle={t('Stake ORK, Earn ORK, Win ORK')}
                   primarySrc="/images/tokens/0xD9088D9fa02b4F880eF6b71925c23F6983CCC789.svg"
                   secondarySrc="/images/tokens/pot-icon.svg"
                 />

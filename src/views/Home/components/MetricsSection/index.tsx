@@ -30,30 +30,30 @@ const Stats = () => {
   }
 
   const StakedCardData: IconCardData = {
-    icon: <ChartIcon color="failure" width="36px" />,
+    icon: <ChartIcon color="secondary" width="36px" />,
   }
 
   return (
     <Flex justifyContent="center" alignItems="center" flexDirection="column">
       <GradientLogo height="48px" width="48px" mb="24px" />
-      <Heading textAlign="center" scale="xl">
-        {t('Used by millions.')}
+      <Heading textAlign="center" scale="xl" color="backgroundAlt">
+        {t('Some extremely')}
       </Heading>
-      <Heading textAlign="center" scale="xl" mb="32px">
-        {t('Trusted with billions.')}
+      <Heading textAlign="center" scale="xl" mb="32px" color="backgroundAlt">
+        {t('good statistics')}
       </Heading>
-      <Text textAlign="center" color="textSubtle">
-        {t('PancakeSwap has the most users of any decentralized platform, ever.')}
+      <Text textAlign="center" color="backgroundAlt">
+        {t('OrkSwap has the most engaged community on KCC.')}
       </Text>
       <Flex flexWrap="wrap">
-        <Text display="inline" textAlign="center" color="textSubtle" mb="20px">
+        <Text display="inline" textAlign="center" color="backgroundAlt" mb="20px">
           {entrusting}
           <>{tvl ? <>{tvlString}</> : <Skeleton display="inline-block" height={16} width={70} mt="2px" />}</>
           {inFunds}
         </Text>
       </Flex>
 
-      <Text textAlign="center" color="textSubtle" bold mb="32px">
+      <Text textAlign="center" color="backgroundAlt" bold mb="32px">
         {t('Will you join them?')}
       </Text>
 
@@ -69,17 +69,18 @@ const Stats = () => {
           <StatCardContent
             headingText={t('%trades% trades', { trades })}
             bodyText={t('made in the last 30 days')}
-            highlightColor={theme.colors.primary}
+            highlightColor={theme.colors.gold}
           />
         </IconCard>
         <IconCard {...StakedCardData}>
           <StatCardContent
             headingText={t('$%tvl% staked', { tvl: tvlString })}
             bodyText={t('Total Value Locked')}
-            highlightColor={theme.colors.failure}
+            highlightColor={theme.colors.secondary}
           />
         </IconCard>
       </Flex>
+
     </Flex>
   )
 }

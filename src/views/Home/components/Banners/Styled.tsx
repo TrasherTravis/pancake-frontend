@@ -2,19 +2,19 @@ import { Flex, Heading } from '@pancakeswap/uikit'
 import styled from 'styled-components'
 
 export const StyledSubheading = styled(Heading)`
-  background: -webkit-linear-gradient(#ffd800, #eb8c00);
-  font-size: 20px;
+  background: -webkit-linear-gradient(#ffffff, #ffffff);
+  font-size: 18px;
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   -webkit-text-stroke: 1px rgba(0, 0, 0, 0.5);
   ${({ theme }) => theme.mediaQueries.xs} {
-    font-size: 24px;
+    font-size: 22px;
   }
   ${({ theme }) => theme.mediaQueries.sm} {
     -webkit-text-stroke: unset;
   }
-  margin-bottom: 8px;
+  margin-bottom: 12px;
 `
 
 export const StyledHeading = styled(Heading)`

@@ -1,5 +1,5 @@
 import { ChainId, Token, WBNB } from '@pancakeswap/sdk'
-import { BUSD_BSC, CAKE_MAINNET, USDT_BSC } from './common'
+import { CAKE_MAINNET, USDT_BSC } from './common'
 
 export const bscTokens = {
   wbnb: WBNB[ChainId.BSC],
@@ -20,7 +20,38 @@ export const bscTokens = {
     'KPY',
     'https://www.binance.com/',
   ),
+  ork: new Token(
+    ChainId.BSC,
+    '0xD9088D9fa02b4F880eF6b71925c23F6983CCC789',
+    18,
+    'ORK',
+    'OrkSwap',
+    'https://orkswap.finance/',
+  ),
   cake: CAKE_MAINNET,
+
+  busd: new Token(
+    ChainId.BSC,
+    '0xE3F5a90F9cb311505cd691a46596599aA1A0AD7D',
+    18,
+    'BUSD',
+    'Binance-Peg USD Coin',
+    'https://www.centre.io/usdc',
+  ),
+
+  usdc: new Token(
+    ChainId.BSC,
+    '0x980a5AfEf3D17aD98635F6C5aebCBAedEd3c3430',
+    18,
+    'USDC',
+    'Binance-Peg USD Coin',
+    'https://www.centre.io/usdc',
+  ),
+  
+  usdt: USDT_BSC,
+
+  // End of KCC Tokens Here
+
   gmi: new Token(ChainId.BSC, '0x93D8d25E3C9A847a5Da79F79ecaC89461FEcA846', 18, 'GMI', 'Gamifi', 'https://gamifi.gg/'),
   tlos: new Token(
     ChainId.BSC,
@@ -79,7 +110,7 @@ export const bscTokens = {
     'ChainId.BSC Defi blue chips token',
     'https://powerpool.finance/',
   ),
-  busd: BUSD_BSC,
+
   dai: new Token(
     ChainId.BSC,
     '0x1AF3F329e8BE154074D8769D1FFa4eE058B1DBc3',
@@ -88,7 +119,7 @@ export const bscTokens = {
     'Dai Stablecoin',
     'https://www.makerdao.com/',
   ),
-  usdt: USDT_BSC,
+
   btcb: new Token(
     ChainId.BSC,
     '0x7130d2A12B9BCbFAe4f2634d864A1Ee1Ce3Ead9c',
@@ -113,14 +144,7 @@ export const bscTokens = {
     'Binance-Peg Ethereum Token',
     'https://ethereum.org/en/',
   ),
-  usdc: new Token(
-    ChainId.BSC,
-    '0x8AC76a51cc950d9822D68b83fE1Ad97B32Cd580d',
-    18,
-    'USDC',
-    'Binance-Peg USD Coin',
-    'https://www.centre.io/usdc',
-  ),
+
   kalm: new Token(
     ChainId.BSC,
     '0x4BA0057f784858a48fe351445C672FF2a3d43515',

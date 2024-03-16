@@ -1,35 +1,36 @@
+import { DeserializedPool, DeserializedPoolLockedVault, DeserializedPoolVault, VaultKey } from 'state/types'
+import { Flex, Heading, Image, Link, Text } from '@pancakeswap/uikit'
+import Select, { OptionProps } from 'components/Select/Select'
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
-import { createPortal } from 'react-dom'
-import styled from 'styled-components'
-import { BigNumber as EthersBigNumber } from '@ethersproject/bignumber'
-import { formatUnits } from '@ethersproject/units'
-import BigNumber from 'bignumber.js'
-import { useWeb3React } from '@pancakeswap/wagmi'
-import { Heading, Flex, Image, Text, Link } from '@pancakeswap/uikit'
-import orderBy from 'lodash/orderBy'
-import partition from 'lodash/partition'
-import { useTranslation } from '@pancakeswap/localization'
-import useIntersectionObserver from 'hooks/useIntersectionObserver'
 import { usePoolsPageFetch, usePoolsWithVault } from 'state/pools/hooks'
-import { latinise } from 'utils/latinise'
+import { useUserPoolStakedOnly, useUserPoolsViewMode } from 'state/user/hooks'
+
+import { BSC_BLOCK_TIME } from 'config'
+import BigNumber from 'bignumber.js'
+import CakeVaultCard from './components/CakeVaultCard'
+import { BigNumber as EthersBigNumber } from '@ethersproject/bignumber'
 import FlexLayout from 'components/Layout/Flex'
+import Loading from 'components/Loading'
 import Page from 'components/Layout/Page'
 import PageHeader from 'components/PageHeader'
-import SearchInput from 'components/SearchInput'
-import Select, { OptionProps } from 'components/Select/Select'
-import { DeserializedPool, DeserializedPoolVault, VaultKey, DeserializedPoolLockedVault } from 'state/types'
-import { useUserPoolStakedOnly, useUserPoolsViewMode } from 'state/user/hooks'
-import { ViewMode } from 'state/user/actions'
-import { useRouter } from 'next/router'
-import Loading from 'components/Loading'
-import { useInitialBlock } from 'state/block/hooks'
-import { BSC_BLOCK_TIME } from 'config'
-import ScrollToTopButton from 'components/ScrollToTopButton/ScrollToTopButtonV2'
 import PoolCard from './components/PoolCard'
-import CakeVaultCard from './components/CakeVaultCard'
 import PoolTabButtons from './components/PoolTabButtons'
 import PoolsTable from './components/PoolsTable/PoolsTable'
+import ScrollToTopButton from 'components/ScrollToTopButton/ScrollToTopButtonV2'
+import SearchInput from 'components/SearchInput'
+import { ViewMode } from 'state/user/actions'
+import { createPortal } from 'react-dom'
+import { formatUnits } from '@ethersproject/units'
 import { getCakeVaultEarnings } from './helpers'
+import { latinise } from 'utils/latinise'
+import orderBy from 'lodash/orderBy'
+import partition from 'lodash/partition'
+import styled from 'styled-components'
+import { useInitialBlock } from 'state/block/hooks'
+import useIntersectionObserver from 'hooks/useIntersectionObserver'
+import { useRouter } from 'next/router'
+import { useTranslation } from '@pancakeswap/localization'
+import { useWeb3React } from '@pancakeswap/wagmi'
 
 const CardLayout = styled(FlexLayout)`
   justify-content: center;
@@ -182,7 +183,7 @@ const Pools: React.FC<React.PropsWithChildren> = () => {
   const openPoolsWithStartBlockFilter = useMemo(
     () =>
       openPools.filter((pool) =>
-        initialBlock > 0 && pool.startBlock
+        initialBlock >= 0 && pool.startBlock
           ? Number(pool.startBlock) < initialBlock + POOL_START_BLOCK_THRESHOLD
           : true,
       ),
@@ -260,7 +261,7 @@ const Pools: React.FC<React.PropsWithChildren> = () => {
       )}
     </CardLayout>
   )
-
+  console.log({status: pools})
   const tableLayout = <PoolsTable urlSearch={normalizedUrlSearch} pools={chosenPools} account={account} />
 
   return (
@@ -269,10 +270,10 @@ const Pools: React.FC<React.PropsWithChildren> = () => {
         <Flex justifyContent="space-between" flexDirection={['column', null, null, 'row']}>
           <Flex flex="1" flexDirection="column" mr={['8px', 0]}>
             <Heading as="h1" scale="xxl" color="secondary" mb="24px">
-              {t('Syrup Pools')}
+              {t('Pools')}
             </Heading>
             <Heading scale="md" color="text">
-              {t('Just stake some tokens to earn.')}
+              {t('Just stake some tokens to earn Ork.')}
             </Heading>
             <Heading scale="md" color="text">
               {t('High APR, low risk.')}

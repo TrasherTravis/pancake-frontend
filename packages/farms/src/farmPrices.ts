@@ -91,7 +91,7 @@ const getFarmFromTokenAddress = (
 
 const filterFarmsByQuoteToken = (
   farms: SerializedFarmPublicData[],
-  preferredQuoteTokens: string[] = ['BUSD', 'WBNB'],
+  preferredQuoteTokens: string[] = ['BUSD', 'KCS'],
 ): SerializedFarmPublicData => {
   const preferredFarm = farms.find((farm) => {
     return preferredQuoteTokens.some((quoteToken) => {

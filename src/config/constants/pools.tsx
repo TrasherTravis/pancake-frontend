@@ -1,6 +1,6 @@
 import { BigNumber } from '@ethersproject/bignumber'
-import Trans from 'components/Trans'
-import { VaultKey } from 'state/types'
+// import Trans from 'components/Trans'
+// import { VaultKey } from 'state/types'
 import { bscTokens } from '@pancakeswap/tokens'
 import { SerializedPoolConfig, PoolCategory } from './types'
 
@@ -11,61 +11,62 @@ export const BOOST_WEIGHT = BigNumber.from('20000000000000')
 export const DURATION_FACTOR = BigNumber.from('31536000')
 
 export const vaultPoolConfig = {
-  [VaultKey.CakeVaultV1]: {
-    name: <Trans>Auto CAKE</Trans>,
-    description: <Trans>Automatic restaking</Trans>,
-    autoCompoundFrequency: 5000,
-    gasLimit: 380000,
-    tokenImage: {
-      primarySrc: `/images/tokens/${bscTokens.cake.address}.svg`,
-      secondarySrc: '/images/tokens/autorenew.svg',
-    },
-  },
-  [VaultKey.CakeVault]: {
-    name: <Trans>Stake ORK</Trans>,
-    description: <Trans>Stake, Earn – And more!</Trans>,
-    autoCompoundFrequency: 5000,
-    gasLimit: 500000,
-    tokenImage: {
-      primarySrc: `/images/tokens/${bscTokens.cake.address}.png`,
-      secondarySrc: '/images/tokens/autorenew.svg',
-    },
-  },
-  [VaultKey.CakeFlexibleSideVault]: {
-    name: <Trans>Flexible CAKE</Trans>,
-    description: <Trans>Flexible staking on the side.</Trans>,
-    autoCompoundFrequency: 5000,
-    gasLimit: 500000,
-    tokenImage: {
-      primarySrc: `/images/tokens/${bscTokens.cake.address}.svg`,
-      secondarySrc: '/images/tokens/autorenew.svg',
-    },
-  },
-  [VaultKey.IfoPool]: {
-    name: 'IFO CAKE',
-    description: <Trans>Stake CAKE to participate in IFOs</Trans>,
-    autoCompoundFrequency: 1,
-    gasLimit: 500000,
-    tokenImage: {
-      primarySrc: `/images/tokens/${bscTokens.cake.address}.svg`,
-      secondarySrc: `/images/tokens/ifo-pool-icon.svg`,
-    },
-  },
+//   [VaultKey.CakeVaultV1]: {
+//     name: <Trans>Auto CAKE</Trans>,
+//     description: <Trans>Automatic restaking</Trans>,
+//     autoCompoundFrequency: 5000,
+//     gasLimit: 380000,
+//     tokenImage: {
+//       primarySrc: `/images/tokens/${bscTokens.cake.address}.svg`,
+//       secondarySrc: '/images/tokens/autorenew.svg',
+//     },
+//   },
+//   [VaultKey.CakeVault]: {
+//     name: <Trans>Stake ORK</Trans>,
+//     description: <Trans>Stake, Earn – And more!</Trans>,
+//     autoCompoundFrequency: 5000,
+//     gasLimit: 500000,
+//     tokenImage: {
+//       primarySrc: `/images/tokens/${bscTokens.cake.address}.png`,
+//       secondarySrc: '/images/tokens/autorenew.svg',
+//     },
+//   },
+//   [VaultKey.CakeFlexibleSideVault]: {
+//     name: <Trans>Flexible CAKE</Trans>,
+//     description: <Trans>Flexible staking on the side.</Trans>,
+//     autoCompoundFrequency: 5000,
+//     gasLimit: 500000,
+//     tokenImage: {
+//       primarySrc: `/images/tokens/${bscTokens.cake.address}.svg`,
+//       secondarySrc: '/images/tokens/autorenew.svg',
+//     },
+//   },
+//   [VaultKey.IfoPool]: {
+//     name: 'IFO CAKE',
+//     description: <Trans>Stake CAKE to participate in IFOs</Trans>,
+//     autoCompoundFrequency: 1,
+//     gasLimit: 500000,
+//     tokenImage: {
+//       primarySrc: `/imahttps://github.com/TrasherTravis/pancake-frontend/blob/develop/src/config/constants/contracts.tsges/tokens/${bscTokens.cake.address}.svg`,
+//       secondarySrc: `/images/tokens/ifo-pool-icon.svg`,
+//     },
+//   },
 } as const
 
 export const livePools: SerializedPoolConfig[] = [
   {
     sousId: 0,
-    stakingToken: bscTokens.cake,
-    earningToken: bscTokens.cake,
+    stakingToken: bscTokens.ork,
+    earningToken: bscTokens.ork,
     contractAddress: {
       97: '0xB4A466911556e39210a6bB2FaECBB59E4eB7E43d',
-      321: '0x9FCc206E5c08f6CFa0d8A6abA4843e61E402eac0',
+      321: '0xeB62cD87F456048183C4Ed6302df1d7Cc88acc04',
     },
     poolCategory: PoolCategory.CORE,
-    tokenPerBlock: '10',
+    tokenPerBlock: '30',
     isFinished: false,
   },
+
   // {
   //   sousId: 298,
   //   stakingToken: bscTokens.cake,
@@ -73,7 +74,17 @@ export const livePools: SerializedPoolConfig[] = [
   //   contractAddress: {
   //     56: '0x6C254E3AB3e4B909A2CfAA3E0b9d2B3F7887CFae',
   //     97: '',
+  //   sousId: 291,
+  //   stakingToken: bscTokens.cake,
+  //   earningToken: bscTokens.pstake,
+  //   contractAddress: {
+  //     56: '0x56D6955Ba6404647191DD7A5D65A5c9Fe43905e1',
+  //     97: '',
   //   },
+  //   poolCategory: PoolCategory.CORE,
+  //   tokenPerBlock: '1.1574',
+  //   version: 3,
+  // },  },
   //   poolCategory: PoolCategory.CORE,
   //   tokenPerBlock: '2.146',
   //   version: 3,
@@ -97,7 +108,17 @@ export const livePools: SerializedPoolConfig[] = [
   //   contractAddress: {
   //     56: '0x983A241Bfe910fcFa3E70744AA21AAe5f45861f0',
   //     97: '',
+  //   sousId: 291,
+  //   stakingToken: bscTokens.cake,
+  //   earningToken: bscTokens.pstake,
+  //   contractAddress: {
+  //     56: '0x56D6955Ba6404647191DD7A5D65A5c9Fe43905e1',
+  //     97: '',
   //   },
+  //   poolCategory: PoolCategory.CORE,
+  //   tokenPerBlock: '1.1574',
+  //   version: 3,
+  // },  },
   //   poolCategory: PoolCategory.CORE,
   //   tokenPerBlock: '55.6446',
   //   version: 3,
@@ -151,17 +172,7 @@ export const livePools: SerializedPoolConfig[] = [
   //   version: 3,
   // },
   // {
-  //   sousId: 291,
-  //   stakingToken: bscTokens.cake,
-  //   earningToken: bscTokens.pstake,
-  //   contractAddress: {
-  //     56: '0x56D6955Ba6404647191DD7A5D65A5c9Fe43905e1',
-  //     97: '',
-  //   },
-  //   poolCategory: PoolCategory.CORE,
-  //   tokenPerBlock: '1.1574',
-  //   version: 3,
-  // },
+  // 
   // {
   //   sousId: 290,
   //   stakingToken: bscTokens.cake,

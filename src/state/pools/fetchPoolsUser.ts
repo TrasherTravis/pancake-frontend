@@ -1,18 +1,19 @@
-import poolsConfig from 'config/constants/pools'
-import sousChefABI from 'config/abi/sousChef.json'
-import erc20ABI from 'config/abi/erc20.json'
-import multicall from 'utils/multicall'
-import { getAddress } from 'utils/addressHelpers'
-import { bscRpcProvider } from 'utils/providers'
 import BigNumber from 'bignumber.js'
-import uniq from 'lodash/uniq'
+import { bscRpcProvider } from 'utils/providers'
+import erc20ABI from 'config/abi/erc20.json'
 import fromPairs from 'lodash/fromPairs'
+import { getAddress } from 'utils/addressHelpers'
+// import sousChefABI from 'config/abi/sousChef.json'
+import masterChefABI from 'config/abi/masterchef.json'
+import multicall from 'utils/multicall'
+import poolsConfig from 'config/constants/pools'
+import uniq from 'lodash/uniq'
 
 // Pool 0, Cake / Cake is a different kind of contract (master chef)
 // BNB pools use the native BNB token (wrapping ? unwrapping is done at the contract level)
-const nonBnbPools = poolsConfig.filter((pool) => pool.stakingToken.symbol !== 'BNB')
-const bnbPools = poolsConfig.filter((pool) => pool.stakingToken.symbol === 'BNB')
-const nonMasterPools = poolsConfig.filter((pool) => pool.sousId !== 0)
+const nonBnbPools = poolsConfig.filter((pool) => pool.stakingToken.symbol !== 'KCS')
+const bnbPools = poolsConfig.filter((pool) => pool.stakingToken.symbol === 'KCS')
+const nonMasterPools = poolsConfig.filter((pool) => pool.sousId !== 100)   // Changed from 0 to 100
 
 export const fetchPoolsAllowance = async (account) => {
   const calls = nonBnbPools.map((pool) => ({
@@ -56,23 +57,23 @@ export const fetchUserBalances = async (account) => {
 }
 
 export const fetchUserStakeBalances = async (account) => {
-  const calls = nonMasterPools.map((p) => ({
-    address: getAddress(p.contractAddress),
+  const calls = nonMasterPools.map((pool) => ({
+    address: getAddress(pool.contractAddress),
     name: 'userInfo',
-    params: [account],
+    params: [pool.sousId, account],
   }))
-  const userInfo = await multicall(sousChefABI, calls)
+  const userInfo = await multicall(masterChefABI, calls)
   return fromPairs(
     nonMasterPools.map((pool, index) => [pool.sousId, new BigNumber(userInfo[index].amount._hex).toJSON()]),
   )
 }
 
 export const fetchUserPendingRewards = async (account) => {
-  const calls = nonMasterPools.map((p) => ({
-    address: getAddress(p.contractAddress),
-    name: 'pendingReward',
-    params: [account],
+  const calls = nonMasterPools.map((pool) => ({
+    address: getAddress(pool.contractAddress),
+    name: 'pendingOrk',
+    params: [pool.sousId, account],
   }))
-  const res = await multicall(sousChefABI, calls)
+  const res = await multicall(masterChefABI, calls)
   return fromPairs(nonMasterPools.map((pool, index) => [pool.sousId, new BigNumber(res[index]).toJSON()]))
 }

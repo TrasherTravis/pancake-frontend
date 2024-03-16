@@ -1,23 +1,24 @@
-import { useCallback } from 'react'
+import { BOOSTED_FARM_GAS_LIMIT, DEFAULT_TOKEN_DECIMAL } from 'config'
+
 import BigNumber from 'bignumber.js'
-import { DEFAULT_TOKEN_DECIMAL, BOOSTED_FARM_GAS_LIMIT } from 'config'
 import { getFullDecimalMultiplier } from 'utils/getFullDecimalMultiplier'
-import { useSousChef } from 'hooks/useContract'
+import { useCallback } from 'react'
 import { useGasPrice } from 'state/user/hooks'
+import { useSousChef } from 'hooks/useContract'
 
 const options = {
   gasLimit: BOOSTED_FARM_GAS_LIMIT,
 }
 
-const sousStake = async (sousChefContract, amount, decimals = 18, gasPrice: string) => {
-  return sousChefContract.deposit(new BigNumber(amount).times(getFullDecimalMultiplier(decimals)).toString(), {
+const sousStake = async (sousId, sousChefContract, amount, decimals = 18, gasPrice: string) => {
+  return sousChefContract.deposit(sousId, new BigNumber(amount).times(getFullDecimalMultiplier(decimals)).toString(), {
     ...options,
     gasPrice,
   })
 }
 
-const sousStakeBnb = async (sousChefContract, amount, gasPrice: string) => {
-  return sousChefContract.deposit(new BigNumber(amount).times(DEFAULT_TOKEN_DECIMAL).toString(), {
+const sousStakeBnb = async (sousId, sousChefContract, amount, gasPrice: string) => {
+  return sousChefContract.deposit(sousId, new BigNumber(amount).times(DEFAULT_TOKEN_DECIMAL).toString(), {
     ...options,
     gasPrice,
   })
@@ -26,13 +27,15 @@ const sousStakeBnb = async (sousChefContract, amount, gasPrice: string) => {
 const useStakePool = (sousId: number, isUsingBnb = false) => {
   const sousChefContract = useSousChef(sousId)
   const gasPrice = useGasPrice()
-
+  console.log('sousId', sousId)
   const handleStake = useCallback(
     async (amount: string, decimals: number) => {
       if (isUsingBnb) {
-        return sousStakeBnb(sousChefContract, amount, gasPrice)
+        console.log(1);
+        return sousStakeBnb(sousId, sousChefContract, amount, gasPrice)
       }
-      return sousStake(sousChefContract, amount, decimals, gasPrice)
+      console.log(2);
+      return sousStake(sousId, sousChefContract, amount, decimals, gasPrice)
     },
     [isUsingBnb, sousChefContract, gasPrice],
   )

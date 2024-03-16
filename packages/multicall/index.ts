@@ -1,7 +1,8 @@
-import { Interface } from '@ethersproject/abi'
 import { CallOverrides, Contract } from '@ethersproject/contracts'
-import { Provider } from '@ethersproject/providers'
+
 import { ChainId } from '@pancakeswap/sdk'
+import { Interface } from '@ethersproject/abi'
+import { Provider } from '@ethersproject/providers'
 import multicallAbi from './Multicall.json'
 
 export const multicallAddresses = {
@@ -78,6 +79,7 @@ export function createMulticall<TProvider>(provider: ({ chainId }: { chainId?: n
   const multicallv2: MultiCallV2 = async ({ abi, calls, chainId = ChainId.BSC, options, provider: _provider }) => {
     const { requireSuccess = true, ...overrides } = options || {}
     const multi = getMulticallContract(chainId, _provider || provider({ chainId }))
+    
     if (!multi) throw new Error(`Multicall Provider missing for ${chainId}`)
     const itf = new Interface(abi)
 
@@ -87,11 +89,12 @@ export function createMulticall<TProvider>(provider: ({ chainId }: { chainId?: n
     }))
 
     const returnData = await multi.callStatic.tryAggregate(requireSuccess, calldata, overrides)
+    
     const res = returnData.map((call, i) => {
       const [result, data] = call
       return result ? itf.decodeFunctionResult(calls[i].name, data) : null
     })
-
+    
     return res as any
   }
 

@@ -1,4 +1,3 @@
-import { useTranslation } from '@pancakeswap/localization'
 import {
   ArrowForwardIcon,
   AutoRenewIcon,
@@ -10,19 +9,21 @@ import {
   Text,
   useToast,
 } from '@pancakeswap/uikit'
-import BigNumber from 'bignumber.js'
+
 import Balance from 'components/Balance'
+import BigNumber from 'bignumber.js'
 import { NextLinkFromReactRouter } from 'components/NextLink'
 import { ToastDescriptionWithTx } from 'components/Toast'
-import useCatchTxError from 'hooks/useCatchTxError'
-import { useMasterchef } from 'hooks/useContract'
-import { useCallback } from 'react'
-import { usePriceCakeBusd } from 'state/farms/hooks'
-import { useGasPrice } from 'state/user/hooks'
-import styled from 'styled-components'
-import { harvestFarm } from 'utils/calls'
-import useFarmsWithBalance from 'views/Home/hooks/useFarmsWithBalance'
 import { getEarningsText } from './EarningsText'
+import { harvestFarm } from 'utils/calls'
+import styled from 'styled-components'
+import { useCallback } from 'react'
+import useCatchTxError from 'hooks/useCatchTxError'
+import useFarmsWithBalance from 'views/Home/hooks/useFarmsWithBalance'
+import { useGasPrice } from 'state/user/hooks'
+import { useMasterchef } from 'hooks/useContract'
+import { usePriceCakeBusd } from 'state/farms/hooks'
+import { useTranslation } from '@pancakeswap/localization'
 
 const StyledCard = styled(Card)`
   width: 100%;
@@ -42,7 +43,7 @@ const HarvestCard = () => {
   const numTotalToCollect = farmsWithStakedBalance.length
   const numFarmsToCollect = farmsWithStakedBalance.filter((value) => value.pid !== 0).length
   const hasCakePoolToCollect = numTotalToCollect - numFarmsToCollect > 0
-
+  
   const earningsText = getEarningsText(numFarmsToCollect, hasCakePoolToCollect, earningsBusd, t)
   const [preText, toCollectText] = earningsText.split(earningsBusd.toString())
 
@@ -53,6 +54,7 @@ const HarvestCard = () => {
       const receipt = await fetchWithCatchTxError(() => {
         return harvestFarm(masterChefContract, farmWithBalance.pid, gasPrice)
       })
+      
       if (receipt?.status) {
         toastSuccess(
           `${t('Harvested')}!`,

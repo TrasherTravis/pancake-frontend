@@ -1,35 +1,36 @@
-import { getFarmConfig } from '@pancakeswap/farms/constants'
-import { createFarmFetcher } from '@pancakeswap/farms'
-import { ChainId } from '@pancakeswap/sdk'
-import { createAsyncThunk, createSlice, isAnyOf } from '@reduxjs/toolkit'
+import { SerializedFarm, SerializedFarmsState } from '../types'
 import type {
   UnknownAsyncThunkFulfilledAction,
   UnknownAsyncThunkPendingAction,
   UnknownAsyncThunkRejectedAction,
 } from '@reduxjs/toolkit/dist/matchers'
-import BigNumber from 'bignumber.js'
-import masterchefABI from 'config/abi/masterchef.json'
-import { FARM_API } from 'config/constants/endpoints'
-import { getFarmsPriceHelperLpFiles } from 'config/constants/priceHelperLps'
-import stringify from 'fast-json-stable-stringify'
-import fromPairs from 'lodash/fromPairs'
-import type { AppState } from 'state'
-import { getMasterChefAddress } from 'utils/addressHelpers'
-import { getBalanceAmount } from 'utils/formatBalance'
-import multicall, { multicallv2 } from 'utils/multicall'
-import { chains } from 'utils/wagmi'
-import splitProxyFarms from 'views/Farms/components/YieldBooster/helpers/splitProxyFarms'
-import { resetUserState } from '../global/actions'
-import { SerializedFarm, SerializedFarmsState } from '../types'
-import fetchFarms from './fetchFarms'
+import { createAsyncThunk, createSlice, isAnyOf } from '@reduxjs/toolkit'
 import {
   fetchFarmUserAllowances,
   fetchFarmUserEarnings,
   fetchFarmUserStakedBalances,
   fetchFarmUserTokenBalances,
 } from './fetchFarmUser'
+import multicall, { multicallv2 } from 'utils/multicall'
+
+import type { AppState } from 'state'
+import BigNumber from 'bignumber.js'
+import { ChainId } from '@pancakeswap/sdk'
+import { FARM_API } from 'config/constants/endpoints'
+import { chains } from 'utils/wagmi'
+import { createFarmFetcher } from '@pancakeswap/farms'
+import fetchFarms from './fetchFarms'
 import { fetchMasterChefFarmPoolLength } from './fetchMasterChefData'
+import fromPairs from 'lodash/fromPairs'
+import { getBalanceAmount } from 'utils/formatBalance'
+import { getFarmConfig } from '@pancakeswap/farms/constants'
+import { getFarmsPriceHelperLpFiles } from 'config/constants/priceHelperLps'
 import getFarmsPrices from './getFarmsPrices'
+import { getMasterChefAddress } from 'utils/addressHelpers'
+import masterchefABI from 'config/abi/masterchef.json'
+import { resetUserState } from '../global/actions'
+import splitProxyFarms from 'views/Farms/components/YieldBooster/helpers/splitProxyFarms'
+import stringify from 'fast-json-stable-stringify'
 
 /**
  * @deprecated
@@ -85,19 +86,33 @@ const initialState: SerializedFarmsState = {
 }
 
 // Async thunks
-export const fetchInitialFarmsData = createAsyncThunk<SerializedFarm[], { chainId: number }>(
+export const fetchInitialFarmsData = createAsyncThunk<SerializedFarm[], { chainId: number }, {state: AppState}>(
   'farms/fetchInitialFarmsData',
-  async ({ chainId }) => {
+  async ({ chainId }, {getState}) => {
     const farmDataList = await getFarmConfig(chainId)
-    return farmDataList.map((farm) => ({
-      ...farm,
-      userData: {
-        allowance: '0',
-        tokenBalance: '0',
-        stakedBalance: '0',
-        earnings: '0',
-      },
-    }))
+    const {farms} = getState()
+    // return farmDataList.map((farm) => ({
+    //   ...farm,
+    //   userData: {
+    //     allowance: '0',
+    //     tokenBalance: '0',
+    //     stakedBalance: '0',
+    //     earnings: '0',
+    //   },
+    // }))
+    return farmDataList.map((farm) => {
+      const data = farms?.data?.find(data => data?.pid === farm.pid)
+      const userData = data?.userData || {
+          allowance: '0',
+          tokenBalance: '0',
+          stakedBalance: '0',
+          earnings: '0',
+        }
+      return {
+        ...farm,
+        userData: userData,
+      }
+    })
   },
 )
 

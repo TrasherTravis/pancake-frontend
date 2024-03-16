@@ -209,13 +209,13 @@ export function createTotalStrategy(poolAddress, version: 'v0' | 'v1') {
 }
 
 export function lockedCakeUser(
-  cakeVaultAddress,
+  masterChefAddress,
   outputName: 'lockedAmount' | 'lockEndTime' | 'shares' | 'userBoostedShare',
 ) {
   return {
     name: 'contract-call',
     params: {
-      address: cakeVaultAddress,
+      address: masterChefAddress,
       decimals: 0,
       output: outputName,
       args: ['%{address}'],
@@ -282,11 +282,11 @@ export function lockedCakeUser(
   }
 }
 
-export function lockedCakeShare(cakeVaultAddress) {
+export function lockedCakeShare(masterChefAddress) {
   return {
     name: 'contract-call',
     params: {
-      address: cakeVaultAddress,
+      address: masterChefAddress,
       decimals: 0,
       methodABI: {
         inputs: [],

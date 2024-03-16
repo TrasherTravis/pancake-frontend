@@ -1,11 +1,12 @@
-import { useTranslation } from '@pancakeswap/localization'
+import { useEffect, useRef, useState } from 'react'
 import { useModal, useToast } from '@pancakeswap/uikit'
-import { useWeb3React } from '@pancakeswap/wagmi'
+
+import AnniversaryAchievementModal from './AnniversaryAchievementModal'
 import { ToastDescriptionWithTx } from 'components/Toast'
 import { useAnniversaryAchievementContract } from 'hooks/useContract'
 import { useRouter } from 'next/router'
-import { useEffect, useRef, useState } from 'react'
-import AnniversaryAchievementModal from './AnniversaryAchievementModal'
+import { useTranslation } from '@pancakeswap/localization'
+import { useWeb3React } from '@pancakeswap/wagmi'
 
 interface GlobalCheckClaimStatusProps {
   excludeLocations: string[]
@@ -16,6 +17,7 @@ const enable = true
 
 const GlobalCheckClaimStatus: React.FC<React.PropsWithChildren<GlobalCheckClaimStatusProps>> = (props) => {
   const { account } = useWeb3React()
+ 
   if (!enable) {
     return null
   }
@@ -39,7 +41,7 @@ const GlobalCheckClaim: React.FC<React.PropsWithChildren<GlobalCheckClaimStatusP
       onClick={async () => {
         try {
           const tx = await claimAnniversaryPoints()
-
+          
           toastSuccess(t('Success!'), <ToastDescriptionWithTx txHash={tx.hash} />)
 
           await tx.wait()
@@ -53,32 +55,33 @@ const GlobalCheckClaim: React.FC<React.PropsWithChildren<GlobalCheckClaimStatusP
 
   const { account } = useWeb3React()
   const { pathname } = useRouter()
+
   // Check claim status
-  useEffect(() => {
-    const fetchClaimAnniversaryStatus = async () => {
-      const canClaimAnniversary = await canClaim(account)
-      setCanClaimAnniversaryPoints(canClaimAnniversary)
-    }
+  // useEffect(() => {
+  //   const fetchClaimAnniversaryStatus = async () => {
+  //     const canClaimAnniversary = await canClaim(account)
+  //     setCanClaimAnniversaryPoints(canClaimAnniversary)
+  //   }
 
-    if (account) {
-      fetchClaimAnniversaryStatus()
-    }
-  }, [account, canClaim])
+  //   if (account) {
+  //     fetchClaimAnniversaryStatus()
+  //   }
+  // }, [account, canClaim])
 
-  // // Check if we need to display the modal
-  useEffect(() => {
-    const matchesSomeLocations = excludeLocations.some((location) => pathname.includes(location))
+  // // // Check if we need to display the modal
+  // useEffect(() => {
+  //   const matchesSomeLocations = excludeLocations.some((location) => pathname.includes(location))
 
-    if (canClaimAnniversaryPoints && !matchesSomeLocations && !hasDisplayedModal.current) {
-      onPresentAnniversaryModal()
-      hasDisplayedModal.current = true
-    }
-  }, [pathname, excludeLocations, hasDisplayedModal, canClaim, canClaimAnniversaryPoints, onPresentAnniversaryModal])
+  //   if (canClaimAnniversaryPoints && !matchesSomeLocations && !hasDisplayedModal.current) {
+  //     onPresentAnniversaryModal()
+  //     hasDisplayedModal.current = true
+  //   }
+  // }, [pathname, excludeLocations, hasDisplayedModal, canClaim, canClaimAnniversaryPoints, onPresentAnniversaryModal])
 
-  // Reset the check flag when account changes
-  useEffect(() => {
-    hasDisplayedModal.current = false
-  }, [account, hasDisplayedModal])
+  // // Reset the check flag when account changes
+  // useEffect(() => {
+  //   hasDisplayedModal.current = false
+  // }, [account, hasDisplayedModal])
 
   return null
 }

@@ -1,20 +1,20 @@
-import styled, { keyframes, css } from 'styled-components'
-import useActiveWeb3React from 'hooks/useActiveWeb3React'
-import { useTranslation } from '@pancakeswap/localization'
-import { LinkExternal, Text, useMatchBreakpoints } from '@pancakeswap/uikit'
-import getLiquidityUrlPathParts from 'utils/getLiquidityUrlPathParts'
-import { getBlockExploreLink } from 'utils'
-import { useContext } from 'react'
-import { FarmWithStakedValue } from '../../types'
-
-import { HarvestAction, HarvestActionContainer, ProxyHarvestActionContainer } from './HarvestAction'
-import StakedAction, { ProxyStakedContainer, StakedContainer } from './StakedAction'
+import { ActionContainer as ActionContainerSection, ActionContent, ActionTitles } from './styles'
 import Apr, { AprProps } from '../Apr'
-import Multiplier, { MultiplierProps } from '../Multiplier'
+import { HarvestAction, HarvestActionContainer, ProxyHarvestActionContainer } from './HarvestAction'
+import { LinkExternal, Text, useMatchBreakpoints } from '@pancakeswap/uikit'
 import Liquidity, { LiquidityProps } from '../Liquidity'
+import Multiplier, { MultiplierProps } from '../Multiplier'
+import StakedAction, { ProxyStakedContainer, StakedContainer } from './StakedAction'
+import styled, { css, keyframes } from 'styled-components'
+
 import BoostedAction from '../../YieldBooster/components/BoostedAction'
-import { ActionTitles, ActionContainer as ActionContainerSection, ActionContent } from './styles'
+import { FarmWithStakedValue } from '../../types'
 import { YieldBoosterStateContext } from '../../YieldBooster/components/ProxyFarmContainer'
+import { getBlockExploreLink } from 'utils'
+import getLiquidityUrlPathParts from 'utils/getLiquidityUrlPathParts'
+import useActiveWeb3React from 'hooks/useActiveWeb3React'
+import { useContext } from 'react'
+import { useTranslation } from '@pancakeswap/localization'
 
 export interface ActionPanelProps {
   apr: AprProps

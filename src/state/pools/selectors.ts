@@ -1,10 +1,11 @@
-import BigNumber from 'bignumber.js'
-import { BIG_ZERO } from 'utils/bigNumber'
-import { createSelector } from '@reduxjs/toolkit'
 import { State, VaultKey } from '../types'
+import { VaultPosition, getVaultPosition } from '../../utils/cakePool'
 import { transformPool, transformVault } from './helpers'
+
+import { BIG_ZERO } from 'utils/bigNumber'
+import BigNumber from 'bignumber.js'
+import { createSelector } from '@reduxjs/toolkit'
 import { initialPoolVaultState } from './index'
-import { getVaultPosition, VaultPosition } from '../../utils/cakePool'
 
 const selectPoolsData = (state: State) => state.pools.data
 const selectPoolData = (sousId) => (state: State) => state.pools.data.find((p) => p.sousId === sousId)
@@ -35,14 +36,14 @@ export const poolsWithVaultSelector = createSelector(
   ],
   (poolsWithUserDataLoading, deserializedLockedCakeVault, deserializedFlexibleSideCakeVault) => {
     const { pools, userDataLoaded } = poolsWithUserDataLoading
-    const cakePool = pools.find((pool) => !pool.isFinished && pool.sousId === 0)
-    const withoutCakePool = pools.filter((pool) => pool.sousId !== 0)
+    // const cakePool = pools.find((pool) => !pool.isFinished && pool.sousId === 0)
+    const withoutCakePool = pools
 
     const cakeAutoVault = {
-      ...cakePool,
+      // ...cakePool,
       ...deserializedLockedCakeVault,
       vaultKey: VaultKey.CakeVault,
-      userData: { ...cakePool.userData, ...deserializedLockedCakeVault.userData },
+      userData: {  ...deserializedLockedCakeVault.userData },  // ...cakePool.userData,
     }
 
     const lockedVaultPosition = getVaultPosition(deserializedLockedCakeVault.userData)
@@ -52,20 +53,20 @@ export const poolsWithVaultSelector = createSelector(
       lockedVaultPosition > VaultPosition.Flexible || hasFlexibleSideSharesStaked
         ? [
             {
-              ...cakePool,
+              // ...cakePool,
               ...deserializedFlexibleSideCakeVault,
               vaultKey: VaultKey.CakeFlexibleSideVault,
-              userData: { ...cakePool.userData, ...deserializedFlexibleSideCakeVault.userData },
+              userData: {  ...deserializedFlexibleSideCakeVault.userData }, // ...cakePool.userData,
             },
           ]
         : []
 
-    return { pools: [cakeAutoVault, ...cakeAutoFlexibleSideVault, ...withoutCakePool], userDataLoaded }
+    return { pools: [ ...withoutCakePool], userDataLoaded }  // cakeAutoVault, ...cakeAutoFlexibleSideVault,
   },
 )
 
-export const makeVaultPoolWithKeySelector = (vaultKey) =>
-  createSelector(poolsWithVaultSelector, ({ pools }) => pools.find((p) => p.vaultKey === vaultKey))
+// export const makeVaultPoolWithKeySelector = (vaultKey) =>
+//   createSelector(poolsWithVaultSelector, ({ pools }) => pools.find((p) => p.vaultKey === vaultKey))
 
 export const ifoCreditSelector = createSelector([selectIfoUserCredit], (ifoUserCredit) => {
   return new BigNumber(ifoUserCredit)

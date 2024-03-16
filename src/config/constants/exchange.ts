@@ -27,9 +27,9 @@ export const BASES_TO_CHECK_TRADES_AGAINST: ChainTokenList = {
     bscTokens.cake,
     bscTokens.busd,
     bscTokens.usdt,
-    bscTokens.btcb,
-    bscTokens.eth,
+    bscTokens.kpy,
     bscTokens.usdc,
+    bscTokens.busd,
   ],
   [ChainId.BSC_TESTNET]: [bscTestnetTokens.wbnb, bscTestnetTokens.cake, bscTestnetTokens.busd],
 }
@@ -59,7 +59,7 @@ export const SUGGESTED_BASES: ChainTokenList = {
   [ChainId.ETHEREUM]: [USDC[ChainId.ETHEREUM], WBNB[ChainId.ETHEREUM], BUSD[ChainId.ETHEREUM], USDT[ChainId.ETHEREUM]],
   [ChainId.RINKEBY]: [USDC[ChainId.RINKEBY], WNATIVE[ChainId.RINKEBY], BUSD[ChainId.RINKEBY]],
   [ChainId.GOERLI]: [USDC[ChainId.GOERLI], WNATIVE[ChainId.GOERLI], BUSD[ChainId.GOERLI]],
-  [ChainId.BSC]: [bscTokens.busd, bscTokens.cake, bscTokens.btcb],
+  [ChainId.BSC]: [ bscTokens.cake, bscTokens.kpy, bscTokens.wbnb,],
   [ChainId.BSC_TESTNET]: [bscTestnetTokens.wbnb, bscTestnetTokens.cake, bscTestnetTokens.busd],
 }
 
@@ -74,7 +74,7 @@ export const BASES_TO_TRACK_LIQUIDITY_FOR: ChainTokenList = {
   ],
   [ChainId.RINKEBY]: [USDC[ChainId.RINKEBY], WNATIVE[ChainId.RINKEBY], BUSD[ChainId.RINKEBY]],
   [ChainId.GOERLI]: [USDC[ChainId.GOERLI], WNATIVE[ChainId.GOERLI], BUSD[ChainId.GOERLI]],
-  [ChainId.BSC]: [bscTokens.wbnb, bscTokens.dai, bscTokens.busd, bscTokens.usdt, bscTokens.cake],
+  [ChainId.BSC]: [bscTokens.wbnb, bscTokens.cake, bscTokens.kpy, bscTokens.usdt, bscTokens.busd],
   [ChainId.BSC_TESTNET]: [bscTestnetTokens.wbnb, bscTestnetTokens.cake, bscTestnetTokens.busd],
 }
 
@@ -88,8 +88,8 @@ export const PINNED_PAIRS: { readonly [chainId in ChainId]?: [Token, Token][] } 
   ],
   [ChainId.BSC]: [
     [bscTokens.cake, bscTokens.wbnb],
-    [bscTokens.busd, bscTokens.usdt],
-    [bscTokens.dai, bscTokens.usdt],
+    [bscTokens.kpy, bscTokens.cake],
+    [bscTokens.cake, bscTokens.busd],
   ],
 }
 
@@ -119,7 +119,7 @@ export const BASE_FEE = new Percent(JSBI.BigInt(25), BIPS_BASE)
 export const INPUT_FRACTION_AFTER_FEE = ONE_HUNDRED_PERCENT.subtract(BASE_FEE)
 
 // BNB
-export const DEFAULT_INPUT_CURRENCY = 'BNB'
+export const DEFAULT_INPUT_CURRENCY = 'KCS'
 // CAKE
 export const DEFAULT_OUTPUT_CURRENCY = '0xD9088D9fa02b4F880eF6b71925c23F6983CCC789'
 

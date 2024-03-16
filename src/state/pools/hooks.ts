@@ -1,37 +1,36 @@
-import { useEffect, useMemo } from 'react'
-import { useWeb3React } from '@pancakeswap/wagmi'
-import useActiveWeb3React from 'hooks/useActiveWeb3React'
+import { DeserializedPool, VaultKey } from '../types'
 import { batch, useSelector } from 'react-redux'
-import { useAppDispatch } from 'state'
-import { useFastRefreshEffect, useSlowRefreshEffect } from 'hooks/useRefreshEffect'
 import { featureFarmApiAtom, useFeatureFlag } from 'hooks/useFeatureFlag'
-import { getFarmConfig } from '@pancakeswap/farms/constants'
-import { livePools } from 'config/constants/pools'
-
 import {
-  fetchPoolsPublicDataAsync,
-  fetchPoolsUserDataAsync,
-  fetchCakeVaultPublicData,
-  fetchCakeVaultUserData,
-  fetchCakeVaultFees,
-  fetchPoolsStakingLimitsAsync,
-  fetchUserIfoCreditDataAsync,
-  fetchIfoPublicDataAsync,
+  fetchCakeFlexibleSideVaultFees,
   fetchCakeFlexibleSideVaultPublicData,
   fetchCakeFlexibleSideVaultUserData,
-  fetchCakeFlexibleSideVaultFees,
   fetchCakePoolUserDataAsync,
+  fetchCakeVaultFees,
+  fetchCakeVaultPublicData,
+  fetchCakeVaultUserData,
+  fetchIfoPublicDataAsync,
+  fetchPoolsPublicDataAsync,
+  fetchPoolsStakingLimitsAsync,
+  fetchPoolsUserDataAsync,
+  fetchUserIfoCreditDataAsync,
 } from '.'
-import { DeserializedPool, VaultKey } from '../types'
-import { fetchFarmsPublicDataAsync } from '../farms'
 import {
+  ifoCeilingSelector,
+  ifoCreditSelector,
   makePoolWithUserDataLoadingSelector,
   makeVaultPoolByKey,
   poolsWithVaultSelector,
-  ifoCreditSelector,
-  ifoCeilingSelector,
-  makeVaultPoolWithKeySelector,
 } from './selectors'
+import { useEffect, useMemo } from 'react'
+import { useFastRefreshEffect, useSlowRefreshEffect } from 'hooks/useRefreshEffect'
+
+import { fetchFarmsPublicDataAsync } from '../farms'
+import { getFarmConfig } from '@pancakeswap/farms/constants'
+import { livePools } from 'config/constants/pools'
+import useActiveWeb3React from 'hooks/useActiveWeb3React'
+import { useAppDispatch } from 'state'
+import { useWeb3React } from '@pancakeswap/wagmi'
 
 const lPoolAddresses = livePools.filter(({ sousId }) => sousId !== 0).map(({ earningToken }) => earningToken.address)
 
@@ -80,11 +79,11 @@ export const usePoolsWithVault = () => {
   return useSelector(poolsWithVaultSelector)
 }
 
-export const useDeserializedPoolByVaultKey = (vaultKey) => {
-  const vaultPoolWithKeySelector = useMemo(() => makeVaultPoolWithKeySelector(vaultKey), [vaultKey])
+// export const useDeserializedPoolByVaultKey = (vaultKey) => {
+//   const vaultPoolWithKeySelector = useMemo(() => makeVaultPoolWithKeySelector(vaultKey), [vaultKey])
 
-  return useSelector(vaultPoolWithKeySelector)
-}
+//   return useSelector(vaultPoolWithKeySelector)
+// }
 
 export const usePoolsPageFetch = () => {
   const { account } = useWeb3React()

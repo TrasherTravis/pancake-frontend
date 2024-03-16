@@ -67,12 +67,12 @@ export const fantomTestnet: Chain = {
   testnet: true,
 }
 
-const bscExplorer = { name: 'BscScan', url: 'https://bscscan.com' }
+const bscExplorer = { name: 'KccScan', url: 'https://scan.kcc.io' }
 
 export const bsc: Chain = {
   id: 321,
-  name: 'BNB Smart Chain',
-  network: 'bsc',
+  name: 'KuCoin Chain',
+  network: 'kcs',
   rpcUrls: {
     public: 'https://rpc-mainnet.kcc.network',
     default: 'https://rpc-mainnet.kcc.network',
@@ -106,7 +106,7 @@ export const bscTest: Chain = {
     default: 'https://data-seed-prebsc-1-s2.binance.org:8545/',
   },
   blockExplorers: {
-    default: { name: 'BscScan', url: 'https://testnet.bscscan.com' },
+    default: { name: 'KccScan', url: 'https://testnet.scan.kcc.io' },
   },
   multicall: {
     address: '0x1aE55a9F9AE397e456046e79f56afd712EDBFf67',

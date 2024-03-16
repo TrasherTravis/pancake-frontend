@@ -1,10 +1,10 @@
 import styled from "styled-components";
-import { darkColors } from "../../theme/colors";
+import { darkColors, lightColors } from "../../theme/colors";
 import { Box, Flex } from "../Box";
 import SocialLinks from "./Components/SocialLinks";
 
 export const StyledFooter = styled(Flex)`
-  background: ${darkColors.backgroundAlt};
+  background: ${"#62D6C4"};
 `;
 
 export const StyledList = styled.ul`
@@ -22,7 +22,7 @@ export const StyledListItem = styled.li`
   text-transform: capitalize;
 
   &:first-child {
-    color: ${darkColors.secondary};
+    color: ${"#FAF9FA"};
     font-weight: 600;
     text-transform: uppercase;
   }

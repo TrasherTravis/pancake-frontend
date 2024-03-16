@@ -6,7 +6,7 @@ import { DeserializedPool } from 'state/types'
 import useIntersectionObserver from 'hooks/useIntersectionObserver'
 import useGetTopFarmsByApr from 'views/Home/hooks/useGetTopFarmsByApr'
 import useGetTopPoolsByApr from 'views/Home/hooks/useGetTopPoolsByApr'
-import { vaultPoolConfig } from 'config/constants/pools'
+// import { vaultPoolConfig } from 'config/constants/pools'
 import { useVaultApy } from 'hooks/useVaultApy'
 import TopFarmPool from './TopFarmPool'
 import RowHeading from './RowHeading'
@@ -32,16 +32,13 @@ const FarmsPoolsRow = () => {
   const { topFarms, fetched } = useGetTopFarmsByApr(isIntersecting)
   const { topPools } = useGetTopPoolsByApr(fetched && isIntersecting)
   const { lockedApy } = useVaultApy()
-
   const timer = useRef<ReturnType<typeof setTimeout>>(null)
   const isLoaded = topFarms[0] && topPools[0]
-
   const startTimer = useCallback(() => {
     timer.current = setInterval(() => {
       setShowFarms((prev) => !prev)
     }, 6000)
   }, [timer])
-
   useEffect(() => {
     if (isLoaded) {
       startTimer()
@@ -53,21 +50,20 @@ const FarmsPoolsRow = () => {
   }, [timer, isLoaded, startTimer])
 
   const getPoolText = (pool: DeserializedPool) => {
-    if (pool.vaultKey) {
-      return vaultPoolConfig[pool.vaultKey].name
-    }
+    // if (pool.vaultKey) {
+    //   return vaultPoolConfig[pool.vaultKey].name
+    // }
 
     return t('Stake %stakingSymbol% - Earn %earningSymbol%', {
       earningSymbol: pool.earningToken.symbol,
       stakingSymbol: pool.stakingToken.symbol,
     })
   }
-
   return (
     <div ref={observerRef}>
       <Flex flexDirection="column" mt="24px">
         <Flex mb="24px">
-          <RowHeading text={showFarms ? t('Top Farms') : t('Top Syrup Pools')} />
+          <RowHeading text={showFarms ? t('Top  Farms') : t('Top  Pools')} />
           <IconButton
             variant="text"
             height="100%"
@@ -100,7 +96,8 @@ const FarmsPoolsRow = () => {
                 // eslint-disable-next-line react/no-array-index-key
                 key={index}
                 title={topPool && getPoolText(topPool)}
-                percentage={topPool?.sousId === 0 ? +lockedApy : topPool?.apr}
+                // percentage={topPool?.sousId === 0 ? +lockedApy : topPool?.apr}
+                percentage={topPool?.sousId === 0 && topPool?.apr}
                 index={index}
                 isApy={topPool?.sousId === 0}
                 visible={!showFarms}

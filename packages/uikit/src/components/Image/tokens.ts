@@ -20,6 +20,38 @@ const tokens = {
     decimals: 18,
     projectLink: "https://orkswap-frontend.vercel.app/",
   },
+
+  usdt: {
+    symbol: "USDT",
+    address: {
+      321: "0x0039f574eE5cC39bdD162E9A88e3EB1f111bAF48",
+      97: "0xE02dF9e3e622DeBdD69fb838bB799E3F168902c5",
+    },
+    decimals: 18,
+    projectLink: "https://tether.to/",
+  },
+
+  usdc: {
+    symbol: "USDC",
+    address: {
+      321: "0x980a5AfEf3D17aD98635F6C5aebCBAedEd3c3430",
+      97: "0xaB1a4d4f1D656d2450692D237fdD6C7f9146e814",
+    },
+    decimals: 18,
+    projectLink: "https://www.centre.io/usdc",
+  },
+  busd: {
+    symbol: "BUSD",
+    address: {
+      321: "0xE3F5a90F9cb311505cd691a46596599aA1A0AD7D",
+      97: "",
+    },
+    decimals: 18,
+    projectLink: "https://www.paxos.com/busd/",
+  },
+
+  //  KCC Tokens Ends Here!
+  
   txl: {
     symbol: "TXL",
     address: {
@@ -614,15 +646,7 @@ const tokens = {
     decimals: 18,
     projectLink: "https://dusk.network/",
   },
-  busd: {
-    symbol: "BUSD",
-    address: {
-      321: "0x0039f574eE5cC39bdD162E9A88e3EB1f111bAF48",
-      97: "",
-    },
-    decimals: 18,
-    projectLink: "https://www.paxos.com/busd/",
-  },
+ 
   eth: {
     symbol: "ETH",
     address: {
@@ -686,24 +710,8 @@ const tokens = {
     decimals: 18,
     projectLink: "https://litecoin.org/",
   },
-  usdc: {
-    symbol: "USDC",
-    address: {
-      56: "0x8AC76a51cc950d9822D68b83fE1Ad97B32Cd580d",
-      97: "0xaB1a4d4f1D656d2450692D237fdD6C7f9146e814",
-    },
-    decimals: 18,
-    projectLink: "https://www.centre.io/usdc",
-  },
-  dai: {
-    symbol: "DAI",
-    address: {
-      56: "0x1AF3F329e8BE154074D8769D1FFa4eE058B1DBc3",
-      97: "",
-    },
-    decimals: 18,
-    projectLink: "https://www.makerdao.com/",
-  },
+ 
+  
   ada: {
     symbol: "ADA",
     address: {
@@ -749,15 +757,7 @@ const tokens = {
     decimals: 18,
     projectLink: "https://chain.link/",
   },
-  usdt: {
-    symbol: "USDT",
-    address: {
-      321: "0x0039f574eE5cC39bdD162E9A88e3EB1f111bAF48",
-      97: "0xE02dF9e3e622DeBdD69fb838bB799E3F168902c5",
-    },
-    decimals: 18,
-    projectLink: "https://tether.to/",
-  },
+ 
   btcb: {
     symbol: "BTCB",
     address: {

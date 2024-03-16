@@ -6,7 +6,7 @@ import { DeserializedPool } from 'state/types'
 import { useTranslation } from '@pancakeswap/localization'
 import BigNumber from 'bignumber.js'
 import { BIG_ZERO } from 'utils/bigNumber'
-import { vaultPoolConfig } from 'config/constants/pools'
+// import { vaultPoolConfig } from 'config/constants/pools'
 import { useCurrentBlock } from 'state/block/hooks'
 import { getPoolBlockInfo } from 'views/Pools/helpers'
 
@@ -62,7 +62,7 @@ const Apr: React.FC<React.PropsWithChildren<AprProps>> = ({
       linkLabel={t('Get %symbol%', { symbol: stakingToken.symbol })}
       linkHref={apyModalLink}
       earningTokenSymbol={earningToken.symbol}
-      autoCompoundFrequency={vaultPoolConfig[vaultKey]?.autoCompoundFrequency ?? 0}
+      // autoCompoundFrequency={vaultPoolConfig[vaultKey]?.autoCompoundFrequency ?? 0}
       performanceFee={performanceFee}
     />,
   )

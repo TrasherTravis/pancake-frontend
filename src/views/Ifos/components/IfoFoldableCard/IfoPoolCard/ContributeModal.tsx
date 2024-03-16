@@ -196,7 +196,7 @@ const ContributeModal: React.FC<React.PropsWithChildren<Props>> = ({
               <Image
                 src={
                   ifo.currency.symbol === 'CAKE'
-                    ? '/images/cake.svg'
+                    ? '/images/ork.png'
                     : `/images/farms/${currency.symbol.split(' ')[0].toLowerCase()}.svg`
                 }
                 width={24}

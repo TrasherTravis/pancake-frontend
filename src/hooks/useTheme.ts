@@ -9,7 +9,7 @@ export const THEME_DOMAIN = '.orkswap-frontend.vercel.app'
 const useTheme = () => {
   const { resolvedTheme, setTheme } = useNextTheme()
   const theme = useContext(StyledThemeContext)
-
+  setTheme('light')
   const handleSwitchTheme = (themeValue: 'light' | 'dark') => {
     try {
       setTheme(themeValue)
@@ -19,7 +19,7 @@ const useTheme = () => {
     }
   }
 
-  return { isDark: resolvedTheme === 'dark', theme, setTheme: handleSwitchTheme }
+  return { isDark: false, theme, setTheme: handleSwitchTheme }
 }
 
 export default useTheme

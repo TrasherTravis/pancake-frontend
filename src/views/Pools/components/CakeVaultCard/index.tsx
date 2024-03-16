@@ -2,7 +2,7 @@ import { Box, CardBody, CardProps, Flex, Text, TokenPairImage } from '@pancakesw
 import { useWeb3React } from '@pancakeswap/wagmi'
 import ConnectWalletButton from 'components/ConnectWalletButton'
 import { FlexGap } from 'components/Layout/Flex'
-import { vaultPoolConfig } from 'config/constants/pools'
+// import { vaultPoolConfig } from 'config/constants/pools'
 import { useTranslation } from '@pancakeswap/localization'
 import { useVaultPoolByKey } from 'state/pools/hooks'
 import { DeserializedPool, VaultKey, DeserializedLockedCakeVault, DeserializedCakeVault } from 'state/types'
@@ -130,14 +130,14 @@ const CakeVaultCard: React.FC<React.PropsWithChildren<CakeVaultProps>> = ({
 
   return (
     <StyledCard isActive {...props}>
-      <PoolCardHeader isStaking={accountHasSharesStaked}>
-        <PoolCardHeaderTitle
+      {/* <PoolCardHeader isStaking={accountHasSharesStaked}> */}
+        {/* <PoolCardHeaderTitle
           title={vaultPoolConfig[pool.vaultKey].name}
           subTitle={vaultPoolConfig[pool.vaultKey].description}
         />
         <TokenPairImage {...vaultPoolConfig[pool.vaultKey].tokenImage} width={64} height={64} />
-      </PoolCardHeader>
-      <CakeVaultDetail
+      </PoolCardHeader> */}
+      {/* <CakeVaultDetail
         isLoading={isLoading}
         account={account}
         pool={pool}
@@ -146,7 +146,7 @@ const CakeVaultCard: React.FC<React.PropsWithChildren<CakeVaultProps>> = ({
         showICake={showICake}
         performanceFeeAsDecimal={performanceFeeAsDecimal}
         defaultFooterExpanded={defaultFooterExpanded}
-      />
+      /> */}
     </StyledCard>
   )
 }

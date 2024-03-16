@@ -44,9 +44,9 @@ export interface Message {
 }
 
 const STRATEGIES = [
-  { name: 'cake', params: { symbol: 'CAKE', address: bscTokens.cake.address, decimals: 18, max: 300 } },
+  { name: 'ork', params: { symbol: 'ORK', address: bscTokens.cake.address, decimals: 18, max: 300 } },
 ]
-const NETWORK = '56'
+const NETWORK = '321'
 
 /**
  * Generates metadata required by snapshot to validate payload
@@ -113,7 +113,7 @@ interface GetVotingPowerType {
   lockedEndTime?: number
 }
 
-const nodeRealProvider = new JsonRpcProvider('https://bsc-mainnet.nodereal.io/v1/5a516406afa140ffa546ee10af7c9b24', 321)
+const nodeRealProvider = new JsonRpcProvider('https://kcc.getblock.io/mainnet/?api_key=7577d4e7-8a0c-455f-9fcf-e2ea365590b1', 321)
 
 export const getVotingPower = async (
   account: string,

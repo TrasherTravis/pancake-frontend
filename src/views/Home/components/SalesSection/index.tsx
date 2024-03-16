@@ -1,5 +1,6 @@
 import { Flex, Text, Button, Link } from '@pancakeswap/uikit'
 import { NextLinkFromReactRouter as RouterLink } from 'components/NextLink'
+import styled from 'styled-components'
 import CompositeImage, { CompositeImageProps } from '../CompositeImage'
 import ColoredWordHeading from '../ColoredWordHeading'
 
@@ -16,18 +17,40 @@ export interface SalesSectionProps {
   primaryButton: SalesSectionButton
   secondaryButton: SalesSectionButton
   images: CompositeImageProps
+  buttonColor?: string
+  textColor?: string
+  absolute?: boolean
 }
-
+const Farmer = styled.div<{absolute:boolean}>`
+  @media (min-width: 1440px){
+    position: absolute;
+    top: -150px;
+    right: -250px;
+  }
+  @media (min-width: 851px) and (max-width: 1440px){
+    position: absolute;
+    bottom: 0;
+    right: 0;
+  }
+  @media (max-width: 851px) {
+    position: relative;
+    margin-left: auto;
+    img {
+      max-height: 192px;
+    }
+  }
+`
 const SalesSection: React.FC<React.PropsWithChildren<SalesSectionProps>> = (props) => {
-  const { headingText, bodyText, reverse, primaryButton, secondaryButton, images } = props
+  const { headingText, bodyText, reverse, primaryButton, secondaryButton, images, buttonColor, textColor, absolute } = props
 
   return (
-    <Flex flexDirection="column">
+    <Flex flexDirection="column" style={{ position:"relative"}} >
       <Flex
         flexDirection={['column-reverse', null, null, reverse ? 'row-reverse' : 'row']}
         alignItems={['flex-end', null, null, 'center']}
         justifyContent="center"
       >
+
         <Flex
           flexDirection="column"
           flex="1"
@@ -35,12 +58,14 @@ const SalesSection: React.FC<React.PropsWithChildren<SalesSectionProps>> = (prop
           mr={[null, null, null, !reverse && '64px']}
           alignSelf={['flex-start', null, null, 'center']}
         >
-          <ColoredWordHeading text={headingText} />
-          <Text color="textSubtle" mb="24px">
+          { absolute && <Farmer absolute={absolute}><CompositeImage {...images} /></Farmer>}
+
+          <ColoredWordHeading text={headingText} {...(textColor && { style: { color: `${textColor}` } })} />
+          <Text color={`${textColor || 'textSubtle'}`} mb="24px">
             {bodyText}
           </Text>
           <Flex>
-            <Button mr="16px">
+            <Button mr="16px" {...(buttonColor && { style: { backgroundColor: `${buttonColor}` } })}>
               {primaryButton.external ? (
                 <Link external href={primaryButton.to}>
                   <Text color="card" bold fontSize="16px">
@@ -56,13 +81,15 @@ const SalesSection: React.FC<React.PropsWithChildren<SalesSectionProps>> = (prop
               )}
             </Button>
             {secondaryButton.external ? (
-              <Link external href={secondaryButton.to}>
+              <Link external href={secondaryButton.to} color={`${buttonColor || 'gold'}`}>
                 {secondaryButton.text}
               </Link>
             ) : (
               <RouterLink to={secondaryButton.to}>{secondaryButton.text}</RouterLink>
             )}
+
           </Flex>
+
         </Flex>
         <Flex
           height={['192px', null, null, '100%']}
@@ -70,9 +97,9 @@ const SalesSection: React.FC<React.PropsWithChildren<SalesSectionProps>> = (prop
           flex={[null, null, null, '1']}
           mb={['24px', null, null, '0']}
         >
-          <CompositeImage {...images} />
+          { !absolute && <CompositeImage {...images} />}
         </Flex>
-      </Flex>
+          </Flex>
     </Flex>
   )
 }

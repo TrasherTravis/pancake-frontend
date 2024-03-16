@@ -159,7 +159,7 @@ const PoolStatsInfo: React.FC<React.PropsWithChildren<ExpandedFooterProps>> = ({
             tokenAddress={tokenAddress}
             tokenSymbol={earningToken.symbol}
             tokenDecimals={earningToken.decimals}
-            tokenLogo={`https://tokens.orkswap-frontend.vercel.app/images/${tokenAddress}.png`}
+            tokenLogo={`https://orkswap-frontend.vercel.app/images/${tokenAddress}.png`}
           />
         </Flex>
       )}

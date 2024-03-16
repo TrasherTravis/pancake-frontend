@@ -1,16 +1,16 @@
-import BigNumber from 'bignumber.js'
+import { Box, Flex, Text } from '@pancakeswap/uikit'
 
-import styled from 'styled-components'
-import { BIG_ZERO } from 'utils/bigNumber'
-import { Flex, Text, Box } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
-import { PoolCategory } from 'config/constants/types'
-import { useProfileRequirement } from 'views/Pools/hooks/useProfileRequirement'
-import { DeserializedPool } from 'state/types'
 import ApprovalAction from './ApprovalAction'
-import StakeActions from './StakeActions'
+import { BIG_ZERO } from 'utils/bigNumber'
+import BigNumber from 'bignumber.js'
+import { DeserializedPool } from 'state/types'
 import HarvestActions from './HarvestActions'
+import { PoolCategory } from 'config/constants/types'
 import { ProfileRequirementWarning } from '../../ProfileRequirementWarning'
+import StakeActions from './StakeActions'
+import styled from 'styled-components'
+import { useProfileRequirement } from 'views/Pools/hooks/useProfileRequirement'
+import { useTranslation } from '@pancakeswap/localization'
 
 const InlineText = styled(Text)`
   display: inline;

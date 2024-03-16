@@ -1,19 +1,20 @@
-import { useTranslation } from '@pancakeswap/localization'
 import { AddIcon, Button, Flex, IconButton, MinusIcon, useModal, useToast } from '@pancakeswap/uikit'
-import { ToastDescriptionWithTx } from 'components/Toast'
-import useCatchTxError from 'hooks/useCatchTxError'
 import { useCallback, useContext } from 'react'
-import styled from 'styled-components'
-
-import { TransactionResponse } from '@ethersproject/providers'
-import { useRouter } from 'next/router'
 import { useLpTokenPrice, usePriceCakeBusd } from 'state/farms/hooks'
+
 import DepositModal from '../DepositModal'
-import StakedLP from '../StakedLP'
 import { FarmWithStakedValue } from '../types'
+import StakedLP from '../StakedLP'
+import { ToastDescriptionWithTx } from 'components/Toast'
+import { TransactionResponse } from '@ethersproject/providers'
 import WithdrawModal from '../WithdrawModal'
-import { YieldBoosterStateContext } from '../YieldBooster/components/ProxyFarmContainer'
 import { YieldBoosterState } from '../YieldBooster/hooks/useYieldBoosterState'
+import { YieldBoosterStateContext } from '../YieldBooster/components/ProxyFarmContainer'
+import {set} from 'local-storage'
+import styled from 'styled-components'
+import useCatchTxError from 'hooks/useCatchTxError'
+import { useRouter } from 'next/router'
+import { useTranslation } from '@pancakeswap/localization'
 
 interface FarmCardActionsProps extends FarmWithStakedValue {
   lpLabel?: string
@@ -76,7 +77,7 @@ const StakeAction: React.FC<React.PropsWithChildren<FarmCardActionsProps>> = ({
       onDone()
     }
   }
-
+  
   const handleUnstake = async (amount: string) => {
     const receipt = await fetchWithCatchTxError(() => {
       return onUnstake(amount)
@@ -153,7 +154,6 @@ const StakeAction: React.FC<React.PropsWithChildren<FarmCardActionsProps>> = ({
       </IconButtonWrapper>
     )
   }
-
   // TODO: Move this out to prevent unnecessary re-rendered
   if (!isApproved) {
     return (

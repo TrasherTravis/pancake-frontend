@@ -35,7 +35,20 @@ const ComponentWrapper = styled.div<WrapperProps>`
   left: 50%;
   transform: translate(-50%, -50%);
 `
-
+export const ClipContainer = styled.div`
+  height: 25em;
+  position: absolute;
+  bottom: -1px;
+  width: 100%;
+  clip-path: polygon(100% 13%, 0% 100%, 100% 100%);
+  background: linear-gradient(180deg, #62d6c4 22%, #62d6c4 100%);
+  @media (max-width: 851px){
+    height: 10em;
+  }
+  @media (max-width: 630px){
+    height: 5em;
+  }
+`
 const CurvedDivider: React.FC<React.PropsWithChildren<CurvedDividerProps>> = ({
   index,
   dividerPosition,

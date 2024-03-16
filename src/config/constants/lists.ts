@@ -1,6 +1,6 @@
-const PANCAKE_EXTENDED = 'https://tokens.orkswap-frontend.vercel.app/pancakeswap-extended.json'
-const COINGECKO = 'https://tokens.orkswap-frontend.vercel.app/coingecko.json'
-const CMC = 'https://tokens.orkswap-frontend.vercel.app/cmc.json'
+const PANCAKE_EXTENDED = 'https://orkswap-frontend.vercel.app/tokens.json'
+const COINGECKO = 'https://orkswap-frontend.vercel.app/tokens.json'
+const CMC = 'https://orkswap-frontend.vercel.app/tokens.json'
 
 // List of official tokens list
 export const OFFICIAL_LISTS = [PANCAKE_EXTENDED]

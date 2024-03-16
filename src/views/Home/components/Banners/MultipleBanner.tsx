@@ -1,13 +1,15 @@
-import { appearAnimation, useIsomorphicEffect, useMatchBreakpoints } from '@pancakeswap/uikit'
-import { useWeb3React } from '@pancakeswap/wagmi'
-import { useState } from 'react'
-import styled from 'styled-components'
-import SwiperCore, { Autoplay, EffectFade, Pagination } from 'swiper'
 import 'swiper/css'
 import 'swiper/css/effect-fade'
 import 'swiper/css/pagination'
+
 import { Swiper, SwiperSlide } from 'swiper/react'
+import SwiperCore, { Autoplay, EffectFade, Pagination } from 'swiper'
+import { appearAnimation, useIsomorphicEffect, useMatchBreakpoints } from '@pancakeswap/uikit'
+
+import styled from 'styled-components'
 import { useMultipleBannerConfig } from './hooks/useMultipleBannerConfig'
+import { useState } from 'react'
+import { useWeb3React } from '@pancakeswap/wagmi'
 
 const BannerPlaceHolder = styled.div<{ walletConnected: boolean }>`
   position: relative;
@@ -26,7 +28,7 @@ const BannerPlaceHolder = styled.div<{ walletConnected: boolean }>`
     left: 0px;
     right: 0px;
     bottom: 0px;
-    background: -webkit-linear-gradient(#7645d9 0%, #452a7a 100%);
+    background: #62d6c4;
     ${({ theme }) => theme.mediaQueries.sm} {
       top: 20px;
       left: 20px;
@@ -98,7 +100,7 @@ const MultipleBanner: React.FC<React.PropsWithChildren> = () => {
     if (swiperRef) {
       if (bannerList.length > 1 && !swiperRef.autoplay?.running) {
         swiperRef.autoplay?.start()
-      } else if (bannerList.length <= 1 && swiperRef.autoplay?.running) {
+      } else if (bannerList.length <= 1 && swiperRef?.autoplay?.running) {
         swiperRef.autoplay?.stop()
       }
     }

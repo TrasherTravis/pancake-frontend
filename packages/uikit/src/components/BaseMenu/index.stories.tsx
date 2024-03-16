@@ -72,8 +72,8 @@ export const SubMenu: React.FC<React.PropsWithChildren> = () => {
           component={<EllipsisIcon height="16px" width="16px" />}
           options={{ placement: "right", offset: [0, 15], padding: { top: 20 } }}
         >
-          <SubMenuItem as={LinkExternal} href="https://bscscan.com" bold={false} color="text">
-            View on BSCScan
+          <SubMenuItem as={LinkExternal} href="https://scan.kcc.io" bold={false} color="text">
+            View on KCCScan
           </SubMenuItem>
           <SubMenuItem as={LinkExternal} href="https://pancakeswap.info" bold={false} color="text" target="blank">
             View on PCS Info
@@ -93,11 +93,11 @@ export const SubMenu: React.FC<React.PropsWithChildren> = () => {
             </Text>
           }
         >
-          <SubMenuItem as={LinkExternal} href="https://bscscan.com" bold={false} color="text">
-            View on BSCScan
+          <SubMenuItem as={LinkExternal} href="https://scan.kcc.io" bold={false} color="text">
+            View on KCCScan
           </SubMenuItem>
           <SubMenuItem as={LinkExternal} href="https://pancakeswap.info" bold={false} color="text" target="blank">
-            View on PCS Info
+            View on OrkSwap Info
           </SubMenuItem>
           <SubMenuItem as={Link} to="/profile">
             Go to profile page

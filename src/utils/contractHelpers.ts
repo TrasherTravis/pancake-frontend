@@ -1,146 +1,144 @@
-import type { Signer } from '@ethersproject/abstract-signer'
-import type { Provider } from '@ethersproject/providers'
-import { provider } from 'utils/wagmi'
-import { Contract } from '@ethersproject/contracts'
-import poolsConfig from 'config/constants/pools'
-import { PoolCategory } from 'config/constants/types'
-import { CAKE } from '@pancakeswap/tokens'
-
-// Addresses
-import {
-  getAddress,
-  getPancakeProfileAddress,
-  getPancakeBunniesAddress,
-  getBunnyFactoryAddress,
-  getBunnySpecialAddress,
-  getLotteryV2Address,
-  getMasterChefAddress,
-  getMasterChefV1Address,
-  getPointCenterIfoAddress,
-  getClaimRefundAddress,
-  getTradingCompetitionAddressEaster,
-  getEasterNftAddress,
-  getCakeVaultAddress,
-  getMulticallAddress,
-  getBunnySpecialCakeVaultAddress,
-  getBunnySpecialPredictionAddress,
-  getBunnySpecialLotteryAddress,
-  getFarmAuctionAddress,
-  getAnniversaryAchievement,
-  getNftMarketAddress,
-  getNftSaleAddress,
-  getPancakeSquadAddress,
-  getTradingCompetitionAddressFanToken,
-  getTradingCompetitionAddressMobox,
-  getTradingCompetitionAddressMoD,
-  getBunnySpecialXmasAddress,
-  getICakeAddress,
-  getPotteryDrawAddress,
-  getZapAddress,
-  getCakeFlexibleSideVaultAddress,
-  getPredictionsV1Address,
-  getBCakeFarmBoosterAddress,
-  getBCakeFarmBoosterProxyFactoryAddress,
-} from 'utils/addressHelpers'
-
-// ABI
-import profileABI from 'config/abi/pancakeProfile.json'
-import pancakeBunniesAbi from 'config/abi/pancakeBunnies.json'
-import bunnyFactoryAbi from 'config/abi/bunnyFactory.json'
-import bunnySpecialAbi from 'config/abi/bunnySpecial.json'
-import bep20Abi from 'config/abi/erc20.json'
-import erc721Abi from 'config/abi/erc721.json'
-import lpTokenAbi from 'config/abi/lpToken.json'
-import cakeAbi from 'config/abi/cake.json'
-import ifoV1Abi from 'config/abi/ifoV1.json'
-import ifoV2Abi from 'config/abi/ifoV2.json'
-import pointCenterIfo from 'config/abi/pointCenterIfo.json'
-import lotteryV2Abi from 'config/abi/lotteryV2.json'
-import masterChef from 'config/abi/masterchef.json'
-import masterChefV1 from 'config/abi/masterchefV1.json'
-import sousChef from 'config/abi/sousChef.json'
-import sousChefV2 from 'config/abi/sousChefV2.json'
-import sousChefBnb from 'config/abi/sousChefBnb.json'
-import claimRefundAbi from 'config/abi/claimRefund.json'
-import tradingCompetitionEasterAbi from 'config/abi/tradingCompetitionEaster.json'
-import tradingCompetitionFanTokenAbi from 'config/abi/tradingCompetitionFanToken.json'
-import tradingCompetitionMoboxAbi from 'config/abi/tradingCompetitionMobox.json'
-import tradingCompetitionMoDAbi from 'config/abi/tradingCompetitionMoD.json'
-import easterNftAbi from 'config/abi/easterNft.json'
-import cakeVaultV2Abi from 'config/abi/cakeVaultV2.json'
-import cakeFlexibleSideVaultV2Abi from 'config/abi/cakeFlexibleSideVaultV2.json'
-import predictionsAbi from 'config/abi/predictions.json'
-import predictionsV1Abi from 'config/abi/predictionsV1.json'
-import chainlinkOracleAbi from 'config/abi/chainlinkOracle.json'
-import MultiCallAbi from 'config/abi/Multicall.json'
-import bunnySpecialCakeVaultAbi from 'config/abi/bunnySpecialCakeVault.json'
-import bunnySpecialPredictionAbi from 'config/abi/bunnySpecialPrediction.json'
-import bunnySpecialLotteryAbi from 'config/abi/bunnySpecialLottery.json'
-import bunnySpecialXmasAbi from 'config/abi/bunnySpecialXmas.json'
-import farmAuctionAbi from 'config/abi/farmAuction.json'
-import anniversaryAchievementAbi from 'config/abi/anniversaryAchievement.json'
-import nftMarketAbi from 'config/abi/nftMarket.json'
-import nftSaleAbi from 'config/abi/nftSale.json'
-import pancakeSquadAbi from 'config/abi/pancakeSquad.json'
-import erc721CollectionAbi from 'config/abi/erc721collection.json'
-import potteryVaultAbi from 'config/abi/potteryVaultAbi.json'
-import potteryDrawAbi from 'config/abi/potteryDrawAbi.json'
-import zapAbi from 'config/abi/zap.json'
-import iCakeAbi from 'config/abi/iCake.json'
-import ifoV3Abi from 'config/abi/ifoV3.json'
-import cakePredictionsAbi from 'config/abi/cakePredictions.json'
-import bCakeFarmBoosterAbi from 'config/abi/bCakeFarmBooster.json'
-import bCakeFarmBoosterProxyFactoryAbi from 'config/abi/bCakeFarmBoosterProxyFactory.json'
-import bCakeProxyAbi from 'config/abi/bCakeProxy.json'
-
 // Types
 import type {
-  ChainlinkOracle,
-  FarmAuction,
-  Predictions,
   AnniversaryAchievement,
-  IfoV1,
-  IfoV2,
-  Erc20,
-  Erc721,
-  Cake,
-  BunnyFactory,
-  PancakeBunnies,
-  PancakeProfile,
-  LotteryV2,
-  Masterchef,
-  MasterchefV1,
-  SousChef,
-  SousChefV2,
-  BunnySpecial,
-  LpToken,
-  ClaimRefund,
-  TradingCompetitionEaster,
-  TradingCompetitionFanToken,
-  EasterNft,
-  Multicall,
-  BunnySpecialCakeVault,
-  BunnySpecialPrediction,
-  BunnySpecialLottery,
-  NftMarket,
-  NftSale,
-  PancakeSquad,
-  Erc721collection,
-  PointCenterIfo,
-  CakeVaultV2,
-  CakeFlexibleSideVaultV2,
-  TradingCompetitionMobox,
-  ICake,
-  TradingCompetitionMoD,
-  PotteryVaultAbi,
-  PotteryDrawAbi,
-  Zap,
-  PredictionsV1,
   BCakeFarmBooster,
   BCakeFarmBoosterProxyFactory,
   BCakeProxy,
+  BunnyFactory,
+  BunnySpecial,
+  BunnySpecialCakeVault,
+  BunnySpecialLottery,
+  BunnySpecialPrediction,
+  Cake,
+  CakeFlexibleSideVaultV2,
+  CakeVaultV2,
+  ChainlinkOracle,
+  ClaimRefund,
+  EasterNft,
+  Erc20,
+  Erc721,
+  Erc721collection,
+  FarmAuction,
+  ICake,
+  IfoV1,
+  IfoV2,
+  LotteryV2,
+  LpToken,
+  Masterchef,
+  MasterchefV1,
+  Multicall,
+  NftMarket,
+  NftSale,
+  PancakeBunnies,
+  PancakeProfile,
+  PancakeSquad,
+  PointCenterIfo,
+  PotteryDrawAbi,
+  PotteryVaultAbi,
+  Predictions,
+  PredictionsV1,
+  SousChef,
+  SousChefV2,
+  TradingCompetitionEaster,
+  TradingCompetitionFanToken,
+  TradingCompetitionMoD,
+  TradingCompetitionMobox,
+  Zap,
 } from 'config/abi/types'
+// Addresses
+import {
+  getAddress,
+  getAnniversaryAchievement,
+  getBCakeFarmBoosterAddress,
+  getBCakeFarmBoosterProxyFactoryAddress,
+  getBunnyFactoryAddress,
+  getBunnySpecialAddress,
+  getBunnySpecialCakeVaultAddress,
+  getBunnySpecialLotteryAddress,
+  getBunnySpecialPredictionAddress,
+  getBunnySpecialXmasAddress,
+  getCakeFlexibleSideVaultAddress,
+  getCakeVaultAddress,
+  getClaimRefundAddress,
+  getEasterNftAddress,
+  getFarmAuctionAddress,
+  getICakeAddress,
+  getLotteryV2Address,
+  getMasterChefAddress,
+  getMasterChefV1Address,
+  getMulticallAddress,
+  getNftMarketAddress,
+  getNftSaleAddress,
+  getPancakeBunniesAddress,
+  getPancakeProfileAddress,
+  getPancakeSquadAddress,
+  getPointCenterIfoAddress,
+  getPotteryDrawAddress,
+  getPredictionsV1Address,
+  getTradingCompetitionAddressEaster,
+  getTradingCompetitionAddressFanToken,
+  getTradingCompetitionAddressMoD,
+  getTradingCompetitionAddressMobox,
+  getZapAddress,
+} from 'utils/addressHelpers'
+
+import { CAKE } from '@pancakeswap/tokens'
 import { ChainId } from '@pancakeswap/sdk'
+import { Contract } from '@ethersproject/contracts'
+import MultiCallAbi from 'config/abi/Multicall.json'
+import { PoolCategory } from 'config/constants/types'
+import type { Provider } from '@ethersproject/providers'
+import type { Signer } from '@ethersproject/abstract-signer'
+import anniversaryAchievementAbi from 'config/abi/anniversaryAchievement.json'
+import bCakeFarmBoosterAbi from 'config/abi/bCakeFarmBooster.json'
+import bCakeFarmBoosterProxyFactoryAbi from 'config/abi/bCakeFarmBoosterProxyFactory.json'
+import bCakeProxyAbi from 'config/abi/bCakeProxy.json'
+import bep20Abi from 'config/abi/erc20.json'
+import bunnyFactoryAbi from 'config/abi/bunnyFactory.json'
+import bunnySpecialAbi from 'config/abi/bunnySpecial.json'
+import bunnySpecialCakeVaultAbi from 'config/abi/bunnySpecialCakeVault.json'
+import bunnySpecialLotteryAbi from 'config/abi/bunnySpecialLottery.json'
+import bunnySpecialPredictionAbi from 'config/abi/bunnySpecialPrediction.json'
+import bunnySpecialXmasAbi from 'config/abi/bunnySpecialXmas.json'
+import cakeAbi from 'config/abi/cake.json'
+import cakeFlexibleSideVaultV2Abi from 'config/abi/cakeFlexibleSideVaultV2.json'
+import cakePredictionsAbi from 'config/abi/cakePredictions.json'
+import cakeVaultV2Abi from 'config/abi/cakeVaultV2.json'
+import chainlinkOracleAbi from 'config/abi/chainlinkOracle.json'
+import claimRefundAbi from 'config/abi/claimRefund.json'
+import easterNftAbi from 'config/abi/easterNft.json'
+import erc721Abi from 'config/abi/erc721.json'
+import erc721CollectionAbi from 'config/abi/erc721collection.json'
+import farmAuctionAbi from 'config/abi/farmAuction.json'
+import iCakeAbi from 'config/abi/iCake.json'
+import ifoV1Abi from 'config/abi/ifoV1.json'
+import ifoV2Abi from 'config/abi/ifoV2.json'
+import ifoV3Abi from 'config/abi/ifoV3.json'
+import lotteryV2Abi from 'config/abi/lotteryV2.json'
+import lpTokenAbi from 'config/abi/lpToken.json'
+import masterChef from 'config/abi/masterchef.json'
+import masterChefV1 from 'config/abi/masterchefV1.json'
+import nftMarketAbi from 'config/abi/nftMarket.json'
+import nftSaleAbi from 'config/abi/nftSale.json'
+import pancakeBunniesAbi from 'config/abi/pancakeBunnies.json'
+import pancakeSquadAbi from 'config/abi/pancakeSquad.json'
+import pointCenterIfo from 'config/abi/pointCenterIfo.json'
+import poolsConfig from 'config/constants/pools'
+import potteryDrawAbi from 'config/abi/potteryDrawAbi.json'
+import potteryVaultAbi from 'config/abi/potteryVaultAbi.json'
+import predictionsAbi from 'config/abi/predictions.json'
+import predictionsV1Abi from 'config/abi/predictionsV1.json'
+// ABI
+import profileABI from 'config/abi/pancakeProfile.json'
+import { provider } from 'utils/wagmi'
+import sousChef from 'config/abi/sousChef.json'
+import sousChefBnb from 'config/abi/sousChefBnb.json'
+import sousChefV2 from 'config/abi/sousChefV2.json'
+import tradingCompetitionEasterAbi from 'config/abi/tradingCompetitionEaster.json'
+import tradingCompetitionFanTokenAbi from 'config/abi/tradingCompetitionFanToken.json'
+import tradingCompetitionMoDAbi from 'config/abi/tradingCompetitionMoD.json'
+import tradingCompetitionMoboxAbi from 'config/abi/tradingCompetitionMobox.json'
+import zapAbi from 'config/abi/zap.json'
 
 export const getContract = ({
   abi,
@@ -255,6 +253,10 @@ export const getEasterNftContract = (signer?: Signer | Provider) => {
 }
 export const getCakeVaultV2Contract = (signer?: Signer | Provider) => {
   return getContract({ abi: cakeVaultV2Abi, address: getCakeVaultAddress(), signer }) as CakeVaultV2
+}
+
+export const getSousChefContract = (signer?: Signer | Provider) => {
+  return getContract({ abi: sousChef, address: getCakeVaultAddress(), signer }) as SousChef
 }
 
 export const getCakeFlexibleSideVaultV2Contract = (signer?: Signer | Provider) => {

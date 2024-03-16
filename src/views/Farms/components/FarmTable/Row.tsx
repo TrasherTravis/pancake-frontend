@@ -92,6 +92,7 @@ const Row: React.FunctionComponent<React.PropsWithChildren<RowPropsWithLoading>>
   useEffect(() => {
     setActionPanelExpanded(hasStakedAmount)
   }, [hasStakedAmount])
+  
   useEffect(() => {
     if (initialActivity && hasSetInitialValue.current === false) {
       setActionPanelExpanded(initialActivity)
@@ -244,14 +245,14 @@ const Row: React.FunctionComponent<React.PropsWithChildren<RowPropsWithLoading>>
       </>
     )
   }
-
+  
   return (
     <>
       {handleRenderRow()}
       {shouldRenderChild && (
         <tr>
           <td colSpan={7}>
-            <ActionPanel {...props} expanded={actionPanelExpanded} />
+            <ActionPanel {...props} userDataReady={userDataReady} expanded={actionPanelExpanded} />
           </td>
         </tr>
       )}

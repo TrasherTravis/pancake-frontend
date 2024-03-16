@@ -1,16 +1,17 @@
-import { useTranslation } from '@pancakeswap/localization'
 import { Flex, Skeleton, Text } from '@pancakeswap/uikit'
-import BigNumber from 'bignumber.js'
-import ConnectWalletButton from 'components/ConnectWalletButton'
-import { useContext } from 'react'
-import styled from 'styled-components'
 import { HarvestActionContainer, ProxyHarvestActionContainer } from '../FarmTable/Actions/HarvestAction'
 import { ProxyStakedContainer, StakedContainer } from '../FarmTable/Actions/StakedAction'
-import { FarmWithStakedValue } from '../types'
+
+import BigNumber from 'bignumber.js'
 import BoostedAction from '../YieldBooster/components/BoostedAction'
-import { YieldBoosterStateContext } from '../YieldBooster/components/ProxyFarmContainer'
+import ConnectWalletButton from 'components/ConnectWalletButton'
+import { FarmWithStakedValue } from '../types'
 import HarvestAction from './HarvestAction'
 import StakeAction from './StakeAction'
+import { YieldBoosterStateContext } from '../YieldBooster/components/ProxyFarmContainer'
+import styled from 'styled-components'
+import { useContext } from 'react'
+import { useTranslation } from '@pancakeswap/localization'
 
 const Action = styled.div`
   padding-top: 16px;
@@ -49,7 +50,7 @@ const CardActions: React.FC<React.PropsWithChildren<FarmCardActionsProps>> = ({
     <Action>
       <Flex>
         <Text bold textTransform="uppercase" color="secondary" fontSize="12px" pr="4px">
-          CAKE
+          ORK
         </Text>
         <Text bold textTransform="uppercase" color="textSubtle" fontSize="12px">
           {t('Earned')}
